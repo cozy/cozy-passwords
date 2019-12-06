@@ -3,5 +3,9 @@
     "presentation": "Presentation",
     "security": "Security",
     "installation": "Installation"
+  },
+
+  "PresentationPage": {
+    "lets-go": "Let's go!"
   }
 }

@@ -7,5 +7,9 @@
 
   "PresentationPage": {
     "lets-go": "Let's go!"
+  },
+
+  "SecurityPage": {
+    "enhance-password": "Enhance my password"
   }
 }

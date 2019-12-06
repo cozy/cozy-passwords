@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader'
 import { Route, Switch, Redirect, HashRouter } from 'react-router-dom'
 import { Layout, Main, Content } from 'cozy-ui/react/Layout'
 import { Sprite as IconSprite } from 'cozy-ui/react/Icon'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
 
 import Sidebar from './Sidebar'
 import PresentationPage from './PresentationPage'
@@ -27,6 +28,7 @@ export const App = () => (
         </Content>
       </Main>
       <IconSprite />
+      <Alerter />
     </Layout>
   </HashRouter>
 )

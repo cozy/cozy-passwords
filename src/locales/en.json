@@ -16,6 +16,7 @@
 
   "HintPage": {
     "placeholder": "Hint (required)",
-    "submit": "Save the hint"
+    "submit": "Save the hint",
+    "error": "Error while updating hint"
   }
 }

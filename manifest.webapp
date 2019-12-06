@@ -24,9 +24,10 @@
       "type": "io.cozy.apps",
       "verbs": ["GET"]
     },
-    "mocks todos": {
-      "description": "TO REMOVE: only used as demonstration about Cozy App data interactions",
-      "type": "io.mocks.todos"
+    "settings": {
+      "description": "Required to update the password hint",
+      "type": "io.cozy.settings",
+      "verbs": ["PUT"]
     }
   }
 }

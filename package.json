@@ -1,0 +1,55 @@
+{
+  "name": "cozy-passwords",
+  "version": "0.1.0",
+  "scripts": {
+    "tx": "tx pull --all || true",
+    "lint": "yarn lint:js && yarn lint:styles",
+    "lint:js": "cs lint '{src,test}/**/*.{js,jsx}'",
+    "lint:styles": "stylint src/styles --config ./.stylintrc",
+    "prebuild": "yarn lint",
+    "build": "yarn build:browser",
+    "build:browser": "cs build --browser",
+    "build:mobile": "cs build --mobile",
+    "watch": "yarn watch:browser",
+    "watch:browser": "cs watch --browser",
+    "watch:mobile": "cs watch --mobile",
+    "start": "cs start --hot --browser",
+    "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozycloud/cozy-passwords.git}",
+    "test": "cs test --verbose --coverage",
+    "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cs publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cozycloud/cozy-passwords.git"
+  },
+  "author": "",
+  "contributors": [],
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/cozycloud/cozy-passwords/issues"
+  },
+  "homepage": "https://github.com/cozycloud/cozy-passwords#readme",
+  "devDependencies": {
+    "babel-preset-cozy-app": "1.7.0",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.15.1",
+    "eslint-plugin-prettier": "3.1.1",
+    "eslint-plugin-react": "7.17.0",
+    "git-directory-deploy": "1.5.1",
+    "prettier": "1.19.1",
+    "react-hot-loader": "4.12.18",
+    "react-test-renderer": "16.12.0",
+    "redux-mock-store": "1.5.3",
+    "stylint": "2.0.0"
+  },
+  "dependencies": {
+    "cozy-bar": "7.11.0",
+    "cozy-client": "8.5.1",
+    "cozy-scripts": "2.0.2",
+    "cozy-ui": "28.3.0",
+    "eslint-config-cozy-app": "1.3.3",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-router-dom": "5.1.2"
+  }
+}

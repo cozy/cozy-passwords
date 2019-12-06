@@ -7,6 +7,7 @@ import { Sprite as IconSprite } from 'cozy-ui/react/Icon'
 import Sidebar from './Sidebar'
 import PresentationPage from './PresentationPage'
 import SecurityPage from './SecurityPage'
+import HintPage from './HintPage'
 import InstallationPage from './InstallationPage'
 
 export const App = () => (
@@ -17,7 +18,8 @@ export const App = () => (
         <Content className="app-content">
           <Switch>
             <Route path="/presentation" component={PresentationPage} />
-            <Route path="/security" component={SecurityPage} />
+            <Route path="/security" exact component={SecurityPage} />
+            <Route path="/security/hint" exact component={HintPage} />
             <Route path="/installation" component={InstallationPage} />
             <Redirect from="/" to="/presentation" />
             <Redirect from="*" to="/presentation" />

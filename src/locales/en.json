@@ -10,6 +10,12 @@
   },
 
   "SecurityPage": {
-    "enhance-password": "Enhance my password"
+    "enhance-password": "Enhance my password",
+    "keep-password": "Keep my current password"
+  },
+
+  "HintPage": {
+    "placeholder": "Hint (required)",
+    "submit": "Save the hint"
   }
 }

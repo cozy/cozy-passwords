@@ -47,11 +47,13 @@
     "cozy-bar": "7.11.0",
     "cozy-client": "8.5.1",
     "cozy-scripts": "2.0.2",
-    "cozy-ui": "28.5.0",
+    "cozy-ui": "file:///home/drazik/workspace/cozy/cozy-ui",
+    "detect-browser": "^4.8.0",
     "eslint-config-cozy-app": "1.3.3",
     "lodash": "^4.17.15",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "react-router-dom": "5.1.2"
+    "react-router-dom": "5.1.2",
+    "snarkdown": "^1.2.2"
   }
 }

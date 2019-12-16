@@ -18,5 +18,19 @@
     "placeholder": "Hint (required)",
     "submit": "Save the hint",
     "error": "Error while updating hint"
+  },
+
+  "InstallationPage": {
+    "title": "Install Cozy extension",
+    "description": "Add Cozy extension to your browser to automatically fill and save your passwords while browsing",
+    "step1": {
+      "chrome": "Click below to open the Chrome Web Store",
+      "firefox": "Click below to open Firefox Add-ons"
+    },
+    "step2": {
+      "chrome": "Then click on **Add to Chrome**",
+      "firefox": "Then click on **Add to Firefox**"
+    },
+    "step3": "Log in with your address **%{address}** and your password!"
   }
 }

@@ -5,6 +5,13 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { withClient } from 'cozy-client'
 import flowRight from 'lodash/flowRight'
 import { Link } from 'react-router-dom'
+import Wrapper from 'components/Wrapper'
+import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
+import strongPasswordIcon from 'assets/strong-password.svg'
+import Stack from 'cozy-ui/transpiled/react/Stack'
+import { MainTitle, Text, Bold } from 'cozy-ui/transpiled/react/Text'
+import Card from 'cozy-ui/transpiled/react/Card'
+import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 
 const DumbLinkToSettings = withClient(props => {
   // eslint-disable-next-line no-unused-vars
@@ -12,11 +19,26 @@ const DumbLinkToSettings = withClient(props => {
   const cozyURL = new URL(client.getStackClient().uri)
   const { cozySubdomainType } = client.getInstanceOptions()
   const settingsAppSlug = 'settings'
-  const settingsAppHref = generateWebLink({
+  const rawSettingsAppHref = generateWebLink({
     cozyUrl: cozyURL.origin,
     slug: settingsAppSlug,
     subDomainType: cozySubdomainType
   })
+
+  const passwordsUrl = generateWebLink({
+    cozyUrl: cozyURL.origin,
+    slug: 'passwords',
+    subDomainType: cozySubdomainType
+  })
+
+  const successUrl = passwordsUrl + 'installation'
+  const cancelUrl = passwordsUrl + 'security/hint'
+
+  const settingsAppHref =
+    rawSettingsAppHref +
+    `profile/password?redirect_success=${encodeURIComponent(
+      successUrl
+    )}&redirect_cancel=${encodeURIComponent(cancelUrl)}`
 
   return (
     <AppLinker slug={settingsAppSlug} href={settingsAppHref}>
@@ -38,15 +60,49 @@ const DumbSecurityPage = props => {
   const { t } = props
 
   return (
-    <>
-      <LinkToSettings />
-      <Button
-        tag={Link}
-        to="/security/hint"
-        label={t('SecurityPage.keep-password')}
-        theme="secondary"
-      />
-    </>
+    <Wrapper>
+      <NarrowContent>
+        <Stack>
+          <img src={strongPasswordIcon} alt="" width="204" />
+          <MainTitle>Plus qu&apos;un seul mot de passe à retenir</MainTitle>
+          <Stack spacing="xxl">
+            <Text>
+              Le mot de passe de votre Cozy devient l&apos;unique clé pour
+              décoder vos mots de passe sauvegardés de manières sécurisée
+            </Text>
+            <Card>
+              <UnorderedList className="u-ta-left">
+                <ListItem>
+                  <Bold tag="strong">Privilégiez un mot de passe fort :</Bold>
+                  Un mot de passe long avec des chiffres et des caractères
+                  spéciaux sera impossible à casser.
+                </ListItem>
+                <ListItem>
+                  <Bold tag="strong">Mémorisez-le bien :</Bold> En cas de perte
+                  , il vous sera impossible de récupérer les mots de passe
+                  chiffrés dans votre Cozy.
+                </ListItem>
+                <ListItem>
+                  <Bold tag="strong">Notre conseil :</Bold> Trouvez une phrase
+                  courte qui vous corresponde, par exemple :
+                </ListItem>
+              </UnorderedList>
+            </Card>
+            <Stack spacing="xs">
+              <LinkToSettings extension="full" />
+              <Button
+                tag={Link}
+                to="/security/hint"
+                label={t('SecurityPage.keep-password')}
+                theme="secondary"
+                className="u-mt-half"
+                extension="full"
+              />
+            </Stack>
+          </Stack>
+        </Stack>
+      </NarrowContent>
+    </Wrapper>
   )
 }
 

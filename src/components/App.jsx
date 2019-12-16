@@ -4,6 +4,7 @@ import { Route, Switch, Redirect, HashRouter } from 'react-router-dom'
 import { Layout, Main, Content } from 'cozy-ui/react/Layout'
 import { Sprite as IconSprite } from 'cozy-ui/react/Icon'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 
 import Sidebar from './Sidebar'
 import PresentationPage from './PresentationPage'
@@ -12,25 +13,27 @@ import HintPage from './HintPage'
 import InstallationPage from './InstallationPage'
 
 export const App = () => (
-  <HashRouter>
-    <Layout>
-      <Sidebar />
-      <Main>
-        <Content className="app-content">
-          <Switch>
-            <Route path="/presentation" component={PresentationPage} />
-            <Route path="/security" exact component={SecurityPage} />
-            <Route path="/security/hint" exact component={HintPage} />
-            <Route path="/installation" component={InstallationPage} />
-            <Redirect from="/" to="/presentation" />
-            <Redirect from="*" to="/presentation" />
-          </Switch>
-        </Content>
-      </Main>
-      <IconSprite />
-      <Alerter />
-    </Layout>
-  </HashRouter>
+  <MuiCozyTheme>
+    <HashRouter>
+      <Layout>
+        <Sidebar />
+        <Main>
+          <Content className="app-content">
+            <Switch>
+              <Route path="/presentation" component={PresentationPage} />
+              <Route path="/security" exact component={SecurityPage} />
+              <Route path="/security/hint" exact component={HintPage} />
+              <Route path="/installation" component={InstallationPage} />
+              <Redirect from="/" to="/presentation" />
+              <Redirect from="*" to="/presentation" />
+            </Switch>
+          </Content>
+        </Main>
+        <IconSprite />
+        <Alerter />
+      </Layout>
+    </HashRouter>
+  </MuiCozyTheme>
 )
 
 /*

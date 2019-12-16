@@ -6,7 +6,12 @@
   },
 
   "PresentationPage": {
-    "lets-go": "Let's go!"
+    "title": "Only one password to memorize",
+    "description": "Keep your passwords safe in your Cozy",
+    "item1": "Your passwords will be saved once and for all in your 100% personal and secured safe.",
+    "item2": "Your Cozy will log you in to your brands websites when you are browsing.",
+    "item3": "You will be able to connect your brands to your Cozy easily to get your data.",
+    "cta": "Let's go!"
   },
 
   "SecurityPage": {

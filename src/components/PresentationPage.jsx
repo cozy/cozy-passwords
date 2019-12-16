@@ -18,20 +18,15 @@ const DumbPresentationPage = props => {
     <Wrapper>
       <Stack>
         <img src={importPasswordsIcon} alt="" />
-        <MainTitle>Plus qu&apos;un seul mot de passe à retenir</MainTitle>
+        <MainTitle>{t('PresentationPage.title')}</MainTitle>
         <Stack spacing="xxl">
-          <Text tag="p">
-            Conservez vos mots de passe en sécurité dans votre Cozy
-          </Text>
+          <Text tag="p">{t('PresentationPage.description')}</Text>
           <Card>
             <Grid container spacing={24}>
               <Grid item xs={4}>
                 <Stack spacing="s">
                   <CircleIcon icon="lock" size={32} color="var(--slateGrey)" />
-                  <Text tag="p">
-                    Vos mots de passe seront enregistrés une bonne fois pour
-                    toute dans votre coffre 100% personnel et sécurisé.
-                  </Text>
+                  <Text tag="p">{t('PresentationPage.item1')}</Text>
                 </Stack>
               </Grid>
               <Grid item xs={4}>
@@ -41,10 +36,7 @@ const DumbPresentationPage = props => {
                     size={32}
                     color="var(--slateGrey)"
                   />
-                  <Text tag="p">
-                    Votre Cozy vous connectera automatiquement aux sites web de
-                    toutes vos marques lors de vos navigations internet.
-                  </Text>
+                  <Text tag="p">{t('PresentationPage.item2')}</Text>
                 </Stack>
               </Grid>
               <Grid item xs={4}>
@@ -54,30 +46,17 @@ const DumbPresentationPage = props => {
                     size={32}
                     color="var(--slateGrey)"
                   />
-                  <Text tag="p">
-                    Vous pourrez plus facilement connecter vos marques à votre
-                    Cozy pour récupérer vos données.
-                  </Text>
+                  <Text tag="p">{t('PresentationPage.item3')}</Text>
                 </Stack>
               </Grid>
             </Grid>
           </Card>
-          <Stack
-            spacing="xs"
-            tag={NarrowContent}
-            style={{ marginLeft: 'auto', marginRight: 'auto' }}
-          >
+          <Stack spacing="xs" tag={NarrowContent} className="u-mh-auto">
             <Button
               to="/security"
-              label={t('PresentationPage.lets-go')}
+              label={t('PresentationPage.cta')}
               tag={Link}
               extension="full"
-            />
-            <Button
-              label="Ne plus me proposer"
-              extension="full"
-              theme="secondary"
-              className="u-mt-half"
             />
           </Stack>
         </Stack>

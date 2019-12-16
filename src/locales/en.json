@@ -15,6 +15,13 @@
   },
 
   "SecurityPage": {
+    "title": "Only one password to memorize",
+    "description": "The password of your Cozy becomes the unique key to decrypt your securely stored passwords",
+    "advices": {
+      "strong_passphrase": "**Privilege a strong password:** A long password with numbers and special characters will be impossible to break.",
+      "memorize": "**Memorize it well:** In case of loss, you will not be able to recover the encrypted passwords in your cozy.",
+      "our_tip": "**Our tip:** Find a short phrase that suits you, for example: "
+    },
     "enhance-password": "Enhance my password",
     "keep-password": "Keep my current password"
   },

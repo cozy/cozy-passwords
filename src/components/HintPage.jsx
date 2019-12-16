@@ -5,6 +5,11 @@ import Input from 'cozy-ui/transpiled/react/Input'
 import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Wrapper from 'components/Wrapper'
+import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
+import passwordClueIcon from 'assets/password-clue.svg'
+import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
+import Stack from 'cozy-ui/transpiled/react/Stack'
 
 const DumbHintPage = props => {
   const { t, client, history } = props
@@ -33,14 +38,34 @@ const DumbHintPage = props => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        placeholder={t('HintPage.placeholder')}
-        value={hint}
-        onChange={e => setHint(e.target.value)}
-      />
-      <Button label={t('HintPage.submit')} disabled={loading} />
-    </form>
+    <Wrapper>
+      <NarrowContent>
+        <Stack spacing="xxl" tag="form" onSubmit={handleSubmit}>
+          <Stack spacing="m">
+            <img src={passwordClueIcon} alt="" />
+            <MainTitle>Laisser un indice de mot de passe</MainTitle>
+          </Stack>
+          <Stack spacing="m">
+            <Input
+              placeholder={t('HintPage.placeholder')}
+              value={hint}
+              onChange={e => setHint(e.target.value)}
+            />
+            <Text>
+              L&apos;indice vous sera envoyé par email en cas d&apos;oubli de
+              votre mot de passe, choisissez un indice que vous-seul pouvez
+              comprendre.
+            </Text>
+          </Stack>
+          <Button
+            label={t('HintPage.submit')}
+            disabled={loading}
+            extension="full"
+            className="u-mt-2"
+          />
+        </Stack>
+      </NarrowContent>
+    </Wrapper>
   )
 }
 

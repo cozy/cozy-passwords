@@ -6,10 +6,10 @@
   },
 
   "PresentationPage": {
-    "title": "Only one password to memorize",
+    "title": "No longer lose your passwords",
     "description": "Keep your passwords safe in your Cozy",
     "item1": "Your passwords will be saved once and for all in your 100% personal and secured safe.",
-    "item2": "Your Cozy will log you in to your brands websites when you are browsing.",
+    "item2": "Your cozy will allow you to instantly fill out forms on websites, for easier connection to your favorite services",
     "item3": "You will be able to connect your brands to your Cozy easily to get your data.",
     "cta": "Let's go!",
    "notSupportedInfos": {
@@ -19,7 +19,7 @@
   },
 
   "SecurityPage": {
-    "title": "Only one password to memorize",
+    "title": "Improve your cozy password",
     "description": "The password of your Cozy becomes the unique key to decrypt your securely stored passwords",
     "advices": {
       "strong_passphrase": "**Privilege a strong password:** A long password with numbers and special characters will be impossible to break.",
@@ -40,8 +40,8 @@
 
   "InstallationPage": {
     "title": "Install Cozy extension",
-    "descriptionStart": "Add",
-    "descriptionEnd": "to your browser to automatically fill and save your passwords while browsing",
+    "descriptionStart": "Add the",
+    "descriptionEnd": "to your browser. This installation is necessary to allow you to automatically fill in and save your passwords while browsing.",
     "cozyExtension": "Cozy extension",
     "step1": {
       "chrome": "Click below to open the Chrome Web Store",

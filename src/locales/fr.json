@@ -6,10 +6,10 @@
   },
 
   "PresentationPage": {
-    "title": "Plus qu'un seul mot de passe à retenir",
+    "title": "Ne perdez plus vos mots de passe",
     "description": "Conservez vos mots de passe en sécurité dans votre Cozy",
     "item1": "Vos mots de passe seront enregistrés une bonne fois pour toute dans votre coffre 100% personnel et sécurisé.",
-    "item2": "Votre Cozy vous connectera automatiquement aux sites web de toutes vos marques lors de vos navigations internet.",
+    "item2": "Votre cozy vous permettra un remplissage instantané des formulaires des sites internet, pour une connexion facilitée à vos services préférés",
     "item3": "Vous pourrez plus facilement connecter vos marques à votre Cozy pour récupérer vos données.",
     "cta": "C'est parti !",
     "notSupportedInfos": {
@@ -19,7 +19,7 @@
   },
 
   "SecurityPage": {
-    "title": "Plus qu'un seul mot de passe à retenir",
+    "title": "Améliorer votre mot de passe Cozy",
     "description": "Le mot de passe de votre Cozy devient l'unique clé pour décoder vos mots de passe sauvegardés de manière sécurisée",
     "advices": {
       "strong_passphrase": "**Privilégiez un mot de passe fort :** Un mot de passe long avec des chiffres et des caractères spéciaux sera impossible à casser.",
@@ -41,7 +41,7 @@
   "InstallationPage": {
     "title": "Installer l'extension Cozy",
     "descriptionStart": "Ajoutez",
-    "descriptionEnd": "à votre navigateur pour saisir et enregistrer automatiquement vos mots de passe lors de votre navigation",
+    "descriptionEnd": "à votre navigateur. Cette installation est nécessaire pour vous permettre de remplir et enregistrer automatiquements vos mots de passe lors de votre navigation.",
     "cozyExtension": "l'extension Cozy",
     "step1": {
       "chrome": "Cliquez ci-dessous pour ouvrir le Chrome Web Store",

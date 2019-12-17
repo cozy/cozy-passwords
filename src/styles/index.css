@@ -4,7 +4,6 @@
 @import '~cozy-ui/transpiled/react/stylesheet.css';
 /* App styles */
 @import './nav.css';
-@import './todos.css';
 
 .app-content {
     margin: 1rem 2rem 2rem;

@@ -11,6 +11,7 @@ import PresentationPage from './PresentationPage'
 import SecurityPage from './SecurityPage'
 import HintPage from './HintPage'
 import InstallationPage from './InstallationPage'
+import InstalledPage from './InstalledPage'
 
 export const App = () => (
   <MuiCozyTheme>
@@ -23,7 +24,12 @@ export const App = () => (
               <Route path="/presentation" component={PresentationPage} />
               <Route path="/security" exact component={SecurityPage} />
               <Route path="/security/hint" exact component={HintPage} />
-              <Route path="/installation" component={InstallationPage} />
+              <Route path="/installation" exact component={InstallationPage} />
+              <Route
+                path="/installation/installed"
+                exact
+                component={InstalledPage}
+              />
               <Redirect from="/" to="/presentation" />
               <Redirect from="*" to="/presentation" />
             </Switch>

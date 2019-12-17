@@ -46,5 +46,10 @@
       "firefox": "Then click on **Add to Firefox**"
     },
     "step3": "Log in with your address **%{address}** and your password!"
+  },
+
+  "InstalledPage": {
+    "title": "The extension is installed!",
+    "description": "Click on the **cozy** icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password."
   }
 }

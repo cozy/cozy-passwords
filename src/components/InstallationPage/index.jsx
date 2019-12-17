@@ -12,6 +12,8 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
 import snarkdown from 'snarkdown'
+import { extensionStatuses, useExtensionStatus } from './extensionStatus'
+import { Redirect } from 'react-router-dom'
 
 const browser = detectBrowser()
 
@@ -23,8 +25,17 @@ const stores = {
 
 const DumbInstallationPage = props => {
   const { t, client } = props
+  const extensionInstalled = useExtensionStatus()
 
   const cozyURL = new URL(client.getStackClient().uri)
+
+  if (extensionInstalled === extensionStatuses.checking) {
+    return null
+  }
+
+  if (extensionInstalled === extensionStatuses.installed) {
+    return <Redirect to="/installation/installed" />
+  }
 
   return (
     <Wrapper>

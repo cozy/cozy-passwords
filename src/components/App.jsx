@@ -1,8 +1,8 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
 import { Route, Switch, Redirect, HashRouter } from 'react-router-dom'
-import { Layout, Main, Content } from 'cozy-ui/react/Layout'
-import { Sprite as IconSprite } from 'cozy-ui/react/Icon'
+import { Layout, Main, Content } from 'cozy-ui/transpiled/react/Layout'
+import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 

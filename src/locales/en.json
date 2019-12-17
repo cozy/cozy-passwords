@@ -11,7 +11,11 @@
     "item1": "Your passwords will be saved once and for all in your 100% personal and secured safe.",
     "item2": "Your Cozy will log you in to your brands websites when you are browsing.",
     "item3": "You will be able to connect your brands to your Cozy easily to get your data.",
-    "cta": "Let's go!"
+    "cta": "Let's go!",
+    "notSupportedInfos": {
+      "title": "Not available on %{browser}",
+      "description": "The feature is currently not available on %{browser} browser. You can however take advantage of it on the following browsers:"
+    }
   },
 
   "SecurityPage": {

@@ -14,6 +14,7 @@ import { withClient } from 'cozy-client'
 import snarkdown from 'snarkdown'
 import { extensionStatuses, useExtensionStatus } from './extensionStatus'
 import { Redirect } from 'react-router-dom'
+import WithCozyIcon from 'components/WithCozyIcon'
 
 const browser = detectBrowser()
 
@@ -44,7 +45,27 @@ const DumbInstallationPage = props => {
           <Stack spacing="m">
             <img src={browserExtensionIcon} alt="" />
             <MainTitle>{t('InstallationPage.title')}</MainTitle>
-            <Text>{t('InstallationPage.description')}</Text>
+            <Text>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: snarkdown(
+                    t('InstallationPage.descriptionStart', {
+                      address: cozyURL.host
+                    })
+                  )
+                }}
+              />{' '}
+              <WithCozyIcon>{t('InstallationPage.cozyExtension')}</WithCozyIcon>{' '}
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: snarkdown(
+                    t('InstallationPage.descriptionEnd', {
+                      address: cozyURL.host
+                    })
+                  )
+                }}
+              />
+            </Text>
           </Stack>
           <Card className="u-ta-left">
             <OrderedList className="u-mv-0">

@@ -36,7 +36,9 @@
 
   "InstallationPage": {
     "title": "Install Cozy extension",
-    "description": "Add Cozy extension to your browser to automatically fill and save your passwords while browsing",
+    "descriptionStart": "Add",
+    "descriptionEnd": "to your browser to automatically fill and save your passwords while browsing",
+    "cozyExtension": "Cozy extension",
     "step1": {
       "chrome": "Click below to open the Chrome Web Store",
       "firefox": "Click below to open Firefox Add-ons"
@@ -50,6 +52,7 @@
 
   "InstalledPage": {
     "title": "The extension is installed!",
-    "description": "Click on the **cozy** icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password."
+    "descriptionStart": "Click on the ",
+    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password."
   }
 }

@@ -11,50 +11,50 @@ exports[`Sidebar component should be rendered correctly 1`] = `
       <li
         className="c-nav-item"
       >
-        <NavLink
+        <ForwardRef
           activeClassName="is-active"
           className="c-nav-link"
-          to="/todos"
+          to="/presentation"
         >
-          <Icon
-            className="c-nav-icon"
-            icon="test-file-stub"
-            spin={false}
-          />
-          Todos
-        </NavLink>
+          <span
+            className="c-nav-number"
+          >
+            1.
+          </span>
+          Presentation
+        </ForwardRef>
       </li>
       <li
         className="c-nav-item"
       >
-        <NavLink
+        <ForwardRef
           activeClassName="is-active"
           className="c-nav-link"
-          to="/viewhello1"
+          to="/security"
         >
-          <Icon
-            className="c-nav-icon"
-            icon="test-file-stub"
-            spin={false}
-          />
-          Second
-        </NavLink>
+          <span
+            className="c-nav-number"
+          >
+            2.
+          </span>
+          Security
+        </ForwardRef>
       </li>
       <li
         className="c-nav-item"
       >
-        <NavLink
+        <ForwardRef
           activeClassName="is-active"
           className="c-nav-link"
-          to="/viewhello2"
+          to="/installation"
         >
-          <Icon
-            className="c-nav-icon"
-            icon="test-file-stub"
-            spin={false}
-          />
-          Third
-        </NavLink>
+          <span
+            className="c-nav-number"
+          >
+            3.
+          </span>
+          Installation
+        </ForwardRef>
       </li>
     </ul>
   </nav>

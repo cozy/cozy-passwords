@@ -1,5 +1,10 @@
 .c-nav-link {
 	padding: 0 1rem;
+  pointer-events: none;
+}
+
+.c-nav-item {
+  pointer-events: none;
 }
 
 .c-nav-link .c-nav-number {

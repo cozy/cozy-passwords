@@ -58,5 +58,10 @@
     "title": "L'extension est installée !",
     "descriptionStart": "Cliquez sur l'icône",
     "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy."
+  },
+
+  "NotAvailablePage": {
+    "title": "Cozy ne dispose pas encore d'application mobile pour gérer vos mots de passe",
+    "description": "En attendant, il vous est déjà possible de gérer vos mots de passe avec l'extension cozy sur les plateformes suivantes :"
   }
 }

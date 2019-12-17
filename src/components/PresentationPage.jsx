@@ -14,6 +14,8 @@ import CircleIcon from 'components/CircleIcon'
 import Wrapper from 'components/Wrapper'
 import { detect as detectBrowser } from 'detect-browser'
 import capitalize from 'lodash/capitalize'
+import platforms from 'platforms'
+import cx from 'classnames'
 
 const browser = detectBrowser()
 const supportedBrowsers = ['chrome', 'firefox']
@@ -83,36 +85,26 @@ const DumbPresentationPage = props => {
                     </Text>
                   </>
                 }
-                action={
-                  <>
+                action={Object.entries(platforms).map(
+                  ([platform, infos], index) => (
                     <ButtonLink
-                      href=""
+                      key={platform}
+                      href={infos.storeUrl}
                       icon={
                         <Icon
-                          icon="browser-firefox"
+                          icon={`browser-${platform}`}
                           size={16}
                           color="var(--slateGrey)"
                         />
                       }
                       theme="secondary"
-                      label="Mozilla Firefox"
-                      className="u-ml-0"
+                      label={infos.label}
+                      className={cx({
+                        'u-ml-0': index === 0
+                      })}
                     />
-                    <ButtonLink
-                      href=""
-                      icon={
-                        <Icon
-                          icon="browser-chrome"
-                          size={16}
-                          color="var(--slateGrey)"
-                        />
-                      }
-                      theme="secondary"
-                      label="Google Chrome"
-                      className="u-mr-0"
-                    />
-                  </>
-                }
+                  )
+                )}
               />
             ) : null}
           </Stack>

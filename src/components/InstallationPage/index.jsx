@@ -15,14 +15,9 @@ import snarkdown from 'snarkdown'
 import { extensionStatuses, useExtensionStatus } from './extensionStatus'
 import { Redirect } from 'react-router-dom'
 import WithCozyIcon from 'components/WithCozyIcon'
+import platforms from 'platforms'
 
 const browser = detectBrowser()
-
-const stores = {
-  chrome:
-    'https://chrome.google.com/webstore/detail/cozy-personal-cloud/jplochopoaajoochpoccajmgelpfbbic',
-  firefox: 'https://addons.mozilla.org/en-US/firefox/addon/cozy-personal-cloud'
-}
 
 const DumbInstallationPage = props => {
   const { t, client } = props
@@ -85,7 +80,7 @@ const DumbInstallationPage = props => {
             </OrderedList>
           </Card>
           <ButtonLink
-            href={stores[browser.name]}
+            href={platforms[browser.name]}
             target="_blank"
             label="Installer l'extension Cozy"
             extension="full"

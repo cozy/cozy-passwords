@@ -57,7 +57,8 @@
   "InstalledPage": {
     "title": "L'extension est installée !",
     "descriptionStart": "Cliquez sur l'icône",
-    "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy."
+    "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy.",
+    "availablePlatforms": "Retrouvez l'extension Cozy sur les plateformes suivantes :"
   },
 
   "NotAvailablePage": {

@@ -5,7 +5,7 @@
   "categories": [],
   "version": "0.1.0",
   "licence": "AGPL-3.0",
-  "editor": "",
+  "editor": "cozy",
   "source": "https://github.com/cozycloud/cozy-passwords.git@build",
   "developer": {
     "name": "cozycloud",

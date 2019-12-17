@@ -7,6 +7,7 @@ import compose from 'lodash/flowRight'
 import { Link } from 'react-router-dom'
 import Wrapper from 'components/Wrapper'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
+import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
 import strongPasswordIcon from 'assets/strong-password.svg'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
@@ -82,11 +83,14 @@ const DumbSecurityPage = props => {
                     __html: snarkdown(t('SecurityPage.advices.memorize'))
                   }}
                 />
-                <ListItem
-                  dangerouslySetInnerHTML={{
-                    __html: snarkdown(t('SecurityPage.advices.our_tip'))
-                  }}
-                />
+                <ListItem>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: snarkdown(t('SecurityPage.advices.our_tip'))
+                    }}
+                  />
+                  <PasswordExample password="Cl4ude€st1Nu@ge" />
+                </ListItem>
               </UnorderedList>
             </Card>
             <Stack spacing="xs">

@@ -43,7 +43,7 @@ const DumbHintPage = props => {
         <Stack spacing="xxl" tag="form" onSubmit={handleSubmit}>
           <Stack spacing="m">
             <img src={passwordClueIcon} alt="" />
-            <MainTitle>Laisser un indice de mot de passe</MainTitle>
+            <MainTitle>{t('HintPage.title')}</MainTitle>
           </Stack>
           <Stack spacing="m">
             <Input
@@ -51,11 +51,7 @@ const DumbHintPage = props => {
               value={hint}
               onChange={e => setHint(e.target.value)}
             />
-            <Text>
-              L&apos;indice vous sera envoyé par email en cas d&apos;oubli de
-              votre mot de passe, choisissez un indice que vous-seul pouvez
-              comprendre.
-            </Text>
+            <Text>{t('HintPage.description')}</Text>
           </Stack>
           <Button
             label={t('HintPage.submit')}

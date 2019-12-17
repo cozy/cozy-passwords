@@ -44,7 +44,7 @@ Pull requests are the primary mechanism we use to change Cozy. GitHub itself has
 Fork the project on GitHub and [check out your copy locally][forking].
 
 ```
-$ git clone github.com/cozycloud/cozy-passwords.git
+$ git clone github.com/cozy/cozy-passwords.git
 $ cd cozy-passwords
 $ git remote add fork git://github.com/yourusername/cozy-passwords.git
 ```

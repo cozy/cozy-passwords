@@ -1,5 +1,5 @@
-[![Travis build status shield](https://img.shields.io/travis/cozycloud/cozy-passwords/master.svg)](https://travis-ci.org/cozycloud/cozy-passwords)
-[![Github Release version shield](https://img.shields.io/github/tag/cozycloud/cozy-passwords.svg)](https://github.com/cozycloud/cozy-passwords/releases)
+[![Travis build status shield](https://img.shields.io/travis/cozy/cozy-passwords/master.svg)](https://travis-ci.org/cozy/cozy-passwords)
+[![Github Release version shield](https://img.shields.io/github/tag/cozy/cozy-passwords.svg)](https://github.com/cozy/cozy-passwords/releases)
 [![jest](https://facebook.github.io/jest/img/jest-badge.svg)](https://github.com/facebook/jest)
 
 
@@ -21,7 +21,7 @@ Hacking the Cozy Passwords app requires you to [setup a dev environment][setup].
 You can then clone the app repository and install dependencies:
 
 ```sh
-$ git clone https://github.com/cozycloud/cozy-passwords.git
+$ git clone https://github.com/cozy/cozy-passwords.git
 $ cd cozy-passwords
 $ yarn install
 ```
@@ -118,7 +118,7 @@ As a _developer_, you must [configure the transifex client][tx-client], and clai
 
 ### Maintainer
 
-The lead maintainer for Passwords is [cozycloud](https://github.com/cozycloud), send him/her a :beers: to say hello!
+The lead maintainer for Passwords is [cozy](https://github.com/cozy), send him/her a :beers: to say hello!
 
 
 ### Get in touch

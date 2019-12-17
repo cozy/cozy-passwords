@@ -14,21 +14,21 @@
     "watch:browser": "cs watch --browser",
     "watch:mobile": "cs watch --mobile",
     "start": "cs start --hot --browser",
-    "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozycloud/cozy-passwords.git}",
+    "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozy/cozy-passwords.git}",
     "test": "cs test --verbose --coverage",
     "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cs publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cozycloud/cozy-passwords.git"
+    "url": "git+https://github.com/cozy/cozy-passwords.git"
   },
   "author": "",
   "contributors": [],
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/cozycloud/cozy-passwords/issues"
+    "url": "https://github.com/cozy/cozy-passwords/issues"
   },
-  "homepage": "https://github.com/cozycloud/cozy-passwords#readme",
+  "homepage": "https://github.com/cozy/cozy-passwords#readme",
   "devDependencies": {
     "babel-preset-cozy-app": "1.7.0",
     "enzyme": "3.10.0",

@@ -1,0 +1,45 @@
+{
+  "name": "Passwords",
+  "slug": "passwords",
+  "icon": "icon.svg",
+  "categories": [],
+  "version": "0.1.0",
+  "licence": "AGPL-3.0",
+  "editor": "cozy",
+  "source": "https://github.com/cozycloud/cozy-passwords.git@build",
+  "developer": {
+    "name": "cozycloud",
+    "url": ""
+  },
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "permissions": {
+    "apps": {
+      "description": "Required by the cozy-bar to display the icons of the apps",
+      "type": "io.cozy.apps",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "settings": {
+      "description": "Required to update the password hint",
+      "type": "io.cozy.settings",
+      "verbs": [
+        "PUT"
+      ]
+    }
+  },
+  "locales": {
+    "en": {},
+    "fr": {}
+  },
+  "langs": [
+    "en",
+    "fr"
+  ]
+}

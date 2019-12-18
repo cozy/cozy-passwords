@@ -80,7 +80,7 @@ const DumbInstallationPage = props => {
             </OrderedList>
           </Card>
           <ButtonLink
-            href={platforms[browser.name]}
+            href={platforms[browser.name].storeUrl}
             target="_blank"
             label="Installer l'extension Cozy"
             extension="full"

@@ -55,7 +55,8 @@ const DumbHintPage = props => {
           </Stack>
           <Button
             label={t('HintPage.submit')}
-            disabled={saving}
+            disabled={saving || hint === ''}
+            busy={saving}
             extension="full"
             className="u-mt-2"
           />

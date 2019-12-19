@@ -22,14 +22,19 @@ const DumbLinkToSettings = withClient(props => {
   const settingsAppSlug = 'settings'
   const rawSettingsAppHref = generateWebAppLink(settingsAppSlug, client)
   const passwordsUrl = generateWebAppLink('passwords', client)
-  const successUrl = passwordsUrl + 'installation'
-  const cancelUrl = passwordsUrl + 'security/hint'
 
-  const settingsAppHref =
-    rawSettingsAppHref +
-    `profile/password?redirect_success=${encodeURIComponent(
-      successUrl
-    )}&redirect_cancel=${encodeURIComponent(cancelUrl)}`
+  const successUrl = new URL('#/installation', passwordsUrl).href
+  const cancelUrl = new URL('#/security/hint', passwordsUrl).href
+
+  const settingsPath = '#/profile/password'
+  const settingsQuery = `?redirect_success=${encodeURIComponent(
+    successUrl
+  )}&redirect_cancel=${encodeURIComponent(cancelUrl)}`
+
+  const settingsAppHref = new URL(
+    settingsPath + settingsQuery,
+    rawSettingsAppHref
+  )
 
   return (
     <AppLinker slug={settingsAppSlug} href={settingsAppHref}>

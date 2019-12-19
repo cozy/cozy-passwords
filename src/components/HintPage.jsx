@@ -14,12 +14,12 @@ import Stack from 'cozy-ui/transpiled/react/Stack'
 const DumbHintPage = props => {
   const { t, client, history } = props
   const [hint, setHint] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [saving, setSaving] = useState(false)
 
   const handleSubmit = async e => {
     e.preventDefault()
 
-    setLoading(true)
+    setSaving(true)
 
     try {
       await client.getStackClient().fetchJSON('PUT', '/settings/hint', {
@@ -33,7 +33,7 @@ const DumbHintPage = props => {
       // eslint-disable-next-line no-console
       console.error(err)
     } finally {
-      setLoading(false)
+      setSaving(false)
     }
   }
 
@@ -55,7 +55,7 @@ const DumbHintPage = props => {
           </Stack>
           <Button
             label={t('HintPage.submit')}
-            disabled={loading}
+            disabled={saving}
             extension="full"
             className="u-mt-2"
           />

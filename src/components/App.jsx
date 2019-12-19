@@ -23,7 +23,7 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
           <Layout>
             <Sidebar />
             <Main>
-              <Content className="app-content">
+              <Content className="u-p-2">
                 <Switch>
                   <Route path="/presentation" component={PresentationPage} />
                   <Route path="/security" exact component={SecurityPage} />

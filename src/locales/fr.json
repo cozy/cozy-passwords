@@ -41,7 +41,7 @@
   "InstallationPage": {
     "title": "Installer l'extension Cozy",
     "descriptionStart": "Ajoutez",
-    "descriptionEnd": "à votre navigateur. Cette installation est nécessaire pour vous permettre de remplir et enregistrer automatiquements vos mots de passe lors de votre navigation.",
+    "descriptionEnd": "à votre navigateur. Cette installation est nécessaire pour vous permettre de remplir et enregistrer automatiquement vos mots de passe lors de votre navigation.",
     "cozyExtension": "l'extension Cozy",
     "step1": {
       "chrome": "Cliquez ci-dessous pour ouvrir le Chrome Web Store",

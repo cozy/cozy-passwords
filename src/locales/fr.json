@@ -1,0 +1,68 @@
+{
+  "Nav": {
+    "presentation": "Présentation",
+    "security": "Securité",
+    "installation": "Installation"
+  },
+
+  "PresentationPage": {
+    "title": "Ne perdez plus vos mots de passe",
+    "description": "Conservez vos mots de passe en sécurité dans votre Cozy",
+    "item1": "Vos mots de passe seront enregistrés une bonne fois pour toute dans votre coffre 100% personnel et sécurisé.",
+    "item2": "Votre cozy vous permettra un remplissage instantané des formulaires des sites internet, pour une connexion facilitée à vos services préférés",
+    "item3": "Vous pourrez plus facilement connecter vos marques à votre Cozy pour récupérer vos données.",
+    "cta": "C'est parti !",
+    "notSupportedInfos": {
+      "title": "Indisponible sur %{browser}",
+      "description": "La fonctionnalité n'est actuellement pas proposée sur le navigateur %{browser}. Vous pouvez toutefois en profiter sur les navigateurs suivants :"
+    }
+  },
+
+  "SecurityPage": {
+    "title": "Améliorer votre mot de passe Cozy",
+    "description": "Le mot de passe de votre Cozy devient l'unique clé pour décoder vos mots de passe sauvegardés de manière sécurisée",
+    "advices": {
+      "strong_passphrase": "**Privilégiez un mot de passe fort :** Un mot de passe long avec des chiffres et des caractères spéciaux sera impossible à casser.",
+      "memorize": "**Mémorisez-le bien :** En cas de perte, il vous sera impossible de récupérer les mots de passe chiffrés dans votre Cozy.",
+      "our_tip": "**Notre conseil :** Trouvez une phrase courte qui vous corresponde, par exemple : "
+    },
+    "enhance-password": "Améliorer mon mot de passe",
+    "keep-password": "Garder mon mot de passe actuel"
+  },
+
+  "HintPage": {
+    "title": "Laisser un indice de mot de passe",
+    "description": "L'indice vous sera envoyé par email en cas d'oubli de votre mot de passe, choisissez un indice que vous-seul pouvez comprendre",
+    "placeholder": "Indice (obligatoire)",
+    "submit": "Enregistrer l'indice",
+    "error": "Erreur lors de la mise à jour de l'indice"
+  },
+
+  "InstallationPage": {
+    "title": "Installer l'extension Cozy",
+    "descriptionStart": "Ajoutez",
+    "descriptionEnd": "à votre navigateur. Cette installation est nécessaire pour vous permettre de remplir et enregistrer automatiquement vos mots de passe lors de votre navigation.",
+    "cozyExtension": "l'extension Cozy",
+    "step1": {
+      "chrome": "Cliquez ci-dessous pour ouvrir le Chrome Web Store",
+      "firefox": "Cliquez ci-dessous pour ouvrir Firefox Add-ons"
+    },
+    "step2": {
+      "chrome": "Cliquez ensuite sur **Ajouter à Chrome**",
+      "firefox": "Cliquez ensuite sur **Ajouter à Firefox**"
+    },
+    "step3": "Connectez-vous avec votre adresse **%{address}** et votre mot de passe !"
+  },
+
+  "InstalledPage": {
+    "title": "L'extension est installée !",
+    "descriptionStart": "Cliquez sur l'icône",
+    "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy.",
+    "availablePlatforms": "Retrouvez l'extension Cozy sur les plateformes suivantes :"
+  },
+
+  "NotAvailablePage": {
+    "title": "Cozy ne dispose pas encore d'application mobile pour gérer vos mots de passe",
+    "description": "En attendant, il vous est déjà possible de gérer vos mots de passe avec l'extension cozy sur les plateformes suivantes :"
+  }
+}

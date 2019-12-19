@@ -1,0 +1,68 @@
+{
+  "Nav": {
+    "presentation": "Presentation",
+    "security": "Security",
+    "installation": "Installation"
+  },
+
+  "PresentationPage": {
+    "title": "No longer lose your passwords",
+    "description": "Keep your passwords safe in your Cozy",
+    "item1": "Your passwords will be saved once and for all in your 100% personal and secured safe.",
+    "item2": "Your cozy will allow you to instantly fill out forms on websites, for easier connection to your favorite services",
+    "item3": "You will be able to connect your brands to your Cozy easily to get your data.",
+    "cta": "Let's go!",
+   "notSupportedInfos": {
+      "title": "Not available on %{browser}",
+      "description": "The feature is currently not available on %{browser} browser. You can however take advantage of it on the following browsers:"
+    }
+  },
+
+  "SecurityPage": {
+    "title": "Improve your cozy password",
+    "description": "The password of your Cozy becomes the unique key to decrypt your securely stored passwords",
+    "advices": {
+      "strong_passphrase": "**Privilege a strong password:** A long password with numbers and special characters will be impossible to break.",
+      "memorize": "**Memorize it well:** In case of loss, you will not be able to recover the encrypted passwords in your cozy.",
+      "our_tip": "**Our tip:** Find a short phrase that suits you, for example: "
+    },
+    "enhance-password": "Enhance my password",
+    "keep-password": "Keep my current password"
+  },
+
+  "HintPage": {
+    "title": "Leave a password hint",
+    "description": "The hint will be sent to you by email in case you forgot your password, choose a hint that only you can understand",
+    "placeholder": "Hint (required)",
+    "submit": "Save the hint",
+    "error": "Error while updating hint"
+  },
+
+  "InstallationPage": {
+    "title": "Install Cozy extension",
+    "descriptionStart": "Add the",
+    "descriptionEnd": "to your browser. This installation is necessary to allow you to automatically fill in and save your passwords while browsing.",
+    "cozyExtension": "Cozy extension",
+    "step1": {
+      "chrome": "Click below to open the Chrome Web Store",
+      "firefox": "Click below to open Firefox Add-ons"
+    },
+    "step2": {
+      "chrome": "Then click on **Add to Chrome**",
+      "firefox": "Then click on **Add to Firefox**"
+    },
+    "step3": "Log in with your address **%{address}** and your password!"
+  },
+
+  "InstalledPage": {
+    "title": "The extension is installed!",
+    "descriptionStart": "Click on the ",
+    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password.",
+    "availablePlatforms": "Find the Cozy extension on the following platforms:"
+  },
+
+  "NotAvailablePage": {
+    "title": "Cozy doesn't have mobile applications to manage your passwords yet",
+    "description": "Meanwhile, you can already manage your passwords with the cozy extension available on the following platforms:"
+  }
+}

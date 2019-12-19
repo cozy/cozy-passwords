@@ -1,6 +1,6 @@
 import React from 'react'
 import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
-import AppLinker, { generateWebLink } from 'cozy-ui/transpiled/react/AppLinker'
+import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { withClient } from 'cozy-client'
 import compose from 'lodash/flowRight'
@@ -14,25 +14,14 @@ import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Card from 'cozy-ui/transpiled/react/Card'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import snarkdown from 'snarkdown'
+import generateWebAppLink from 'helpers/generateWebAppLink'
 
 const DumbLinkToSettings = withClient(props => {
   // eslint-disable-next-line no-unused-vars
   const { client, t, f, ...rest } = props
-  const cozyURL = new URL(client.getStackClient().uri)
-  const { cozySubdomainType } = client.getInstanceOptions()
   const settingsAppSlug = 'settings'
-  const rawSettingsAppHref = generateWebLink({
-    cozyUrl: cozyURL.origin,
-    slug: settingsAppSlug,
-    subDomainType: cozySubdomainType
-  })
-
-  const passwordsUrl = generateWebLink({
-    cozyUrl: cozyURL.origin,
-    slug: 'passwords',
-    subDomainType: cozySubdomainType
-  })
-
+  const rawSettingsAppHref = generateWebAppLink(settingsAppSlug, client)
+  const passwordsUrl = generateWebAppLink('passwords', client)
   const successUrl = passwordsUrl + 'installation'
   const cancelUrl = passwordsUrl + 'security/hint'
 

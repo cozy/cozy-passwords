@@ -1,4 +1,7 @@
 {
+  "manifest": {
+    "name": "Passwords"
+  },
   "Nav": {
     "presentation": "Presentation",
     "security": "Security",

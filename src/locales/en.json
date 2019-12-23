@@ -17,7 +17,7 @@
     "cta": "Let's go!",
    "notSupportedInfos": {
       "title": "Not available on %{browser}",
-      "description": "The feature is currently not available on %{browser} browser. You can however take advantage of it on the following browsers:"
+      "description": "The feature is currently not available on %{browser}. You can however take advantage of it on the following browsers:"
     }
   },
 

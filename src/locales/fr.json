@@ -17,7 +17,7 @@
     "cta": "C'est parti !",
     "notSupportedInfos": {
       "title": "Indisponible sur %{browser}",
-      "description": "La fonctionnalité n'est actuellement pas proposée sur le navigateur %{browser}. Vous pouvez toutefois en profiter sur les navigateurs suivants :"
+      "description": "La fonctionnalité n'est actuellement pas proposée sur %{browser}. Vous pouvez toutefois en profiter sur les navigateurs suivants :"
     }
   },
 

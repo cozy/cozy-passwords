@@ -61,7 +61,8 @@
     "title": "The extension is installed!",
     "descriptionStart": "Click on the ",
     "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password.",
-    "availablePlatforms": "Find the Cozy extension on the following platforms:"
+    "availablePlatforms": "Find the Cozy extension on the following platforms:",
+    "smartphone": "Smartphone (available soon)"
   },
 
   "NotAvailablePage": {

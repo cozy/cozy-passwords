@@ -14,6 +14,18 @@ import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
 import platforms from 'platforms'
 
+const PlatformButton = props => {
+  const { icon, ...rest } = props
+  return (
+    <ButtonLink
+      {...rest}
+      icon={<Icon icon={icon} size={16} color="var(--slateGrey)" />}
+      theme="secondary"
+      className="u-mb-half"
+    />
+  )
+}
+
 const DumbInstalledPage = props => {
   const { t, client } = props
   const cozyURL = new URL(client.getStackClient().uri)
@@ -50,20 +62,18 @@ const DumbInstalledPage = props => {
               <Text>{t('InstalledPage.availablePlatforms')}</Text>
               <div>
                 {Object.entries(platforms).map(([platform, infos]) => (
-                  <ButtonLink
+                  <PlatformButton
                     key={platform}
                     href={infos.storeUrl}
-                    icon={
-                      <Icon
-                        icon={`browser-${platform}`}
-                        size={16}
-                        color="var(--slateGrey)"
-                      />
-                    }
-                    theme="secondary"
+                    icon={`browser-${platform}`}
                     label={infos.label}
                   />
                 ))}
+                <PlatformButton
+                  disabled
+                  icon="phone"
+                  label={t('InstalledPage.smartphone')}
+                />
               </div>
             </Stack>
           </Card>

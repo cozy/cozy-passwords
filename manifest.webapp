@@ -11,6 +11,10 @@
     "name": "cozycloud",
     "url": ""
   },
+  "langs": [
+    "en",
+    "fr"
+  ],
   "routes": {
     "/": {
       "folder": "/",
@@ -35,11 +39,11 @@
     }
   },
   "locales": {
-    "en": {},
-    "fr": {}
-  },
-  "langs": [
-    "en",
-    "fr"
-  ]
+    "en": {
+      "name": "Passwords"
+    },
+    "fr": {
+      "name": "Mots de passe"
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import get from 'lodash/get'
 
 export const extensionStatuses = {
   checking: 'checking',
@@ -7,25 +8,37 @@ export const extensionStatuses = {
 }
 
 export const useExtensionStatus = () => {
-  const [installed, setInstalled] = useState(extensionStatuses.checking)
+  const [installed, setInstalled] = useState(extensionStatuses.notInstalled)
 
   useEffect(() => {
     const checkExtensionInstallation = () => {
-      const root = document.getElementById('cozy-app')
-      const isExtensionInstalled = root.dataset.cozyExtensionInstalled
-
-      if (isExtensionInstalled) {
-        clearInterval(interval)
-      }
-
-      setInstalled(isExtensionInstalled ? 'installed' : 'not-installed')
+      window.postMessage(
+        {
+          message: { source: 'cozy-passwords' }
+        },
+        // This star means that we are sending the message to all
+        // tabs / extensions. This is not ideal, but since we don't know the
+        // cozy extension URI, we can't target it directly
+        '*'
+      )
     }
 
     checkExtensionInstallation()
     const interval = setInterval(checkExtensionInstallation, 1000)
 
+    const handleInstalled = event => {
+      if (get(event, 'data.message.source') !== 'cozy-extension') {
+        return
+      }
+
+      setInstalled(extensionStatuses.installed)
+    }
+
+    window.addEventListener('message', handleInstalled)
+
     return () => {
       clearInterval(interval)
+      window.removeEventListener('message', handleInstalled)
     }
   }, [])
 

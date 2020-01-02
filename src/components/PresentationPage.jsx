@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 import importPasswordsIcon from 'assets/import-passwords.svg'
 import CircleIcon from 'components/CircleIcon'
 import Wrapper from 'components/Wrapper'
-import platforms from 'platforms'
+import supportedPlatforms from 'supportedPlatforms'
 import cx from 'classnames'
 import { isSupportedBrowser, browserName } from 'currentBrowser'
 
@@ -79,7 +79,7 @@ const DumbPresentationPage = props => {
                     </Text>
                   </>
                 }
-                action={Object.entries(platforms).map(
+                action={Object.entries(supportedPlatforms).map(
                   ([platform, infos], index) => (
                     <ButtonLink
                       key={platform}

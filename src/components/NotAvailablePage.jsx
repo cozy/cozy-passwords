@@ -8,7 +8,7 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import noAppIcon from 'assets/no-app.svg'
-import platforms from 'platforms'
+import supportedPlatforms from 'supportedPlatforms'
 
 const DumbNotAvailablePage = props => {
   const { t } = props
@@ -23,7 +23,7 @@ const DumbNotAvailablePage = props => {
           </Stack>
           <Card>
             <Text>{t('NotAvailablePage.description')}</Text>
-            {Object.entries(platforms).map(([platform, infos]) => (
+            {Object.entries(supportedPlatforms).map(([platform, infos]) => (
               <ButtonLink
                 key={platform}
                 href={infos.storeUrl}

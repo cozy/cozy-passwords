@@ -15,7 +15,7 @@ import snarkdown from 'snarkdown'
 import { extensionStatuses, useExtensionStatus } from './extensionStatus'
 import { Redirect } from 'react-router-dom'
 import WithCozyIcon from 'components/WithCozyIcon'
-import platforms from 'platforms'
+import supportedPlatforms from 'supportedPlatforms'
 
 const browser = detectBrowser()
 
@@ -80,7 +80,7 @@ const DumbInstallationPage = props => {
             </OrderedList>
           </Card>
           <ButtonLink
-            href={platforms[browser.name].storeUrl}
+            href={supportedPlatforms[browser.name].storeUrl}
             target="_blank"
             label="Installer l'extension Cozy"
             extension="full"

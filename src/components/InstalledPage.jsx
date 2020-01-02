@@ -12,7 +12,7 @@ import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
-import platforms from 'platforms'
+import supportedPlatforms from 'supportedPlatforms'
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
@@ -61,7 +61,7 @@ const DumbInstalledPage = props => {
             <Stack spacing="m">
               <Text>{t('InstalledPage.availablePlatforms')}</Text>
               <div>
-                {Object.entries(platforms).map(([platform, infos]) => (
+                {Object.entries(supportedPlatforms).map(([platform, infos]) => (
                   <PlatformButton
                     key={platform}
                     href={infos.storeUrl}

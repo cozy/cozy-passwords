@@ -1,4 +1,4 @@
-const platforms = {
+const supportedPlatforms = {
   chrome: {
     label: 'Google Chrome',
     storeUrl:
@@ -11,4 +11,4 @@ const platforms = {
   }
 }
 
-export default platforms
+export default supportedPlatforms

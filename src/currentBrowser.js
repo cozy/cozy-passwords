@@ -1,9 +1,9 @@
 import { detect as detectBrowser } from 'detect-browser'
 import capitalize from 'lodash/capitalize'
-import platforms from 'platforms'
+import supportedPlatforms from 'supportedPlatforms'
 
 const currentBrowser = detectBrowser()
-export const isSupportedBrowser = Object.keys(platforms).includes(
+export const isSupportedBrowser = Object.keys(supportedPlatforms).includes(
   currentBrowser.name
 )
 

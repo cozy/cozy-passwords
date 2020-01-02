@@ -11,4 +11,10 @@ const supportedPlatforms = {
   }
 }
 
+export const isSupportedPlatform = platformName => {
+  const normalizedPlatformName = platformName.trim().toLowerCase()
+
+  return Object.keys(supportedPlatforms).includes(normalizedPlatformName)
+}
+
 export default supportedPlatforms

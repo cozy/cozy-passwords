@@ -34,7 +34,7 @@ const DumbLinkToSettings = withClient(props => {
   const settingsAppHref = new URL(
     settingsPath + settingsQuery,
     rawSettingsAppHref
-  )
+  ).href
 
   return (
     <AppLinker slug={settingsAppSlug} href={settingsAppHref}>

@@ -1,4 +1,4 @@
-const platforms = {
+const supportedPlatforms = {
   chrome: {
     label: 'Google Chrome',
     storeUrl:
@@ -11,4 +11,10 @@ const platforms = {
   }
 }
 
-export default platforms
+export const isSupportedPlatform = platformName => {
+  const normalizedPlatformName = platformName.trim().toLowerCase()
+
+  return Object.keys(supportedPlatforms).includes(normalizedPlatformName)
+}
+
+export default supportedPlatforms

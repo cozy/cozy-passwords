@@ -1,4 +1,7 @@
 {
+  "manifest": {
+    "name": "Passwords"
+  },
   "Nav": {
     "presentation": "Presentation",
     "security": "Security",
@@ -14,7 +17,7 @@
     "cta": "Let's go!",
    "notSupportedInfos": {
       "title": "Not available on %{browser}",
-      "description": "The feature is currently not available on %{browser} browser. You can however take advantage of it on the following browsers:"
+      "description": "The feature is currently not available on %{browser}. You can however take advantage of it on the following browsers:"
     }
   },
 
@@ -58,7 +61,8 @@
     "title": "The extension is installed!",
     "descriptionStart": "Click on the ",
     "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password.",
-    "availablePlatforms": "Find the Cozy extension on the following platforms:"
+    "availablePlatforms": "Find the Cozy extension on the following platforms:",
+    "smartphone": "Smartphone (available soon)"
   },
 
   "NotAvailablePage": {

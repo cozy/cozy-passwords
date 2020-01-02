@@ -12,15 +12,9 @@ import { Link } from 'react-router-dom'
 import importPasswordsIcon from 'assets/import-passwords.svg'
 import CircleIcon from 'components/CircleIcon'
 import Wrapper from 'components/Wrapper'
-import { detect as detectBrowser } from 'detect-browser'
-import capitalize from 'lodash/capitalize'
-import platforms from 'platforms'
+import supportedPlatforms from 'supportedPlatforms'
 import cx from 'classnames'
-
-const browser = detectBrowser()
-const supportedBrowsers = ['chrome', 'firefox']
-const isSupportedBrowser = supportedBrowsers.includes(browser.name)
-const browserName = capitalize(browser.name)
+import { isSupportedBrowser, browserName } from 'currentBrowser'
 
 const DumbPresentationPage = props => {
   const { t } = props
@@ -85,7 +79,7 @@ const DumbPresentationPage = props => {
                     </Text>
                   </>
                 }
-                action={Object.entries(platforms).map(
+                action={Object.entries(supportedPlatforms).map(
                   ([platform, infos], index) => (
                     <ButtonLink
                       key={platform}

@@ -12,7 +12,19 @@ import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
-import platforms from 'platforms'
+import supportedPlatforms from 'supportedPlatforms'
+
+const PlatformButton = props => {
+  const { icon, ...rest } = props
+  return (
+    <ButtonLink
+      {...rest}
+      icon={<Icon icon={icon} size={16} color="var(--slateGrey)" />}
+      theme="secondary"
+      className="u-mb-half"
+    />
+  )
+}
 
 const DumbInstalledPage = props => {
   const { t, client } = props
@@ -49,21 +61,19 @@ const DumbInstalledPage = props => {
             <Stack spacing="m">
               <Text>{t('InstalledPage.availablePlatforms')}</Text>
               <div>
-                {Object.entries(platforms).map(([platform, infos]) => (
-                  <ButtonLink
+                {Object.entries(supportedPlatforms).map(([platform, infos]) => (
+                  <PlatformButton
                     key={platform}
                     href={infos.storeUrl}
-                    icon={
-                      <Icon
-                        icon={`browser-${platform}`}
-                        size={16}
-                        color="var(--slateGrey)"
-                      />
-                    }
-                    theme="secondary"
+                    icon={`browser-${platform}`}
                     label={infos.label}
                   />
                 ))}
+                <PlatformButton
+                  disabled
+                  icon="phone"
+                  label={t('InstalledPage.smartphone')}
+                />
               </div>
             </Stack>
           </Card>

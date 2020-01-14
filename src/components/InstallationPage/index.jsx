@@ -14,7 +14,6 @@ import { withClient } from 'cozy-client'
 import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
 import supportedPlatforms from 'supportedPlatforms'
-import withExtensionInstallCheck from '../withExtensionInstallCheck'
 
 const browser = detectBrowser()
 
@@ -81,10 +80,6 @@ const DumbInstallationPage = props => {
   )
 }
 
-const InstallationPage = compose(
-  translate(),
-  withClient,
-  withExtensionInstallCheck
-)(DumbInstallationPage)
+const InstallationPage = compose(translate(), withClient)(DumbInstallationPage)
 
 export default InstallationPage

@@ -15,8 +15,6 @@ import Wrapper from 'components/Wrapper'
 import supportedPlatforms from 'supportedPlatforms'
 import cx from 'classnames'
 import { isSupportedBrowser, browserName } from 'currentBrowser'
-import withExtensionInstallCheck from './withExtensionInstallCheck'
-import compose from 'lodash/flowRight'
 
 const DumbPresentationPage = props => {
   const { t } = props
@@ -120,9 +118,6 @@ const DumbPresentationPage = props => {
   )
 }
 
-const PresentationPage = compose(
-  translate(),
-  withExtensionInstallCheck
-)(DumbPresentationPage)
+const PresentationPage = translate()(DumbPresentationPage)
 
 export default PresentationPage

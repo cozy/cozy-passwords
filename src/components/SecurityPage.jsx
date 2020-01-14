@@ -15,7 +15,6 @@ import Card from 'cozy-ui/transpiled/react/Card'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import snarkdown from 'snarkdown'
 import generateWebAppLink from 'helpers/generateWebAppLink'
-import withExtensionInstallCheck from './withExtensionInstallCheck'
 
 const DumbLinkToSettings = withClient(props => {
   // eslint-disable-next-line no-unused-vars
@@ -106,9 +105,6 @@ const DumbSecurityPage = props => {
   )
 }
 
-const SecurityPage = compose(
-  translate(),
-  withExtensionInstallCheck
-)(DumbSecurityPage)
+const SecurityPage = translate()(DumbSecurityPage)
 
 export default SecurityPage

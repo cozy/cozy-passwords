@@ -10,6 +10,7 @@ import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import passwordClueIcon from 'assets/password-clue.svg'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Stack from 'cozy-ui/transpiled/react/Stack'
+import withExtensionInstallCheck from './withExtensionInstallCheck'
 
 const DumbHintPage = props => {
   const { t, client, history } = props
@@ -66,6 +67,10 @@ const DumbHintPage = props => {
   )
 }
 
-const HintPage = compose(translate(), withClient)(DumbHintPage)
+const HintPage = compose(
+  translate(),
+  withClient,
+  withExtensionInstallCheck
+)(DumbHintPage)
 
 export default HintPage

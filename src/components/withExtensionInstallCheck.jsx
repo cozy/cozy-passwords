@@ -1,3 +1,5 @@
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import get from 'lodash/get'
 
@@ -44,3 +46,19 @@ export const useExtensionStatus = () => {
 
   return installed
 }
+
+const withExtensionInstallCheck = Wrapped => props => {
+  const extensionInstalled = useExtensionStatus()
+
+  if (extensionInstalled === extensionStatuses.checking) {
+    return null
+  }
+
+  if (extensionInstalled === extensionStatuses.installed) {
+    return <Redirect to="/installation/installed" />
+  }
+
+  return <Wrapped {...props} />
+}
+
+export default withExtensionInstallCheck

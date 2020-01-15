@@ -6,13 +6,15 @@ import Card from 'cozy-ui/transpiled/react/Card'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
-import extensionInstalledIcon from 'assets/extension-installed.svg'
 import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
 import supportedPlatforms from 'supportedPlatforms'
 import CloudIcon from 'components/CloudIcon'
+import { currentBrowser } from '../currentBrowser'
+import chromeIllustration from 'assets/extension-installed-chrome.svg'
+import firefoxIllustration from 'assets/extension-installed-firefox.svg'
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
@@ -26,6 +28,11 @@ const PlatformButton = props => {
   )
 }
 
+const illustrations = {
+  chrome: chromeIllustration,
+  firefox: firefoxIllustration
+}
+
 const DumbInstalledPage = props => {
   const { t, client } = props
   const cozyURL = new URL(client.getStackClient().uri)
@@ -34,7 +41,7 @@ const DumbInstalledPage = props => {
     <Wrapper>
       <NarrowContent>
         <Stack spacing="xxl">
-          <img src={extensionInstalledIcon} alt="" />
+          <img src={illustrations[currentBrowser.name]} alt="" />
           <Stack spacing="m">
             <MainTitle>{t('InstalledPage.title')}</MainTitle>
             <Text>

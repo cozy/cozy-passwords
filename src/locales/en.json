@@ -54,7 +54,8 @@
       "chrome": "Then click on **Add to Chrome**",
       "firefox": "Then click on **Add to Firefox**"
     },
-    "step3": "Log in with your address **%{address}** and your password!"
+    "step3": "Log in with your address **%{address}** and your password!",
+    "cta": "Install Cozy extension"
   },
 
   "InstalledPage": {

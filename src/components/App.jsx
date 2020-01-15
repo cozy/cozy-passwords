@@ -14,6 +14,24 @@ import HintPage from './HintPage'
 import InstallationPage from './InstallationPage'
 import InstalledPage from './InstalledPage'
 import NotAvailablePage from './NotAvailablePage'
+import {
+  useExtensionStatus,
+  extensionStatuses
+} from '../helpers/extensionStatus'
+
+const RedirectIfExtensionInstalled = ({ component: Component, ...props }) => {
+  const extensionInstalled = useExtensionStatus()
+
+  if (extensionInstalled === extensionStatuses.checking) {
+    return null
+  }
+
+  if (extensionInstalled === extensionStatuses.installed) {
+    return <Redirect to="/installation/installed" />
+  }
+
+  return <Component {...props} />
+}
 
 export const DumbApp = ({ breakpoints: { isDesktop } }) => {
   if (isDesktop) {
@@ -25,10 +43,21 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
             <Main>
               <Content className="u-p-2">
                 <Switch>
-                  <Route path="/presentation" component={PresentationPage} />
-                  <Route path="/security" exact component={SecurityPage} />
-                  <Route path="/security/hint" exact component={HintPage} />
-                  <Route
+                  <RedirectIfExtensionInstalled
+                    path="/presentation"
+                    component={PresentationPage}
+                  />
+                  <RedirectIfExtensionInstalled
+                    path="/security"
+                    exact
+                    component={SecurityPage}
+                  />
+                  <RedirectIfExtensionInstalled
+                    path="/security/hint"
+                    exact
+                    component={HintPage}
+                  />
+                  <RedirectIfExtensionInstalled
                     path="/installation"
                     exact
                     component={InstallationPage}

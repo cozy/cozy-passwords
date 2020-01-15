@@ -54,7 +54,8 @@
       "chrome": "Cliquez ensuite sur **Ajouter à Chrome**",
       "firefox": "Cliquez ensuite sur **Ajouter à Firefox**"
     },
-    "step3": "Connectez-vous avec votre adresse **%{address}** et votre mot de passe !"
+    "step3": "Connectez-vous avec votre adresse **%{address}** et votre mot de passe !",
+    "cta": "Installer l'extension Cozy"
   },
 
   "InstalledPage": {

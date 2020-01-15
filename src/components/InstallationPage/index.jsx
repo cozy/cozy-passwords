@@ -70,7 +70,7 @@ const DumbInstallationPage = props => {
           <ButtonLink
             href={supportedPlatforms[browser.name].storeUrl}
             target="_blank"
-            label="Installer l'extension Cozy"
+            label={t('InstallationPage.cta')}
             extension="full"
             className="u-mt-2-half"
           />

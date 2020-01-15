@@ -9,7 +9,7 @@
   },
 
   "PresentationPage": {
-    "title": "No longer lose your passwords",
+    "title": "Stop losing your passwords",
     "description": "Keep your passwords safe in your Cozy",
     "item1": "Your passwords will be saved once and for all in your 100% personal and secured safe.",
     "item2": "Your cozy will allow you to instantly fill out forms on websites, for easier connection to your favorite services",
@@ -25,7 +25,7 @@
     "title": "Improve your cozy password",
     "description": "The password of your Cozy becomes the unique key to decrypt your securely stored passwords",
     "advices": {
-      "strong_passphrase": "**Privilege a strong password:** A long password with numbers and special characters will be impossible to break.",
+      "strong_passphrase": "**Improve my password:** A long password with numbers and special characters will be impossible to break.",
       "memorize": "**Memorize it well:** In case of loss, you will not be able to recover the encrypted passwords in your cozy.",
       "our_tip": "**Our tip:** Find a short phrase that suits you, for example: "
     },
@@ -54,7 +54,8 @@
       "chrome": "Then click on **Add to Chrome**",
       "firefox": "Then click on **Add to Firefox**"
     },
-    "step3": "Log in with your address **%{address}** and your password!"
+    "step3": "Log in with your address **%{address}** and your password!",
+    "cta": "Install Cozy extension"
   },
 
   "InstalledPage": {

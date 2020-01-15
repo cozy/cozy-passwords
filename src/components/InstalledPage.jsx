@@ -11,8 +11,8 @@ import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
-import WithCozyIcon from 'components/WithCozyIcon'
 import supportedPlatforms from 'supportedPlatforms'
+import CloudIcon from 'components/CloudIcon'
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
@@ -47,7 +47,7 @@ const DumbInstalledPage = props => {
                   )
                 }}
               />{' '}
-              <WithCozyIcon>cozy</WithCozyIcon>{' '}
+              <CloudIcon />{' '}
               <span
                 dangerouslySetInnerHTML={{
                   __html: snarkdown(

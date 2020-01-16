@@ -19,7 +19,7 @@ import {
   extensionStatuses
 } from '../helpers/extensionStatus'
 
-const RedirectIfExtensionInstalled = ({ component: Component, ...props }) => {
+const RedirectIfExtensionInstalled = props => {
   const extensionInstalled = useExtensionStatus()
 
   if (extensionInstalled === extensionStatuses.checking) {
@@ -30,7 +30,7 @@ const RedirectIfExtensionInstalled = ({ component: Component, ...props }) => {
     return <Redirect to="/installation/installed" />
   }
 
-  return <Component {...props} />
+  return <Route {...props} />
 }
 
 export const DumbApp = ({ breakpoints: { isDesktop } }) => {

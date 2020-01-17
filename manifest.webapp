@@ -31,9 +31,10 @@
       ]
     },
     "settings": {
-      "description": "Required to update the password hint",
+      "description": "Required to check the existence of and update the password hint",
       "type": "io.cozy.settings",
       "verbs": [
+        "GET",
         "PUT"
       ]
     }

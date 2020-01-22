@@ -16,7 +16,7 @@
     "start": "cs start --hot --browser",
     "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozy/cozy-passwords.git}",
     "test": "cs test --verbose --coverage",
-    "cozyPublish": "git fetch origin ${DEPLOY_BRANCH:-build}:${DEPLOY_BRANCH:-build} && cs publish --token $REGISTRY_TOKEN --build-commit $(git rev-parse ${DEPLOY_BRANCH:-build})"
+    "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN --prepublish downcloud --space default"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
   "homepage": "https://github.com/cozy/cozy-passwords#readme",
   "devDependencies": {
     "babel-preset-cozy-app": "1.7.0",
+    "cozy-app-publish": "0.20.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.1",
     "eslint-plugin-prettier": "3.1.1",
@@ -44,7 +45,7 @@
   },
   "dependencies": {
     "@material-ui/core": "3",
-    "cozy-bar": "7.11.0",
+    "cozy-bar": "7.12.2",
     "cozy-client": "8.5.1",
     "cozy-scripts": "2.0.2",
     "cozy-ui": "28.6.0",

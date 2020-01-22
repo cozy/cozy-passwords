@@ -23,13 +23,13 @@ script:
   - yarn build
 deploy:
   - provider: script
-    skip-cleanup: true
+    skip_cleanup: true
     # deploy the build on downcloud and publish to the Cozy registry
     script: yarn cozyPublish
     on:
       branch: master
   - provider: script
-    skip-cleanup: true
+    skip_cleanup: true
     # publish stable or beta versions using Github Releases (git tag)
     script: yarn cozyPublish
     on:

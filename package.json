@@ -31,7 +31,7 @@
   "homepage": "https://github.com/cozy/cozy-passwords#readme",
   "devDependencies": {
     "babel-preset-cozy-app": "1.7.0",
-    "cozy-app-publish": "0.20.0",
+    "cozy-app-publish": "0.20.1",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.1",
     "eslint-plugin-prettier": "3.1.1",

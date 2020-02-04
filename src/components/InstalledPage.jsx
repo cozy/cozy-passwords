@@ -12,9 +12,7 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
 import supportedPlatforms from 'supportedPlatforms'
 import CloudIcon from 'components/CloudIcon'
-import { currentBrowser } from '../currentBrowser'
-import chromeIllustration from 'assets/extension-installed-chrome.svg'
-import firefoxIllustration from 'assets/extension-installed-firefox.svg'
+import setupTutorialIllustration from 'assets/setup-tutorial.gif'
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
@@ -28,11 +26,6 @@ const PlatformButton = props => {
   )
 }
 
-const illustrations = {
-  chrome: chromeIllustration,
-  firefox: firefoxIllustration
-}
-
 const DumbInstalledPage = props => {
   const { t, client } = props
   const cozyURL = new URL(client.getStackClient().uri)
@@ -41,7 +34,15 @@ const DumbInstalledPage = props => {
     <Wrapper>
       <NarrowContent>
         <Stack spacing="xxl">
-          <img src={illustrations[currentBrowser.name]} alt="" />
+          <div className="InstalledPage__illustration">
+            <img
+              src={setupTutorialIllustration}
+              alt=""
+              width="512"
+              height="220"
+            />
+            <Icon icon="drawing-arrow-up" width={96} height={86} />
+          </div>
           <Stack spacing="m">
             <MainTitle>{t('InstalledPage.title')}</MainTitle>
             <Text>

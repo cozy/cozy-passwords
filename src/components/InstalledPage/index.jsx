@@ -13,6 +13,7 @@ import snarkdown from 'snarkdown'
 import supportedPlatforms from 'supportedPlatforms'
 import CloudIcon from 'components/CloudIcon'
 import setupTutorialIllustration from 'assets/setup-tutorial.gif'
+import './styles.css'
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
@@ -44,8 +45,10 @@ const DumbInstalledPage = props => {
             <Icon icon="drawing-arrow-up" width={96} height={86} />
           </div>
           <Stack spacing="m">
-            <MainTitle>{t('InstalledPage.title')}</MainTitle>
-            <Text>
+            <MainTitle className="InstalledPage__title">
+              {t('InstalledPage.title')}
+            </MainTitle>
+            <Text className="InstalledPage__description">
               <span
                 dangerouslySetInnerHTML={{
                   __html: snarkdown(

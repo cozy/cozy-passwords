@@ -3,7 +3,7 @@
   "slug": "passwords",
   "icon": "icon.svg",
   "categories": [],
-  "version": "0.1.0",
+  "version": "0.2.0",
   "licence": "AGPL-3.0",
   "editor": "cozy",
   "source": "https://github.com/cozycloud/cozy-passwords.git@build",

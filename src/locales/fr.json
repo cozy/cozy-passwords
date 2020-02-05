@@ -59,11 +59,12 @@
   },
 
   "InstalledPage": {
-    "title": "L'extension est installée !",
+    "title": "C'est presque fini !",
     "descriptionStart": "Cliquez sur l'icône",
     "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy.",
     "availablePlatforms": "Retrouvez l'extension Cozy sur les plateformes suivantes :",
-    "smartphone": "Smartphone (bientôt disponible)"
+    "smartphone": "Smartphone (bientôt disponible)",
+    "faq": "<a href='https://support.cozy.io/article/394-comment-puis-je-parametrer-mon-gestionnaire-de-mot-de-passe' target='_blank' rel='noopener noreferrer'>__Aide :__ Je ne parviens pas à me connecter</a>"
   },
 
   "NotAvailablePage": {

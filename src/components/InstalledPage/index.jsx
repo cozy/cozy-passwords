@@ -12,9 +12,8 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
 import supportedPlatforms from 'supportedPlatforms'
 import CloudIcon from 'components/CloudIcon'
-import { currentBrowser } from '../currentBrowser'
-import chromeIllustration from 'assets/extension-installed-chrome.svg'
-import firefoxIllustration from 'assets/extension-installed-firefox.svg'
+import setupTutorialIllustration from 'assets/setup-tutorial.gif'
+import './styles.css'
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
@@ -28,11 +27,6 @@ const PlatformButton = props => {
   )
 }
 
-const illustrations = {
-  chrome: chromeIllustration,
-  firefox: firefoxIllustration
-}
-
 const DumbInstalledPage = props => {
   const { t, client } = props
   const cozyURL = new URL(client.getStackClient().uri)
@@ -41,10 +35,20 @@ const DumbInstalledPage = props => {
     <Wrapper>
       <NarrowContent>
         <Stack spacing="xxl">
-          <img src={illustrations[currentBrowser.name]} alt="" />
+          <div className="InstalledPage__illustration">
+            <img
+              src={setupTutorialIllustration}
+              alt=""
+              width="512"
+              height="220"
+            />
+            <Icon icon="drawing-arrow-up" width={96} height={86} />
+          </div>
           <Stack spacing="m">
-            <MainTitle>{t('InstalledPage.title')}</MainTitle>
-            <Text>
+            <MainTitle className="InstalledPage__title">
+              {t('InstalledPage.title')}
+            </MainTitle>
+            <Text className="InstalledPage__description">
               <span
                 dangerouslySetInnerHTML={{
                   __html: snarkdown(
@@ -64,26 +68,35 @@ const DumbInstalledPage = props => {
               />
             </Text>
           </Stack>
-          <Card>
-            <Stack spacing="m">
-              <Text>{t('InstalledPage.availablePlatforms')}</Text>
-              <div>
-                {Object.entries(supportedPlatforms).map(([platform, infos]) => (
+          <Stack spacing="l">
+            <p
+              dangerouslySetInnerHTML={{
+                __html: snarkdown(t('InstalledPage.faq'))
+              }}
+            />
+            <Card>
+              <Stack spacing="m">
+                <Text>{t('InstalledPage.availablePlatforms')}</Text>
+                <div>
+                  {Object.entries(supportedPlatforms).map(
+                    ([platform, infos]) => (
+                      <PlatformButton
+                        key={platform}
+                        href={infos.storeUrl}
+                        icon={`browser-${platform}`}
+                        label={infos.label}
+                      />
+                    )
+                  )}
                   <PlatformButton
-                    key={platform}
-                    href={infos.storeUrl}
-                    icon={`browser-${platform}`}
-                    label={infos.label}
+                    disabled
+                    icon="phone"
+                    label={t('InstalledPage.smartphone')}
                   />
-                ))}
-                <PlatformButton
-                  disabled
-                  icon="phone"
-                  label={t('InstalledPage.smartphone')}
-                />
-              </div>
-            </Stack>
-          </Card>
+                </div>
+              </Stack>
+            </Card>
+          </Stack>
         </Stack>
       </NarrowContent>
     </Wrapper>

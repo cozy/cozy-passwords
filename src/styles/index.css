@@ -9,3 +9,8 @@ html,
 body {
   height: 100%;
 }
+
+a {
+  color: var(--dodgerBlue);
+  text-decoration: none;
+}

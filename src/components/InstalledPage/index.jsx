@@ -68,26 +68,35 @@ const DumbInstalledPage = props => {
               />
             </Text>
           </Stack>
-          <Card>
-            <Stack spacing="m">
-              <Text>{t('InstalledPage.availablePlatforms')}</Text>
-              <div>
-                {Object.entries(supportedPlatforms).map(([platform, infos]) => (
+          <Stack spacing="l">
+            <p
+              dangerouslySetInnerHTML={{
+                __html: snarkdown(t('InstalledPage.faq'))
+              }}
+            />
+            <Card>
+              <Stack spacing="m">
+                <Text>{t('InstalledPage.availablePlatforms')}</Text>
+                <div>
+                  {Object.entries(supportedPlatforms).map(
+                    ([platform, infos]) => (
+                      <PlatformButton
+                        key={platform}
+                        href={infos.storeUrl}
+                        icon={`browser-${platform}`}
+                        label={infos.label}
+                      />
+                    )
+                  )}
                   <PlatformButton
-                    key={platform}
-                    href={infos.storeUrl}
-                    icon={`browser-${platform}`}
-                    label={infos.label}
+                    disabled
+                    icon="phone"
+                    label={t('InstalledPage.smartphone')}
                   />
-                ))}
-                <PlatformButton
-                  disabled
-                  icon="phone"
-                  label={t('InstalledPage.smartphone')}
-                />
-              </div>
-            </Stack>
-          </Card>
+                </div>
+              </Stack>
+            </Card>
+          </Stack>
         </Stack>
       </NarrowContent>
     </Wrapper>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader'
 import { Route, Switch, Redirect, HashRouter } from 'react-router-dom'
 import { Layout, Main, Content } from 'cozy-ui/transpiled/react/Layout'
@@ -18,6 +18,7 @@ import {
   useExtensionStatus,
   extensionStatuses
 } from '../helpers/extensionStatus'
+import flag, { FlagSwitcher } from 'cozy-flags'
 
 const RedirectIfExtensionInstalled = props => {
   const extensionInstalled = useExtensionStatus()
@@ -34,6 +35,12 @@ const RedirectIfExtensionInstalled = props => {
 }
 
 export const DumbApp = ({ breakpoints: { isDesktop } }) => {
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      flag('switcher', true)
+    }
+  }, [])
+
   if (isDesktop) {
     return (
       <MuiCozyTheme>
@@ -74,6 +81,7 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
             </Main>
             <IconSprite />
             <Alerter />
+            <FlagSwitcher />
           </Layout>
         </HashRouter>
       </MuiCozyTheme>

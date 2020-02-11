@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import get from 'lodash/get'
+import { useFlag } from 'cozy-flags'
 
 export const extensionStatuses = {
   checking: 'checking',
@@ -9,8 +10,13 @@ export const extensionStatuses = {
 
 export const useExtensionStatus = () => {
   const [installed, setInstalled] = useState(extensionStatuses.notInstalled)
+  const extensionCheckDisabled = useFlag('extension-check-disabled')
 
   useEffect(() => {
+    if (extensionCheckDisabled) {
+      return
+    }
+
     const checkExtensionInstallation = () => {
       window.postMessage(
         {
@@ -32,14 +38,17 @@ export const useExtensionStatus = () => {
       }
 
       setInstalled(extensionStatuses.installed)
+      cleanup()
     }
 
     window.addEventListener('message', handleInstalled)
 
-    return () => {
+    const cleanup = () => {
       clearInterval(interval)
       window.removeEventListener('message', handleInstalled)
     }
+
+    return cleanup
   }, [])
 
   return installed

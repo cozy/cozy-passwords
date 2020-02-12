@@ -13,6 +13,7 @@ import snarkdown from 'snarkdown'
 import supportedPlatforms from 'supportedPlatforms'
 import CloudIcon from 'components/CloudIcon'
 import setupTutorialIllustration from 'assets/setup-tutorial.gif'
+import VerticallyCentered from '../VerticallyCentered'
 import './styles.css'
 
 const PlatformButton = props => {
@@ -32,74 +33,78 @@ const DumbInstalledPage = props => {
   const cozyURL = new URL(client.getStackClient().uri)
 
   return (
-    <Wrapper>
-      <NarrowContent>
-        <Stack spacing="xxl">
-          <div className="InstalledPage__illustration">
-            <img
-              src={setupTutorialIllustration}
-              alt=""
-              width="512"
-              height="220"
-            />
-            <Icon icon="drawing-arrow-up" width={96} height={86} />
-          </div>
-          <Stack spacing="m">
-            <MainTitle className="InstalledPage__title">
-              {t('InstalledPage.title')}
-            </MainTitle>
-            <Text className="InstalledPage__description">
-              <span
+    <VerticallyCentered>
+      <Wrapper>
+        <NarrowContent>
+          <Stack spacing="xxl">
+            <div className="InstalledPage__illustration">
+              <img
+                src={setupTutorialIllustration}
+                alt=""
+                width="512"
+                height="220"
+              />
+              <Icon icon="drawing-arrow-up" width={96} height={86} />
+            </div>
+            <Stack spacing="m">
+              <MainTitle className="InstalledPage__title">
+                {t('InstalledPage.title')}
+              </MainTitle>
+              <Text className="InstalledPage__description">
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: snarkdown(
+                      t('InstalledPage.descriptionStart', {
+                        address: cozyURL.host
+                      })
+                    )
+                  }}
+                />{' '}
+                <CloudIcon />{' '}
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: snarkdown(
+                      t('InstalledPage.descriptionEnd', {
+                        address: cozyURL.host
+                      })
+                    )
+                  }}
+                />
+              </Text>
+            </Stack>
+            <Stack spacing="l">
+              <p
                 dangerouslySetInnerHTML={{
-                  __html: snarkdown(
-                    t('InstalledPage.descriptionStart', {
-                      address: cozyURL.host
-                    })
-                  )
-                }}
-              />{' '}
-              <CloudIcon />{' '}
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: snarkdown(
-                    t('InstalledPage.descriptionEnd', { address: cozyURL.host })
-                  )
+                  __html: snarkdown(t('InstalledPage.faq'))
                 }}
               />
-            </Text>
+              <Card>
+                <Stack spacing="m">
+                  <Text>{t('InstalledPage.availablePlatforms')}</Text>
+                  <div>
+                    {Object.entries(supportedPlatforms).map(
+                      ([platform, infos]) => (
+                        <PlatformButton
+                          key={platform}
+                          href={infos.storeUrl}
+                          icon={`browser-${platform}`}
+                          label={infos.label}
+                        />
+                      )
+                    )}
+                    <PlatformButton
+                      disabled
+                      icon="phone"
+                      label={t('InstalledPage.smartphone')}
+                    />
+                  </div>
+                </Stack>
+              </Card>
+            </Stack>
           </Stack>
-          <Stack spacing="l">
-            <p
-              dangerouslySetInnerHTML={{
-                __html: snarkdown(t('InstalledPage.faq'))
-              }}
-            />
-            <Card>
-              <Stack spacing="m">
-                <Text>{t('InstalledPage.availablePlatforms')}</Text>
-                <div>
-                  {Object.entries(supportedPlatforms).map(
-                    ([platform, infos]) => (
-                      <PlatformButton
-                        key={platform}
-                        href={infos.storeUrl}
-                        icon={`browser-${platform}`}
-                        label={infos.label}
-                      />
-                    )
-                  )}
-                  <PlatformButton
-                    disabled
-                    icon="phone"
-                    label={t('InstalledPage.smartphone')}
-                  />
-                </div>
-              </Stack>
-            </Card>
-          </Stack>
-        </Stack>
-      </NarrowContent>
-    </Wrapper>
+        </NarrowContent>
+      </Wrapper>
+    </VerticallyCentered>
   )
 }
 

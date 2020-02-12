@@ -11,6 +11,7 @@ import passwordClueIcon from 'assets/password-clue.svg'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import VerticallyCentered from './VerticallyCentered'
 
 const DumbHintPage = props => {
   const { t, client, history } = props
@@ -65,31 +66,33 @@ const DumbHintPage = props => {
   }
 
   return (
-    <Wrapper>
-      <NarrowContent>
-        <Stack spacing="xxl" tag="form" onSubmit={handleSubmit}>
-          <Stack spacing="m">
-            <img src={passwordClueIcon} alt="" />
-            <MainTitle>{t('HintPage.title')}</MainTitle>
-          </Stack>
-          <Stack spacing="m">
-            <Input
-              placeholder={t('HintPage.placeholder')}
-              value={hint}
-              onChange={e => setHint(e.target.value)}
+    <VerticallyCentered>
+      <Wrapper>
+        <NarrowContent>
+          <Stack spacing="xxl" tag="form" onSubmit={handleSubmit}>
+            <Stack spacing="m">
+              <img src={passwordClueIcon} alt="" />
+              <MainTitle>{t('HintPage.title')}</MainTitle>
+            </Stack>
+            <Stack spacing="m">
+              <Input
+                placeholder={t('HintPage.placeholder')}
+                value={hint}
+                onChange={e => setHint(e.target.value)}
+              />
+              <Text>{t('HintPage.description')}</Text>
+            </Stack>
+            <Button
+              label={t('HintPage.submit')}
+              disabled={saving || hint === ''}
+              busy={saving}
+              extension="full"
+              className="u-mt-2"
             />
-            <Text>{t('HintPage.description')}</Text>
           </Stack>
-          <Button
-            label={t('HintPage.submit')}
-            disabled={saving || hint === ''}
-            busy={saving}
-            extension="full"
-            className="u-mt-2"
-          />
-        </Stack>
-      </NarrowContent>
-    </Wrapper>
+        </NarrowContent>
+      </Wrapper>
+    </VerticallyCentered>
   )
 }
 

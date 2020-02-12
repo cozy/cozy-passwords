@@ -15,106 +15,109 @@ import Wrapper from 'components/Wrapper'
 import supportedPlatforms from 'supportedPlatforms'
 import cx from 'classnames'
 import { isSupportedBrowser, browserName } from 'currentBrowser'
+import VerticallyCentered from './VerticallyCentered'
 
 const DumbPresentationPage = props => {
   const { t } = props
 
   return (
-    <Wrapper>
-      <Stack>
-        <img src={importPasswordsIcon} alt="" />
-        <MainTitle>{t('PresentationPage.title')}</MainTitle>
-        <Stack spacing="xxl">
-          <Text tag="p">{t('PresentationPage.description')}</Text>
-          <Stack spacing="m">
-            <Card>
-              <Grid container spacing={24}>
-                <Grid item xs={4}>
-                  <Stack spacing="s">
-                    <CircleIcon
-                      icon="lock"
-                      size={32}
-                      color="var(--slateGrey)"
-                    />
-                    <Text tag="p">{t('PresentationPage.item1')}</Text>
-                  </Stack>
+    <VerticallyCentered>
+      <Wrapper>
+        <Stack>
+          <img src={importPasswordsIcon} alt="" />
+          <MainTitle>{t('PresentationPage.title')}</MainTitle>
+          <Stack spacing="xxl">
+            <Text tag="p">{t('PresentationPage.description')}</Text>
+            <Stack spacing="m">
+              <Card>
+                <Grid container spacing={24}>
+                  <Grid item xs={4}>
+                    <Stack spacing="s">
+                      <CircleIcon
+                        icon="lock"
+                        size={32}
+                        color="var(--slateGrey)"
+                      />
+                      <Text tag="p">{t('PresentationPage.item1')}</Text>
+                    </Stack>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Stack spacing="s">
+                      <CircleIcon
+                        icon="password"
+                        size={32}
+                        color="var(--slateGrey)"
+                      />
+                      <Text tag="p">{t('PresentationPage.item2')}</Text>
+                    </Stack>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Stack spacing="s">
+                      <CircleIcon
+                        icon="to-the-cloud"
+                        size={32}
+                        color="var(--slateGrey)"
+                      />
+                      <Text tag="p">{t('PresentationPage.item3')}</Text>
+                    </Stack>
+                  </Grid>
                 </Grid>
-                <Grid item xs={4}>
-                  <Stack spacing="s">
-                    <CircleIcon
-                      icon="password"
-                      size={32}
-                      color="var(--slateGrey)"
-                    />
-                    <Text tag="p">{t('PresentationPage.item2')}</Text>
-                  </Stack>
-                </Grid>
-                <Grid item xs={4}>
-                  <Stack spacing="s">
-                    <CircleIcon
-                      icon="to-the-cloud"
-                      size={32}
-                      color="var(--slateGrey)"
-                    />
-                    <Text tag="p">{t('PresentationPage.item3')}</Text>
-                  </Stack>
-                </Grid>
-              </Grid>
-            </Card>
-            {!isSupportedBrowser ? (
-              <Infos
-                className="u-ta-left"
-                theme="danger"
-                description={
-                  <>
-                    <SubTitle className="u-pomegranate">
-                      {t('PresentationPage.notSupportedInfos.title', {
-                        browser: browserName
-                      })}
-                    </SubTitle>
-                    <Text>
-                      {t('PresentationPage.notSupportedInfos.description', {
-                        browser: browserName
-                      })}
-                    </Text>
-                  </>
-                }
-                action={Object.entries(supportedPlatforms).map(
-                  ([platform, infos], index) => (
-                    <ButtonLink
-                      key={platform}
-                      href={infos.storeUrl}
-                      icon={
-                        <Icon
-                          icon={`browser-${platform}`}
-                          size={16}
-                          color="var(--slateGrey)"
-                        />
-                      }
-                      theme="secondary"
-                      label={infos.label}
-                      className={cx({
-                        'u-ml-0': index === 0
-                      })}
-                    />
-                  )
-                )}
-              />
+              </Card>
+              {!isSupportedBrowser ? (
+                <Infos
+                  className="u-ta-left"
+                  theme="danger"
+                  description={
+                    <>
+                      <SubTitle className="u-pomegranate">
+                        {t('PresentationPage.notSupportedInfos.title', {
+                          browser: browserName
+                        })}
+                      </SubTitle>
+                      <Text>
+                        {t('PresentationPage.notSupportedInfos.description', {
+                          browser: browserName
+                        })}
+                      </Text>
+                    </>
+                  }
+                  action={Object.entries(supportedPlatforms).map(
+                    ([platform, infos], index) => (
+                      <ButtonLink
+                        key={platform}
+                        href={infos.storeUrl}
+                        icon={
+                          <Icon
+                            icon={`browser-${platform}`}
+                            size={16}
+                            color="var(--slateGrey)"
+                          />
+                        }
+                        theme="secondary"
+                        label={infos.label}
+                        className={cx({
+                          'u-ml-0': index === 0
+                        })}
+                      />
+                    )
+                  )}
+                />
+              ) : null}
+            </Stack>
+            {isSupportedBrowser ? (
+              <NarrowContent className="u-mh-auto">
+                <Button
+                  to="/security"
+                  label={t('PresentationPage.cta')}
+                  tag={Link}
+                  extension="full"
+                />
+              </NarrowContent>
             ) : null}
           </Stack>
-          {isSupportedBrowser ? (
-            <NarrowContent className="u-mh-auto">
-              <Button
-                to="/security"
-                label={t('PresentationPage.cta')}
-                tag={Link}
-                extension="full"
-              />
-            </NarrowContent>
-          ) : null}
         </Stack>
-      </Stack>
-    </Wrapper>
+      </Wrapper>
+    </VerticallyCentered>
   )
 }
 

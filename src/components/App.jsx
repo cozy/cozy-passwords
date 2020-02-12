@@ -49,36 +49,34 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
             <Sidebar />
             <Main>
               <Content>
-                <div className="u-p-2 u-mt-auto u-mb-auto">
-                  <Switch>
-                    <RedirectIfExtensionInstalled
-                      path="/presentation"
-                      component={PresentationPage}
-                    />
-                    <RedirectIfExtensionInstalled
-                      path="/security"
-                      exact
-                      component={SecurityPage}
-                    />
-                    <RedirectIfExtensionInstalled
-                      path="/security/hint"
-                      exact
-                      component={HintPage}
-                    />
-                    <RedirectIfExtensionInstalled
-                      path="/installation"
-                      exact
-                      component={InstallationPage}
-                    />
-                    <Route
-                      path="/installation/installed"
-                      exact
-                      component={InstalledPage}
-                    />
-                    <Redirect from="/" to="/presentation" />
-                    <Redirect from="*" to="/presentation" />
-                  </Switch>
-                </div>
+                <Switch>
+                  <RedirectIfExtensionInstalled
+                    path="/presentation"
+                    component={PresentationPage}
+                  />
+                  <RedirectIfExtensionInstalled
+                    path="/security"
+                    exact
+                    component={SecurityPage}
+                  />
+                  <RedirectIfExtensionInstalled
+                    path="/security/hint"
+                    exact
+                    component={HintPage}
+                  />
+                  <RedirectIfExtensionInstalled
+                    path="/installation"
+                    exact
+                    component={InstallationPage}
+                  />
+                  <Route
+                    path="/installation/installed"
+                    exact
+                    component={InstalledPage}
+                  />
+                  <Redirect from="/" to="/presentation" />
+                  <Redirect from="*" to="/presentation" />
+                </Switch>
               </Content>
             </Main>
             <IconSprite />

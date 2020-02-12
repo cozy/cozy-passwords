@@ -15,6 +15,7 @@ import Card from 'cozy-ui/transpiled/react/Card'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import snarkdown from 'snarkdown'
 import generateWebAppLink from 'helpers/generateWebAppLink'
+import VerticallyCentered from './VerticallyCentered'
 
 const DumbLinkToSettings = withClient(props => {
   // eslint-disable-next-line no-unused-vars
@@ -56,52 +57,54 @@ const DumbSecurityPage = props => {
   const { t } = props
 
   return (
-    <Wrapper>
-      <NarrowContent>
-        <Stack>
-          <img src={strongPasswordIcon} alt="" width="204" />
-          <MainTitle>{t('SecurityPage.title')}</MainTitle>
-          <Stack spacing="xxl">
-            <Text>{t('SecurityPage.description')}</Text>
-            <Card>
-              <UnorderedList className="u-ta-left u-mv-0">
-                <ListItem
-                  dangerouslySetInnerHTML={{
-                    __html: snarkdown(
-                      t('SecurityPage.advices.strong_passphrase')
-                    )
-                  }}
-                />
-                <ListItem
-                  dangerouslySetInnerHTML={{
-                    __html: snarkdown(t('SecurityPage.advices.memorize'))
-                  }}
-                />
-                <ListItem>
-                  <span
+    <VerticallyCentered>
+      <Wrapper>
+        <NarrowContent>
+          <Stack>
+            <img src={strongPasswordIcon} alt="" width="204" />
+            <MainTitle>{t('SecurityPage.title')}</MainTitle>
+            <Stack spacing="xxl">
+              <Text>{t('SecurityPage.description')}</Text>
+              <Card>
+                <UnorderedList className="u-ta-left u-mv-0">
+                  <ListItem
                     dangerouslySetInnerHTML={{
-                      __html: snarkdown(t('SecurityPage.advices.our_tip'))
+                      __html: snarkdown(
+                        t('SecurityPage.advices.strong_passphrase')
+                      )
                     }}
                   />
-                  <PasswordExample password="Cl4ude€st1Nu@ge" />
-                </ListItem>
-              </UnorderedList>
-            </Card>
-            <Stack spacing="xs">
-              <LinkToSettings extension="full" />
-              <Button
-                tag={Link}
-                to="/security/hint"
-                label={t('SecurityPage.keep-password')}
-                theme="secondary"
-                className="u-mt-half"
-                extension="full"
-              />
+                  <ListItem
+                    dangerouslySetInnerHTML={{
+                      __html: snarkdown(t('SecurityPage.advices.memorize'))
+                    }}
+                  />
+                  <ListItem>
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: snarkdown(t('SecurityPage.advices.our_tip'))
+                      }}
+                    />
+                    <PasswordExample password="Cl4ude€st1Nu@ge" />
+                  </ListItem>
+                </UnorderedList>
+              </Card>
+              <Stack spacing="xs">
+                <LinkToSettings extension="full" />
+                <Button
+                  tag={Link}
+                  to="/security/hint"
+                  label={t('SecurityPage.keep-password')}
+                  theme="secondary"
+                  className="u-mt-half"
+                  extension="full"
+                />
+              </Stack>
             </Stack>
           </Stack>
-        </Stack>
-      </NarrowContent>
-    </Wrapper>
+        </NarrowContent>
+      </Wrapper>
+    </VerticallyCentered>
   )
 }
 

@@ -17,5 +17,6 @@ module.exports = {
     __ALLOW_HTTP__: false,
     __TARGET__: 'browser',
     cozy: {}
-  }
+  },
+  browser: true
 }

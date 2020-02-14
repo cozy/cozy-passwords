@@ -58,14 +58,25 @@
   "InstalledPage": {
     "title": "It's almost finished!",
     "descriptionStart": "Click on the ",
-    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password.",
-    "availablePlatforms": "Find the Cozy extension on the following platforms:",
-    "smartphone": "Smartphone (available soon)",
-    "faq": "<a href='https://help.cozy.io/article/405-how-to-configure-your-password-manager' target='_blank' rel='noopener noreferrer'>__Help:__ I can't connect</a>"
+    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password."
+  },
+
+  "ConnectedPage": {
+    "title": "Your password manager is configured!",
+    "description": "Go to your Cozy browser extension to manage your passwords"
   },
 
   "NotAvailablePage": {
     "title": "Cozy doesn't have mobile applications to manage your passwords yet",
     "description": "Meanwhile, you can already manage your passwords with the cozy extension available on the following platforms:"
+  },
+
+  "Help": {
+    "faq": "<a href='https://help.cozy.io/article/405-how-to-configure-your-password-manager' target='_blank' rel='noopener noreferrer'>__Help:__ I can't connect</a>"
+  },
+
+  "AvailablePlatforms": {
+    "text": "Find the Cozy extension on the following platforms:",
+    "smartphone": "Smartphone (available soon)"
   }
 }

@@ -1,10 +1,7 @@
 {
-  "manifest": {
-    "name": "Mots de passe"
-  },
   "Nav": {
     "presentation": "Présentation",
-    "security": "Securité",
+    "security": "Sécurité",
     "installation": "Installation"
   },
 

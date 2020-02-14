@@ -48,7 +48,7 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
           <Layout>
             <Sidebar />
             <Main>
-              <Content className="u-p-2">
+              <Content>
                 <Switch>
                   <RedirectIfExtensionInstalled
                     path="/presentation"

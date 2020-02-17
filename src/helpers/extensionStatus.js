@@ -23,9 +23,6 @@ export const useExtensionStatus = () => {
       document.dispatchEvent(event)
     }
 
-    checkExtensionStatus()
-    const interval = setInterval(checkExtensionStatus, 1000)
-
     const handleExtensionInstalled = () => {
       setStatus(extensionStatuses.installed)
     }
@@ -38,6 +35,9 @@ export const useExtensionStatus = () => {
 
     document.addEventListener('extensioninstalled', handleExtensionInstalled)
     document.addEventListener('extensionconnected', handleExtensionConnected)
+
+    checkExtensionStatus()
+    const interval = setInterval(checkExtensionStatus, 1000)
 
     const cleanup = () => {
       clearInterval(interval)

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Button from 'cozy-ui/transpiled/react/Button'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Input from 'cozy-ui/transpiled/react/Input'
-import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Wrapper from 'components/Wrapper'
@@ -14,7 +13,8 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import VerticallyCentered from './VerticallyCentered'
 
 const DumbHintPage = props => {
-  const { t, client, history } = props
+  const { client, history } = props
+  const { t } = useI18n()
   const [hint, setHint] = useState('')
   const [saving, setSaving] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -96,6 +96,6 @@ const DumbHintPage = props => {
   )
 }
 
-const HintPage = compose(translate(), withClient)(DumbHintPage)
+const HintPage = withClient(DumbHintPage)
 
 export default HintPage

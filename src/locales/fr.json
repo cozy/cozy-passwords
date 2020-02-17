@@ -58,14 +58,25 @@
   "InstalledPage": {
     "title": "C'est presque fini !",
     "descriptionStart": "Cliquez sur l'icône",
-    "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy.",
-    "availablePlatforms": "Retrouvez l'extension Cozy sur les plateformes suivantes :",
-    "smartphone": "Smartphone (bientôt disponible)",
-    "faq": "<a href='https://support.cozy.io/article/394-comment-puis-je-parametrer-mon-gestionnaire-de-mot-de-passe' target='_blank' rel='noopener noreferrer'>__Aide :__ Je ne parviens pas à me connecter</a>"
+    "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy."
+  },
+
+  "ConnectedPage": {
+    "title": "Votre gestionnaire de mots de passe est configuré !",
+    "description": "Rendez vous sur votre extension navigateur Cozy pour gérer vos mots de passe"
   },
 
   "NotAvailablePage": {
     "title": "Cozy ne dispose pas encore d'application mobile pour gérer vos mots de passe",
     "description": "En attendant, il vous est déjà possible de gérer vos mots de passe avec l'extension cozy sur les plateformes suivantes :"
+  },
+
+  "Help": {
+    "faq": "<a href='https://support.cozy.io/article/394-comment-puis-je-parametrer-mon-gestionnaire-de-mot-de-passe' target='_blank' rel='noopener noreferrer'>__Aide :__ Je ne parviens pas à me connecter</a>"
+  },
+
+  "AvailablePlatforms": {
+    "text": "Retrouvez l'extension Cozy sur les plateformes suivantes :",
+    "smartphone": "Smartphone (bientôt disponible)"
   }
 }

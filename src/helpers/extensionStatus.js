@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
-import get from 'lodash/get'
 import { useFlag } from 'cozy-flags'
 
 export const extensionStatuses = {
   checking: 'checking',
   installed: 'installed',
-  notInstalled: 'not-installed'
+  notInstalled: 'not-installed',
+  connected: 'connected'
 }
 
 export const useExtensionStatus = () => {
-  const [installed, setInstalled] = useState(extensionStatuses.notInstalled)
+  const [status, setStatus] = useState(extensionStatuses.notInstalled)
   const extensionCheckDisabled = useFlag('extension-check-disabled')
 
   useEffect(() => {
@@ -17,39 +17,51 @@ export const useExtensionStatus = () => {
       return
     }
 
-    const checkExtensionInstallation = () => {
-      window.postMessage(
-        {
-          message: { source: 'cozy-passwords' }
-        },
-        // This star means that we are sending the message to all
-        // tabs / extensions. This is not ideal, but since we don't know the
-        // cozy extension URI, we can't target it directly
-        '*'
-      )
+    const checkExtensionStatus = () => {
+      const event = document.createEvent('Event')
+      event.initEvent('check-cozy-extension-status')
+      document.dispatchEvent(event)
     }
 
-    checkExtensionInstallation()
-    const interval = setInterval(checkExtensionInstallation, 1000)
+    const handleExtensionInstalled = () => {
+      setStatus(extensionStatuses.installed)
+    }
 
-    const handleInstalled = event => {
-      if (get(event, 'data.message.source') !== 'cozy-extension') {
-        return
-      }
+    const handleExtensionConnected = () => {
+      setStatus(extensionStatuses.connected)
 
-      setInstalled(extensionStatuses.installed)
       cleanup()
     }
 
-    window.addEventListener('message', handleInstalled)
+    document.addEventListener(
+      'cozy-extension-installed',
+      handleExtensionInstalled
+    )
+
+    document.addEventListener(
+      'cozy-extension-connected',
+      handleExtensionConnected
+    )
+
+    checkExtensionStatus()
+    const interval = setInterval(checkExtensionStatus, 1000)
 
     const cleanup = () => {
       clearInterval(interval)
-      window.removeEventListener('message', handleInstalled)
+
+      document.removeEventListener(
+        'extensioninstalled',
+        handleExtensionInstalled
+      )
+
+      document.removeEventListener(
+        'extensionconnected',
+        handleExtensionConnected
+      )
     }
 
     return cleanup
   }, [])
 
-  return installed
+  return status
 }

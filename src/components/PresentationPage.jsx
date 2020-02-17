@@ -7,7 +7,7 @@ import Infos from 'cozy-ui/transpiled/react/Infos'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Grid from 'cozy-ui/transpiled/react/MuiCozyTheme/Grid'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { Link } from 'react-router-dom'
 import importPasswordsIcon from 'assets/import-passwords.svg'
 import CircleIcon from 'components/CircleIcon'
@@ -17,8 +17,8 @@ import cx from 'classnames'
 import { isSupportedBrowser, browserName } from 'currentBrowser'
 import VerticallyCentered from './VerticallyCentered'
 
-const DumbPresentationPage = props => {
-  const { t } = props
+const PresentationPage = () => {
+  const { t } = useI18n()
 
   return (
     <VerticallyCentered>
@@ -120,7 +120,5 @@ const DumbPresentationPage = props => {
     </VerticallyCentered>
   )
 }
-
-const PresentationPage = translate()(DumbPresentationPage)
 
 export default PresentationPage

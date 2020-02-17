@@ -1,9 +1,8 @@
 import React from 'react'
 import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { withClient } from 'cozy-client'
-import compose from 'lodash/flowRight'
 import { Link } from 'react-router-dom'
 import Wrapper from 'components/Wrapper'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
@@ -18,8 +17,8 @@ import generateWebAppLink from 'helpers/generateWebAppLink'
 import VerticallyCentered from './VerticallyCentered'
 
 const DumbLinkToSettings = withClient(props => {
-  // eslint-disable-next-line no-unused-vars
-  const { client, t, f, ...rest } = props
+  const { client, ...rest } = props
+  const { t } = useI18n()
   const settingsAppSlug = 'settings'
   const rawSettingsAppHref = generateWebAppLink(settingsAppSlug, client)
   const passwordsUrl = generateWebAppLink('passwords', client)
@@ -51,10 +50,10 @@ const DumbLinkToSettings = withClient(props => {
   )
 })
 
-const LinkToSettings = compose(withClient, translate())(DumbLinkToSettings)
+const LinkToSettings = withClient(DumbLinkToSettings)
 
-const DumbSecurityPage = props => {
-  const { t } = props
+const SecurityPage = () => {
+  const { t } = useI18n()
 
   return (
     <VerticallyCentered>
@@ -107,7 +106,5 @@ const DumbSecurityPage = props => {
     </VerticallyCentered>
   )
 }
-
-const SecurityPage = translate()(DumbSecurityPage)
 
 export default SecurityPage

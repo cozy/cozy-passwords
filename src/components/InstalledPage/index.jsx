@@ -2,34 +2,21 @@ import React from 'react'
 import Wrapper from 'components/Wrapper'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import Stack from 'cozy-ui/transpiled/react/Stack'
-import Card from 'cozy-ui/transpiled/react/Card'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
-import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
-import supportedPlatforms from 'supportedPlatforms'
 import CloudIcon from 'components/CloudIcon'
 import setupTutorialIllustration from 'assets/setup-tutorial.gif'
 import VerticallyCentered from '../VerticallyCentered'
+import Help from '../Help'
 import './styles.css'
 
-const PlatformButton = props => {
-  const { icon, ...rest } = props
-  return (
-    <ButtonLink
-      {...rest}
-      icon={<Icon icon={icon} size={16} color="var(--slateGrey)" />}
-      theme="secondary"
-      className="u-mb-half"
-    />
-  )
-}
-
 const DumbInstalledPage = props => {
-  const { t, client } = props
+  const { client } = props
+  const { t } = useI18n()
+
   const cozyURL = new URL(client.getStackClient().uri)
 
   return (
@@ -72,35 +59,7 @@ const DumbInstalledPage = props => {
                 />
               </Text>
             </Stack>
-            <Stack spacing="l">
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: snarkdown(t('InstalledPage.faq'))
-                }}
-              />
-              <Card>
-                <Stack spacing="m">
-                  <Text>{t('InstalledPage.availablePlatforms')}</Text>
-                  <div>
-                    {Object.entries(supportedPlatforms).map(
-                      ([platform, infos]) => (
-                        <PlatformButton
-                          key={platform}
-                          href={infos.storeUrl}
-                          icon={`browser-${platform}`}
-                          label={infos.label}
-                        />
-                      )
-                    )}
-                    <PlatformButton
-                      disabled
-                      icon="phone"
-                      label={t('InstalledPage.smartphone')}
-                    />
-                  </div>
-                </Stack>
-              </Card>
-            </Stack>
+            <Help />
           </Stack>
         </NarrowContent>
       </Wrapper>
@@ -108,6 +67,6 @@ const DumbInstalledPage = props => {
   )
 }
 
-const InstalledPage = compose(translate(), withClient)(DumbInstalledPage)
+const InstalledPage = withClient(DumbInstalledPage)
 
 export default InstalledPage

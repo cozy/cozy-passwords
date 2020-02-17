@@ -14,21 +14,47 @@ import HintPage from './HintPage'
 import InstallationPage from './InstallationPage'
 import InstalledPage from './InstalledPage'
 import NotAvailablePage from './NotAvailablePage'
+import ConnectedPage from './ConnectedPage'
 import {
   useExtensionStatus,
   extensionStatuses
 } from '../helpers/extensionStatus'
 import flag, { FlagSwitcher } from 'cozy-flags'
 
-const RedirectIfExtensionInstalled = props => {
-  const extensionInstalled = useExtensionStatus()
+const RedirectIfExtensionInstalledOrConnected = props => {
+  const extensionStatus = useExtensionStatus()
 
-  if (extensionInstalled === extensionStatuses.checking) {
+  if (extensionStatus === extensionStatuses.checking) {
     return null
   }
 
-  if (extensionInstalled === extensionStatuses.installed) {
+  if (extensionStatus === extensionStatuses.installed) {
     return <Redirect to="/installation/installed" />
+  }
+
+  if (extensionStatus === extensionStatuses.connected) {
+    return <Redirect to="/installation/connected" />
+  }
+
+  return <Route {...props} />
+}
+
+/*
+ * This is not very DRY to have RedirectIfExtensionInstalledOrConnected and
+ * RedirectIfExtensionConnected, but the problem is that on
+ * /installation/installed route we can't listen for the installed status or we
+ * will have an infinite redirection loop. So in this case we just want to
+ * listen for connection.
+ */
+const RedirectIfExtensionConnected = props => {
+  const extensionStatus = useExtensionStatus()
+
+  if (extensionStatus === extensionStatuses.checking) {
+    return null
+  }
+
+  if (extensionStatus === extensionStatuses.connected) {
+    return <Redirect to="/installation/connected" />
   }
 
   return <Route {...props} />
@@ -50,29 +76,34 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
             <Main>
               <Content>
                 <Switch>
-                  <RedirectIfExtensionInstalled
+                  <RedirectIfExtensionInstalledOrConnected
                     path="/presentation"
                     component={PresentationPage}
                   />
-                  <RedirectIfExtensionInstalled
+                  <RedirectIfExtensionInstalledOrConnected
                     path="/security"
                     exact
                     component={SecurityPage}
                   />
-                  <RedirectIfExtensionInstalled
+                  <RedirectIfExtensionInstalledOrConnected
                     path="/security/hint"
                     exact
                     component={HintPage}
                   />
-                  <RedirectIfExtensionInstalled
+                  <RedirectIfExtensionInstalledOrConnected
                     path="/installation"
                     exact
                     component={InstallationPage}
                   />
-                  <Route
+                  <RedirectIfExtensionConnected
                     path="/installation/installed"
                     exact
                     component={InstalledPage}
+                  />
+                  <Route
+                    path="/installation/connected"
+                    exact
+                    component={ConnectedPage}
                   />
                   <Redirect from="/" to="/presentation" />
                   <Redirect from="*" to="/presentation" />

@@ -8,6 +8,10 @@ export const extensionStatuses = {
   connected: 'connected'
 }
 
+/*
+ * See https://github.com/cozy/cozy-keys-browser/blob/master/docs/extension-status.md
+ * to learn more about how the extension can give us its current status
+ */
 export const useExtensionStatus = () => {
   const [status, setStatus] = useState(extensionStatuses.notInstalled)
   const extensionCheckDisabled = useFlag('extension-check-disabled')
@@ -19,7 +23,7 @@ export const useExtensionStatus = () => {
 
     const checkExtensionStatus = () => {
       const event = document.createEvent('Event')
-      event.initEvent('check-cozy-extension-status')
+      event.initEvent('cozy.passwordextension.check-status')
       document.dispatchEvent(event)
     }
 
@@ -34,12 +38,12 @@ export const useExtensionStatus = () => {
     }
 
     document.addEventListener(
-      'cozy-extension-installed',
+      'cozy.passwordextension.installed',
       handleExtensionInstalled
     )
 
     document.addEventListener(
-      'cozy-extension-connected',
+      'cozy.passwordextension.connected',
       handleExtensionConnected
     )
 

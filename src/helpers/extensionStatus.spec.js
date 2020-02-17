@@ -29,13 +29,13 @@ describe('useExtensionStatus', () => {
     expect(document.dispatchEvent).toHaveBeenCalledTimes(2)
 
     act(() => {
-      triggerExtensionEvent('cozy-extension-installed')
+      triggerExtensionEvent('cozy.passwordextension.installed')
     })
 
     expect(result.current).toBe(extensionStatuses.installed)
 
     act(() => {
-      triggerExtensionEvent('cozy-extension-connected')
+      triggerExtensionEvent('cozy.passwordextension.connected')
     })
 
     expect(result.current).toBe(extensionStatuses.connected)

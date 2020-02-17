@@ -4,14 +4,14 @@ import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Card from 'cozy-ui/transpiled/react/Card'
 import { Text, MainTitle } from 'cozy-ui/transpiled/react/Text'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import noAppIcon from 'assets/no-app.svg'
 import supportedPlatforms from 'supportedPlatforms'
 
-const DumbNotAvailablePage = props => {
-  const { t } = props
+const NotAvailablePage = () => {
+  const { t } = useI18n()
 
   return (
     <Wrapper>
@@ -46,7 +46,5 @@ const DumbNotAvailablePage = props => {
     </Wrapper>
   )
 }
-
-const NotAvailablePage = translate()(DumbNotAvailablePage)
 
 export default NotAvailablePage

@@ -5,7 +5,7 @@ import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import supportedPlatforms from 'supportedPlatforms'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { Text } from 'cozy-ui/transpiled/react/Text'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
@@ -19,8 +19,9 @@ const PlatformButton = props => {
   )
 }
 
-// eslint-disable-next-line no-unused-vars
-const DumbAvailablePlatforms = ({ t, f, ...props }) => {
+const AvailablePlatforms = props => {
+  const { t } = useI18n()
+
   return (
     <Card {...props}>
       <Stack spacing="m">
@@ -44,7 +45,5 @@ const DumbAvailablePlatforms = ({ t, f, ...props }) => {
     </Card>
   )
 }
-
-const AvailablePlatforms = translate()(DumbAvailablePlatforms)
 
 export default AvailablePlatforms

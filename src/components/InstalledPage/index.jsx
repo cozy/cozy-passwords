@@ -4,9 +4,8 @@ import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
-import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
 import CloudIcon from 'components/CloudIcon'
 import setupTutorialIllustration from 'assets/setup-tutorial.gif'
@@ -15,7 +14,9 @@ import Help from '../Help'
 import './styles.css'
 
 const DumbInstalledPage = props => {
-  const { t, client } = props
+  const { client } = props
+  const { t } = useI18n()
+
   const cozyURL = new URL(client.getStackClient().uri)
 
   return (
@@ -66,6 +67,6 @@ const DumbInstalledPage = props => {
   )
 }
 
-const InstalledPage = compose(withClient, translate())(DumbInstalledPage)
+const InstalledPage = withClient(DumbInstalledPage)
 
 export default InstalledPage

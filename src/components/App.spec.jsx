@@ -7,6 +7,7 @@ import {
 } from '../helpers/extensionStatus.js'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
+import AppLike from '../../test/lib/AppLike'
 
 // This should not be required since cozy-ui v29.9.1
 // (see https://github.com/cozy/cozy-ui/releases/tag/v29.9.1)
@@ -16,7 +17,6 @@ jest.mock('cozy-ui/transpiled/react/utils/color', () => ({
 
 jest.mock('detect-browser')
 jest.mock('cozy-ui/transpiled/react/helpers/withBreakpoints')
-jest.mock('cozy-ui/transpiled/react/I18n')
 jest.mock('../helpers/extensionStatus')
 jest.mock('cozy-client')
 
@@ -51,9 +51,14 @@ describe('App', () => {
     })
 
     it('should render PresentationPage by default', () => {
-      const { getByText } = renderWithRouter(<App />)
+      const { getByText } = render(
+        <AppLike>
+          <App />
+        </AppLike>
+      )
 
-      expect(getByText('PresentationPage.title')).toBeDefined()
+      expect(getByText('Stop losing your passwords')).toBeDefined()
+      expect(getByText(/let's go/i)).toBeDefined()
     })
   })
 

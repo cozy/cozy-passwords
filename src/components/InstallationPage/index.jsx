@@ -8,8 +8,7 @@ import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Card from 'cozy-ui/transpiled/react/Card'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import { OrderedList, ListItem } from 'cozy-ui/transpiled/react/OrderedList'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
-import compose from 'lodash/flowRight'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { withClient } from 'cozy-client'
 import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
@@ -19,7 +18,8 @@ import VerticallyCentered from '../VerticallyCentered'
 const browser = detectBrowser()
 
 const DumbInstallationPage = props => {
-  const { t, client } = props
+  const { client } = props
+  const { t } = useI18n()
   const cozyURL = new URL(client.getStackClient().uri)
 
   return (
@@ -89,6 +89,6 @@ const DumbInstallationPage = props => {
   )
 }
 
-const InstallationPage = compose(translate(), withClient)(DumbInstallationPage)
+const InstallationPage = withClient(DumbInstallationPage)
 
 export default InstallationPage

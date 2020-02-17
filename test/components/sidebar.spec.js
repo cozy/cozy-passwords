@@ -3,14 +3,24 @@
 /* eslint-env jest */
 
 import React from 'react'
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 
-import { mockT } from '../lib/I18n'
+import AppLike from '../lib/AppLike'
 import { Sidebar } from 'components/Sidebar'
 
 describe('Sidebar component', () => {
   it('should be rendered correctly', () => {
-    const component = shallow(<Sidebar t={mockT} />).getElement()
-    expect(component).toMatchSnapshot()
+    const { getByText } = render(
+      <AppLike>
+        <MemoryRouter>
+          <Sidebar />
+        </MemoryRouter>
+      </AppLike>
+    )
+
+    expect(getByText(/presentation/i)).toBeDefined()
+    expect(getByText(/security/i)).toBeDefined()
+    expect(getByText(/installation/i)).toBeDefined()
   })
 })

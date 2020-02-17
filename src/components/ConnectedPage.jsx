@@ -3,7 +3,7 @@ import Wrapper from 'components/Wrapper'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { currentBrowser } from '../currentBrowser'
 import chromeIllustration from 'assets/extension-connected-chrome.svg'
 import firefoxIllustration from 'assets/extension-connected-firefox.svg'
@@ -14,8 +14,8 @@ const illustrations = {
   firefox: firefoxIllustration
 }
 
-const DumbConnectedPage = props => {
-  const { t } = props
+const ConnectedPage = () => {
+  const { t } = useI18n()
 
   return (
     <Wrapper>
@@ -32,7 +32,5 @@ const DumbConnectedPage = props => {
     </Wrapper>
   )
 }
-
-const ConnectedPage = translate()(DumbConnectedPage)
 
 export default ConnectedPage

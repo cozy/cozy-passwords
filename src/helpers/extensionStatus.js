@@ -19,7 +19,7 @@ export const useExtensionStatus = () => {
 
     const checkExtensionStatus = () => {
       const event = document.createEvent('Event')
-      event.initEvent('checkextensionstatus')
+      event.initEvent('check-cozy-extension-status')
       document.dispatchEvent(event)
     }
 
@@ -33,8 +33,15 @@ export const useExtensionStatus = () => {
       cleanup()
     }
 
-    document.addEventListener('extensioninstalled', handleExtensionInstalled)
-    document.addEventListener('extensionconnected', handleExtensionConnected)
+    document.addEventListener(
+      'cozy-extension-installed',
+      handleExtensionInstalled
+    )
+
+    document.addEventListener(
+      'cozy-extension-connected',
+      handleExtensionConnected
+    )
 
     checkExtensionStatus()
     const interval = setInterval(checkExtensionStatus, 1000)

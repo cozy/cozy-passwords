@@ -10,23 +10,34 @@ const triggerExtensionEvent = type => {
 }
 
 describe('useExtensionStatus', () => {
+  const handleExtensionStatusCheck = jest.fn()
+
   beforeEach(() => {
     jest.useFakeTimers()
-    jest.spyOn(document, 'dispatchEvent')
+
+    document.addEventListener(
+      'cozy.passwordextension.check-status',
+      handleExtensionStatusCheck
+    )
   })
 
   afterEach(() => {
     jest.resetAllMocks()
+
+    document.removeEventListener(
+      'cozy.passwordextension.check-status',
+      handleExtensionStatusCheck
+    )
   })
 
   it('should ask the extension to check its status', () => {
     const { result } = renderHook(() => useExtensionStatus())
 
     expect(result.current).toBe(extensionStatuses.notInstalled)
-    expect(document.dispatchEvent).toHaveBeenCalledTimes(1)
+    expect(handleExtensionStatusCheck).toHaveBeenCalledTimes(1)
 
     jest.advanceTimersByTime(1000)
-    expect(document.dispatchEvent).toHaveBeenCalledTimes(2)
+    expect(handleExtensionStatusCheck).toHaveBeenCalledTimes(2)
 
     act(() => {
       triggerExtensionEvent('cozy.passwordextension.installed')
@@ -50,7 +61,7 @@ describe('useExtensionStatus', () => {
       const { result } = renderHook(() => useExtensionStatus())
 
       expect(result.current).toBe(extensionStatuses.notInstalled)
-      expect(document.dispatchEvent).not.toHaveBeenCalled()
+      expect(handleExtensionStatusCheck).not.toHaveBeenCalled()
     })
   })
 })

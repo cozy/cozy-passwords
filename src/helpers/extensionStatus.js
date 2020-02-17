@@ -8,6 +8,10 @@ export const extensionStatuses = {
   connected: 'connected'
 }
 
+/*
+ * See https://github.com/cozy/cozy-keys-browser/blob/master/docs/extension-status.md
+ * to learn more about how the extension can give us its current status
+ */
 export const useExtensionStatus = () => {
   const [status, setStatus] = useState(extensionStatuses.notInstalled)
   const extensionCheckDisabled = useFlag('extension-check-disabled')

@@ -1,16 +1,18 @@
 {
   "name": "Pass",
+  "name_prefix": "Cozy",
   "slug": "passwords",
   "icon": "icon.svg",
-  "category": "cozy",
+  "categories": ["cozy"],
   "version": "0.3.2",
   "licence": "AGPL-3.0",
   "editor": "cozy",
   "source": "registry://passwords/stable",
   "developer": {
-    "name": "cozycloud",
-    "url": ""
+    "name": "Cozy Cloud",
+    "url": "https://cozy.io"
   },
+  "default_locale": "en",
   "langs": ["en", "fr"],
   "routes": {
     "/": {

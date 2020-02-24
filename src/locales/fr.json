@@ -78,5 +78,10 @@
   "AvailablePlatforms": {
     "text": "Retrouvez l'extension Cozy sur les plateformes suivantes :",
     "smartphone": "Smartphone (bientôt disponible)"
+  },
+
+  "manifest": {
+    "short_description": "Ne perdez plus vos mots de passe",
+    "long_description": "Conservez vos mots de passe en sécurité dans votre Cozy.\n\nVos mots de passe sont enregistrés une bonne fois pour toute dans votre coffre 100% personnel et sécurisé.\n\nVotre Cozy vous permet un remplissage instantané des formulaires des sites Internet, pour une connexion facilitée à tous vos services.\n\nConnectez vos marques à votre Cozy pour récupérer vos données en un clin d'oeil."
   }
 }

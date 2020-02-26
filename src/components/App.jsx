@@ -15,6 +15,7 @@ import InstallationPage from './InstallationPage'
 import InstalledPage from './InstalledPage'
 import NotAvailablePage from './NotAvailablePage'
 import ConnectedPage from './ConnectedPage'
+import ImportPage from './ImportPage'
 import {
   useExtensionStatus,
   extensionStatuses
@@ -105,6 +106,13 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
                     exact
                     component={ConnectedPage}
                   />
+                  {flag('import-page') ? (
+                    <Route
+                      path="/installation/import"
+                      exact
+                      component={ImportPage}
+                    />
+                  ) : null}
                   <Redirect from="/" to="/presentation" />
                   <Redirect from="*" to="/presentation" />
                 </Switch>

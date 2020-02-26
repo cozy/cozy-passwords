@@ -8,7 +8,7 @@ module.exports = {
     // identity-obj-proxy module is installed by cozy-scripts
     '\\.(css|styl)$': 'identity-obj-proxy'
   },
-  transformIgnorePatterns: ['node_modules/(?!cozy-ui)'],
+  transformIgnorePatterns: ['node_modules/(?!cozy-ui|cozy-keys-lib)'],
   transform: {
     // babel-jest module is installed by cozy-scripts
     '^.+\\.jsx?$': 'babel-jest'

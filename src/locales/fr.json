@@ -72,12 +72,39 @@
   },
 
   "Help": {
-    "faq": "<a href='https://support.cozy.io/article/394-comment-puis-je-parametrer-mon-gestionnaire-de-mot-de-passe' target='_blank' rel='noopener noreferrer'>__Aide :__ Je ne parviens pas à me connecter</a>"
+    "faq": "<a href='https://support.cozy.io/article/394-comment-puis-je-parametrer-mon-gestionnaire-de-mot-de-passe' target='_blank' rel='noopener noreferrer'>__Aide :__ Je ne parviens pas à me connecter</a>",
+    "import": "Importer mes identifiants à partir d'un autre gestionnaire"
   },
 
   "AvailablePlatforms": {
     "text": "Retrouvez l'extension Cozy sur les plateformes suivantes :",
     "smartphone": "Smartphone (bientôt disponible)"
+  },
+
+  "ImportPage": {
+    "title": "Importez vos identifiants",
+    "options": {
+      "label": "1. Sélectionnez le format source",
+      "placeholder": "Sélectionner un format"
+    },
+    "file": {
+      "label": "2. Sélectionnez le fichier à importer"
+    },
+    "submit": "Importer",
+    "modal": {
+      "importing": {
+        "title": "Import de vos identifiants en cours"
+      },
+      "imported": {
+        "title": "Vos identifiants ont été importés",
+        "content": "Vous pouvez maintenant trouver vos identifiants dans votre gestionnaire de mots de passe cozy."
+      },
+      "errored": {
+        "title": "Erreur lors de l'import de vos identifiants",
+        "content": "Une erreur est survenue lors de l'import de vos identifiants. Veuillez réessayer."
+      },
+      "close": "OK"
+    }
   },
 
   "manifest": {

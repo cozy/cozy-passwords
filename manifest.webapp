@@ -1,0 +1,56 @@
+{
+  "name": "Pass",
+  "name_prefix": "Cozy",
+  "slug": "passwords",
+  "icon": "icon.svg",
+  "categories": [
+    "cozy"
+  ],
+  "version": "0.3.4",
+  "licence": "AGPL-3.0",
+  "editor": "cozy",
+  "source": "registry://passwords/stable",
+  "developer": {
+    "name": "Cozy Cloud",
+    "url": "https://cozy.io"
+  },
+  "default_locale": "en",
+  "langs": [
+    "en",
+    "fr"
+  ],
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "permissions": {
+    "apps": {
+      "description": "Required by the cozy-bar to display the icons of the apps",
+      "type": "io.cozy.apps",
+      "verbs": [
+        "GET"
+      ]
+    },
+    "settings": {
+      "description": "Required to check the existence of and update the password hint",
+      "type": "io.cozy.settings",
+      "verbs": [
+        "GET",
+        "PUT"
+      ]
+    }
+  },
+  "locales": {
+    "en": {
+      "short_description": "Stop losing your passwords",
+      "long_description": "Keep your passwords safe in your Cozy.\n\nYour passwords are saved once and for all in your 100% personal and secured safe.\n\nYour Cozy allows you to instantly fill in the forms of websites, for easy connection to all your services.\n\nConnect your brands to your Cozy to recover your data in the blink of an eye."
+    },
+    "fr": {
+      "short_description": "Ne perdez plus vos mots de passe",
+      "long_description": "Conservez vos mots de passe en sécurité dans votre Cozy.\n\nVos mots de passe sont enregistrés une bonne fois pour toute dans votre coffre 100% personnel et sécurisé.\n\nVotre Cozy vous permet un remplissage instantané des formulaires des sites Internet, pour une connexion facilitée à tous vos services.\n\nConnectez vos marques à votre Cozy pour récupérer vos données en un clin d'oeil."
+    }
+  }
+}

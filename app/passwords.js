@@ -1628,11 +1628,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ImportPage = function ImportPage() {
+var ImportPage = function ImportPage(_ref) {
+  var vaultClient = _ref.vaultClient;
+
   var _useI18n = Object(cozy_ui_transpiled_react_I18n__WEBPACK_IMPORTED_MODULE_5__["useI18n"])(),
       t = _useI18n.t;
-
-  var vaultClient = Object(cozy_keys_lib__WEBPACK_IMPORTED_MODULE_4__["useVaultClient"])();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default()(_useState, 2),
@@ -1649,7 +1649,7 @@ var ImportPage = function ImportPage() {
   var importFile =
   /*#__PURE__*/
   function () {
-    var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+    var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var fileContent;
@@ -1697,14 +1697,14 @@ var ImportPage = function ImportPage() {
     }));
 
     return function importFile() {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 
   var handleSubmit =
   /*#__PURE__*/
   function () {
-    var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+    var _ref3 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e) {
       var isLocked;
@@ -1737,7 +1737,7 @@ var ImportPage = function ImportPage() {
     }));
 
     return function handleSubmit(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -1790,7 +1790,7 @@ var ImportPage = function ImportPage() {
   }) : null))) : null);
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ImportPage);
+/* harmony default export */ __webpack_exports__["default"] = (Object(cozy_keys_lib__WEBPACK_IMPORTED_MODULE_4__["withVaultClient"])(ImportPage));
 
 /***/ }),
 

@@ -3348,17 +3348,16 @@ cozy-interapp@0.4.9:
   resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.4.9.tgz#5ef68d54755cc99c3e154e5a4646b68cbe5f16fd"
   integrity sha512-skyjrewnMu5zMfST7vTNGl3jsuWae1Iwfdev6pW9RLgb58M7oBSpsIa3ofRANv5tx0XVQDVSEzWvbFQ84WJPSg==
 
-cozy-keys-lib@2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-2.9.0.tgz#0a123da8fa815e2f58f2252023e490b3c9fe4278"
-  integrity sha512-vrE4y7+Z9gT/HGeoodedqScZEX1wjDwExTX9kgZHoeUSZB00vC1aSUKhWFZHKYkYUC1yrWrkdy1pGtQGlpAuyw==
+cozy-keys-lib@^2.9.2:
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-2.9.2.tgz#72bd8fdde40c5603edd0017bb209cacf98f2c35a"
+  integrity sha512-9QNe+BdynU5fqU2q9qmSZOiS5ROKGs23I39CT3s9RP4vR7seQW7z1QoqVQS0pytjP4ULLsFCf8kV2WDJkjRGDw==
   dependencies:
     "@aspnet/signalr" "^1.1.4"
     "@aspnet/signalr-protocol-msgpack" "^1.1.0"
     big-integer "^1.6.44"
     classnames "^2.2.6"
     cozy-device-helper "^1.7.5"
-    cozy-ui "^29.9.1"
     lodash "^4.17.15"
     lunr "^2.3.6"
     microee "^0.0.6"
@@ -3366,8 +3365,6 @@ cozy-keys-lib@2.9.0:
     p-limit "^2.2.2"
     papaparse "^5.1.1"
     prop-types "^15.7.2"
-    react "^16.8.3"
-    react-dom "^16.9.0"
     sweetalert "^2.1.2"
     tldjs "^2.3.1"
     zxcvbn "^4.4.2"
@@ -3470,24 +3467,6 @@ cozy-ui@30.6.0:
   version "30.6.0"
   resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-30.6.0.tgz#a568bd2a6c364fe30b48df98f139c19500cd1fbb"
   integrity sha512-jpgjz5pG+zAo64TZZSgyprwZlYT0kgdhGsG9wikq7AdtHZHIo9Z/35Kl06jxAkiiNHP4KnQoWWQQt2RtXMozeA==
-  dependencies:
-    "@babel/runtime" "^7.3.4"
-    body-scroll-lock "^2.5.8"
-    classnames "^2.2.5"
-    date-fns "^1.28.5"
-    hammerjs "^2.0.8"
-    node-polyglot "^2.2.2"
-    normalize.css "^7.0.0"
-    react-hot-loader "^4.3.11"
-    react-markdown "^4.0.8"
-    react-pdf "^4.0.5"
-    react-select "2.2.0"
-    react-swipeable-views "0.13.3"
-
-cozy-ui@^29.9.1:
-  version "29.9.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-29.9.1.tgz#9e8d7b0a12c85166c6bf4b25a70ea6847336099f"
-  integrity sha512-xt5VDSOrm3zB7WnovMmel1fT/q52tLkEC9j12gmkkR1aEFc3c3Ced5iZu/NmuOYy2fkx0nvgazoggWrsmUZTVg==
   dependencies:
     "@babel/runtime" "^7.3.4"
     body-scroll-lock "^2.5.8"
@@ -9874,16 +9853,6 @@ react-dom@16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-dom@^16.9.0:
-  version "16.13.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
-  integrity sha512-y09d2c4cG220DzdlFkPTnVvGTszVvNpC73v+AaLGLHbkpy3SSgvYq8x0rNwPJ/Rk/CicTNgk0hbHNw1gMEZAXg==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.19.0"
-
 react-event-listener@^0.6.0, react-event-listener@^0.6.2:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.6.tgz#758f7b991cad9086dd39fd29fad72127e1d8962a"
@@ -10109,15 +10078,6 @@ react@16.8.6:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.6"
-
-react@^16.8.3:
-  version "16.13.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
-  integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -10679,14 +10639,6 @@ scheduler@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.18.0.tgz#5901ad6659bc1d8f3fdaf36eb7a67b0d6746b1c4"
   integrity sha512-agTSHR1Nbfi6ulI0kYNK0203joW2Y5W4po4l+v03tOoiJKpTBbxpNhWDvqc/4IcOw+KLmSiQLTasZ4cab2/UWQ==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-
-scheduler@^0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.0.tgz#a715d56302de403df742f4a9be11975b32f5698d"
-  integrity sha512-xowbVaTPe9r7y7RUejcK73/j8tt2jfiyTednOvHbA8JoClvMYCp+r8QegLwK/n8zWQAtZb1fFnER4XLBZXrCxA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

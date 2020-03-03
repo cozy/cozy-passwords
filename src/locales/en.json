@@ -97,7 +97,7 @@
       },
       "imported": {
         "title": "Credentials imported",
-        "content": "You can now find your credentials in your cozy vault."
+        "content": "You can now find your credentials in your Cozy vault."
       },
       "errored": {
         "title": "Error while importing your credentials",

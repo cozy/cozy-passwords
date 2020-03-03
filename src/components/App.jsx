@@ -137,6 +137,8 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
 
 const App = withBreakpoints()(DumbApp)
 
+window.flag = flag
+
 /*
   Enable Hot Module Reload using `react-hot-loader` here
   We enable it here since App is the main root component

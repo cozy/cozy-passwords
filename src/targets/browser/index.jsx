@@ -4,6 +4,7 @@ import 'styles'
 
 import React from 'react'
 import CozyClient, { CozyProvider } from 'cozy-client'
+import { VaultProvider } from 'cozy-keys-lib'
 import { render } from 'react-dom'
 import { I18n } from 'cozy-ui/react/I18n'
 
@@ -16,7 +17,9 @@ const renderApp = function(client) {
       dictRequire={appLocale => require(`locales/${appLocale}`)}
     >
       <CozyProvider client={client}>
-        <App />
+        <VaultProvider instance={client.getStackClient().uri}>
+          <App />
+        </VaultProvider>
       </CozyProvider>
     </I18n>,
     document.querySelector('[role=application]')

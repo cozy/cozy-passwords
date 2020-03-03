@@ -31,6 +31,10 @@
       "description": "Required to check the existence of and update the password hint",
       "type": "io.cozy.settings",
       "verbs": ["GET", "PUT"]
+    },
+    "ciphers": {
+      "description": "Required to import your passwords",
+      "type": "com.bitwarden.ciphers"
     }
   }
 }

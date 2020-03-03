@@ -18,7 +18,6 @@ jest.mock('cozy-ui/transpiled/react/utils/color', () => ({
 jest.mock('detect-browser')
 jest.mock('cozy-ui/transpiled/react/helpers/withBreakpoints')
 jest.mock('../helpers/extensionStatus')
-jest.mock('cozy-client')
 
 // See https://testing-library.com/docs/example-react-router
 function renderWithRouter(

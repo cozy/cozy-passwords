@@ -15,7 +15,7 @@
     "watch:mobile": "cs watch --mobile",
     "start": "cs start --hot --browser",
     "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozy/cozy-passwords.git}",
-    "test": "cs test --verbose",
+    "test": "NODE_ENV=test cs test --verbose",
     "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN --prepublish downcloud --space default"
   },
   "repository": {
@@ -49,7 +49,9 @@
     "@testing-library/react-hooks": "^3.2.1",
     "cozy-bar": "7.12.2",
     "cozy-client": "8.5.1",
+    "cozy-doctypes": "1.72.2",
     "cozy-flags": "2.2.0",
+    "cozy-keys-lib": "^2.9.2",
     "cozy-scripts": "2.0.2",
     "cozy-ui": "30.6.0",
     "detect-browser": "^4.8.0",

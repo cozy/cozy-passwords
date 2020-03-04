@@ -3348,10 +3348,10 @@ cozy-interapp@0.4.9:
   resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.4.9.tgz#5ef68d54755cc99c3e154e5a4646b68cbe5f16fd"
   integrity sha512-skyjrewnMu5zMfST7vTNGl3jsuWae1Iwfdev6pW9RLgb58M7oBSpsIa3ofRANv5tx0XVQDVSEzWvbFQ84WJPSg==
 
-cozy-keys-lib@^2.9.2:
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-2.9.2.tgz#72bd8fdde40c5603edd0017bb209cacf98f2c35a"
-  integrity sha512-9QNe+BdynU5fqU2q9qmSZOiS5ROKGs23I39CT3s9RP4vR7seQW7z1QoqVQS0pytjP4ULLsFCf8kV2WDJkjRGDw==
+cozy-keys-lib@^2.10.1:
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-2.10.1.tgz#18b6ee5e333ff591e59a351b54142eccfd842f7b"
+  integrity sha512-JzdncK393IKrjMz9l+3ycAFEjuGWwbJmLXAgic7MGQhnpBdWHxmSQAitOYD9nl52c8bLHu3p9gsE+M3SK8zcgw==
   dependencies:
     "@aspnet/signalr" "^1.1.4"
     "@aspnet/signalr-protocol-msgpack" "^1.1.0"
@@ -3362,7 +3362,6 @@ cozy-keys-lib@^2.9.2:
     lunr "^2.3.6"
     microee "^0.0.6"
     node-forge "^0.9.0"
-    p-limit "^2.2.2"
     papaparse "^5.1.1"
     prop-types "^15.7.2"
     sweetalert "^2.1.2"
@@ -8565,7 +8564,7 @@ p-limit@^1.1.0:
   dependencies:
     p-try "^1.0.0"
 
-p-limit@^2.0.0, p-limit@^2.2.0, p-limit@^2.2.2:
+p-limit@^2.0.0, p-limit@^2.2.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.2.2.tgz#61279b67721f5287aa1c13a9a7fbbc48c9291b1e"
   integrity sha512-WGR+xHecKTr7EbUEhyLSh5Dube9JtdiG78ufaeLxTgpudf/20KqyMioIUZJAezlTIi6evxuoUs9YXc11cU+yzQ==

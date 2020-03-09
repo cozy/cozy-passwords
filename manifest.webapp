@@ -1,16 +1,20 @@
 {
-  "name": "Passwords",
+  "name": "Pass",
+  "name_prefix": "Cozy",
   "slug": "passwords",
   "icon": "icon.svg",
-  "categories": [],
-  "version": "0.1.0",
+  "categories": [
+    "cozy"
+  ],
+  "version": "0.3.5",
   "licence": "AGPL-3.0",
   "editor": "cozy",
-  "source": "https://github.com/cozycloud/cozy-passwords.git@build",
+  "source": "registry://passwords/stable",
   "developer": {
-    "name": "cozycloud",
-    "url": ""
+    "name": "Cozy Cloud",
+    "url": "https://cozy.io"
   },
+  "default_locale": "en",
   "langs": [
     "en",
     "fr"
@@ -37,14 +41,20 @@
         "GET",
         "PUT"
       ]
+    },
+    "ciphers": {
+      "description": "Required to import your passwords",
+      "type": "com.bitwarden.ciphers"
     }
   },
   "locales": {
     "en": {
-      "name": "Passwords"
+      "short_description": "Stop losing your passwords",
+      "long_description": "Keep your passwords safe in your Cozy.\n\nYour passwords are saved once and for all in your 100% personal and secured safe.\n\nYour Cozy allows you to instantly fill in the forms of websites, for easy connection to all your services.\n\nConnect your brands to your Cozy to recover your data in the blink of an eye."
     },
     "fr": {
-      "name": "Mots de passe"
+      "short_description": "Ne perdez plus vos mots de passe",
+      "long_description": "Conservez vos mots de passe en sécurité dans votre Cozy.\n\nVos mots de passe sont enregistrés une bonne fois pour toute dans votre coffre 100% personnel et sécurisé.\n\nVotre Cozy vous permet un remplissage instantané des formulaires des sites Internet, pour une connexion facilitée à tous vos services.\n\nConnectez vos marques à votre Cozy pour récupérer vos données en un clin d'oeil."
     }
   }
 }

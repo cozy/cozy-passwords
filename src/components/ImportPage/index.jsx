@@ -14,6 +14,7 @@ import Modal, {
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import ImportOptionsField from './ImportOptionsField'
 import { getFileContent } from './helpers'
+import logger from '../../logger'
 
 const ImportPage = ({ vaultClient }) => {
   const { t } = useI18n()
@@ -27,6 +28,7 @@ const ImportPage = ({ vaultClient }) => {
       fileContent = await getFileContent(fileInput.current.files[0])
     } catch (err) {
       setImportStatus('errored')
+      logger.error(err)
       return
     }
     try {

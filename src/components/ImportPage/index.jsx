@@ -15,11 +15,13 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import ImportOptionsField from './ImportOptionsField'
 import { getFileContent } from './helpers'
 import logger from '../../logger'
+import flag from 'cozy-flags'
 
 const ImportPage = ({ vaultClient }) => {
   const { t } = useI18n()
   const [selectedFormat, setSelectedFormat] = useState()
   const [importStatus, setImportStatus] = useState('waiting')
+  const [importResult, setImportResult] = useState(null)
   const fileInput = useRef(null)
 
   const importFile = async () => {
@@ -32,7 +34,8 @@ const ImportPage = ({ vaultClient }) => {
       return
     }
     try {
-      await vaultClient.import(fileContent, selectedFormat.value)
+      const res = await vaultClient.import(fileContent, selectedFormat.value)
+      setImportResult(res)
       setImportStatus('imported')
     } catch (err) {
       setImportStatus('errored')
@@ -44,6 +47,7 @@ const ImportPage = ({ vaultClient }) => {
     e.preventDefault()
 
     setImportStatus('importing')
+    setImportResult(null)
 
     const isLocked = await vaultClient.isLocked()
 
@@ -111,6 +115,9 @@ const ImportPage = ({ vaultClient }) => {
                 <div className="u-flex">
                   <Spinner size="xxlarge" className="u-mh-auto" />
                 </div>
+              ) : null}
+              {flag('passwords.debug') && importResult ? (
+                <pre>{JSON.stringify(importResult, null, 2)}</pre>
               ) : null}
               {importStatus === 'imported' ? (
                 <p>{t('ImportPage.modal.imported.content')}</p>

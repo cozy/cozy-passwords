@@ -110,7 +110,7 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
                     exact
                     component={ConnectedPage}
                   />
-                  {flag('import-page') ? (
+                  {flag('passwords.import-page') ? (
                     <Route
                       path="/installation/import"
                       exact

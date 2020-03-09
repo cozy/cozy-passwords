@@ -17,7 +17,7 @@ const Help = props => {
           __html: snarkdown(t('Help.faq'))
         }}
       />
-      {flag('import-page') ? (
+      {flag('passwords.import-page') ? (
         <p>
           <Link to="/installation/import">{t('Help.import')}</Link>
         </p>

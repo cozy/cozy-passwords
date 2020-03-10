@@ -10,7 +10,7 @@ branches:
   - /^\d+\.\d+\.\d+(\-beta.\d+)?$/
 env:
   global:
-    - MATTERMOST_CHANNEL: "{"dev":"feat---password-mgr","beta":"feat---password-mgr,publication","stable":"feat---password-mgr,publication"}"
+    - MATTERMOST_CHANNEL="{"dev":"feat---password-mgr","beta":"feat---password-mgr,publication","stable":"feat---password-mgr,publication"}"
     # GITHUB_TOKEN for yarn deploy script
     - secure: "HvogVX7tAwRIjrQ5/uw3viZgJUkkWZMpfqBk239wpuah+zjJpuuE07xvS0kgusWaJtDqS9vkd4zzu7YYemLPQu0bdkphj44QrJaF4mfqT5pN8SxSrkLD+P7cO6tHJixQlmx/nWczVTZSAgtz9CCjUCeyjC22B4CaOJ469kOuLN5JCOQRGl2S0nbBiQFDjJmkhC2P7YjAY/Xpkk8a0i3FftqD34L0lzRHfiEqQHYvtg87n6kHxW0+KXk2hc3sJbUasU1p2SfrZKUNL9SKJ0XVlLz8/Z87V/sfE8OCMfY5sdzF1L4J08Zk/CEVNflNVm3u4TkzGhL3AqzZDuhry7gcOB3ON8mJ/jq7BS6/MU/gF0N2tsseDCRaHHknn7HfPHvuO9oIRxBUCQ4knabEtSAZFwf4KPB8A+z/OmRaR+BbpEPLmM/xCqL4P+gUchizPO+eoPDXcclHoOrycpW6s13kfHiGPajVETiyc9A5Ao1ZMEjbOqP/3R0fS8/d9BTKY6VMAPKwRbza+E/bYSN1+hM9ocsHnoaCYLgWbDXqashPNHckVqltmROQaLOM19D/6VUiD+BmEplcIMSe+ekbv8BHVIYXPhe4g3mr0oe8oc/mUOAjwXlf2nn1L898IaFfnclMe+hv3WAF1BdASxyxurF7hkUUgKm2jFQfMhp4Ft19uc0="
     # REGISTRY_TOKEN for yarn cozyPublish script

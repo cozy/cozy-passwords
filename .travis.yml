@@ -30,6 +30,8 @@ before_install:
   - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then eval "$(ssh-agent -s)"; fi
   - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then chmod 600 id_rsa_downcloud_passwords; fi
   - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then ssh-add id_rsa_downcloud_passwords; fi
+before_deploy:
+  - yarn add cozy-app-publish
 deploy:
   - provider: script
     skip_cleanup: true

@@ -10,10 +10,13 @@ branches:
   - /^\d+\.\d+\.\d+(\-beta.\d+)?$/
 env:
   global:
+    - MATTERMOST_CHANNEL: "{"dev":"feat---password-mgr","beta":"feat---password-mgr,publication","stable":"feat---password-mgr,publication"}"
     # GITHUB_TOKEN for yarn deploy script
     - secure: "HvogVX7tAwRIjrQ5/uw3viZgJUkkWZMpfqBk239wpuah+zjJpuuE07xvS0kgusWaJtDqS9vkd4zzu7YYemLPQu0bdkphj44QrJaF4mfqT5pN8SxSrkLD+P7cO6tHJixQlmx/nWczVTZSAgtz9CCjUCeyjC22B4CaOJ469kOuLN5JCOQRGl2S0nbBiQFDjJmkhC2P7YjAY/Xpkk8a0i3FftqD34L0lzRHfiEqQHYvtg87n6kHxW0+KXk2hc3sJbUasU1p2SfrZKUNL9SKJ0XVlLz8/Z87V/sfE8OCMfY5sdzF1L4J08Zk/CEVNflNVm3u4TkzGhL3AqzZDuhry7gcOB3ON8mJ/jq7BS6/MU/gF0N2tsseDCRaHHknn7HfPHvuO9oIRxBUCQ4knabEtSAZFwf4KPB8A+z/OmRaR+BbpEPLmM/xCqL4P+gUchizPO+eoPDXcclHoOrycpW6s13kfHiGPajVETiyc9A5Ao1ZMEjbOqP/3R0fS8/d9BTKY6VMAPKwRbza+E/bYSN1+hM9ocsHnoaCYLgWbDXqashPNHckVqltmROQaLOM19D/6VUiD+BmEplcIMSe+ekbv8BHVIYXPhe4g3mr0oe8oc/mUOAjwXlf2nn1L898IaFfnclMe+hv3WAF1BdASxyxurF7hkUUgKm2jFQfMhp4Ft19uc0="
     # REGISTRY_TOKEN for yarn cozyPublish script
     - secure: "FWpj8hKv6cUgwNYKgmEWk1OG8iKiDbDFDCmZAvP1z3EKMwyRdlN8QMyJhsPmw9z+wE97vDDpJFw42MVKzdKLIHRS3j2Wti3pRFoEBsTJ5u2pmu8U8/jsdbDroQkV+TNmSp5/4HkOpfmmvTDhhaWULG9LQRdA51Lj2P6UYUkyRdbZtTLXCvsc3QOFir2mg9L7CSYjgM0ffUoV++xwUzpt6FcW6fTSBHRB863Jfe3pKn81SS8NyeOSdBIgxnYPc30qZ69a6aQ/hfRyY1wrxtHWtXNokN3cdoXhRoXA2+2e9GEOzkPRgcptffTZJfKfB6xzm9zYGEcKU5SsyBK2Hc4ANsUabkjt12M2zf4KGetMfLhV/k8F/iwiV8xZLmkxGGm0XkejOvXuKqam75cBHITfyFTntVy0L9klFNTF42di3ZvPI+fc4QdFQRFoK0Gkp+jINnD5cKxq4lukFXyk8/Y8EmBTcmogfldN9t/owVEk7ourUnZux3W3Semau30H18SWoOs7hoobhwDdhyoYCqwNpLYs9GiuyDXoLoxkeuWqp8hHQms270pGBFNeLe4mUYZAY6FRp+xjuoRGyWZAzTTrXGn8geHaXdx1E/k8KgJ6YE5Eq7+Sx3Nc+QorMXSLJhIkB4etH4hja0F8nB8Jp2sT5fAvcT1rxKdwYlu75tRza8M="
+    # MATTERMOST_HOOK_URL for yarn cozyPublish script
+    - secure: dqNzH/ztrvk1JSuqG/5YU4GCBdaKjPIw0uPnYc4ln++h4mqmEjLakOqUeUNsiQrbw+usHt358T51SzzkDm8X1l85KcfdYekZlesEZB0x+pWY/d7ao+qp8VHlHjqHz6jwa9Xeio4xL9VTU49vRC8yxkvFFkoCX/4OmePZ3iNKqZXVbuXhtfn4eMf4ONMFc0gSeC+jhertvXySYnhsauA1XALpliL9X5M5aWDTbItpp3jIktc7zqYgv1IaAlYh/Jz62X8HleujvvgZYcwx62p8b/ZvAYjK9NcuCDY8JNpj/5G5h+R+H8M5fwEMkz4gzJEJes8Sx0wcp8twdenchOMcBHmiHWesFchYDI5kZfBe4Tz92oCwJ2kPM3/58suk3e41Y5r8Iz5Gyu0R1lR6jT+wgKaXfCVKkjeTUGtwItHTioAHahVp9ho0YV27fu1+F8uveJ2QEqsLut7Hby325kWoo3fo2p1bffxWIun9u9zp/jrzSfDH8EGRDisOMe969P4Ns+1gNkBpSsRQGkMa4+6CCSB8JR4p7LW0XpT3rwJLk1YBTtws9Ew+5mwvQSQVIWjuSGs6T6afp9fbaX7NnlAL6y820j7p4ra4yuvO5DxxAPxz6MfWNFmpuE4fI/qkNIUk1o8T+wSQGM5wSghhJie3Ptt0V5HUTFoPRwlVUVtV+1g=
 cache:
   yarn: true
   directories:

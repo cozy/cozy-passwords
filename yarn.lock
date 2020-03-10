@@ -3250,10 +3250,10 @@ cosmiconfig@^5.0.0:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
-cozy-app-publish@0.22.1:
-  version "0.22.1"
-  resolved "https://registry.yarnpkg.com/cozy-app-publish/-/cozy-app-publish-0.22.1.tgz#e0b67a0d0aca2489ec1777eb06089bac2418e79a"
-  integrity sha512-gZM34fSDFkdf85gBMz5EEangPG/dx6Y/CDfimWRehkluZNUK3igIAU/HlZdEll5o2xQm6B2pFXXz9tdk+JLCmg==
+cozy-app-publish@^0.22.3:
+  version "0.22.3"
+  resolved "https://registry.yarnpkg.com/cozy-app-publish/-/cozy-app-publish-0.22.3.tgz#4c45d1c3e2d36e4c00707633b1f68ea69b811725"
+  integrity sha512-zLxz0A/sbICa22Ti1Kp//v4zkZg3UIJoDrdfLYrZkFtTO+igL2Q4IqGUjCNCjjm3KsRcdk6aeh1i2fs6fmuZlw==
   dependencies:
     argparse "^1.0.10"
     chalk "2.4.2"
@@ -7852,13 +7852,6 @@ mini-css-extract-plugin@0.7.0:
 minilog@3.1.0, "minilog@https://github.com/cozy/minilog.git#master":
   version "3.1.0"
   resolved "https://github.com/cozy/minilog.git#f01f7d9dfe20981177dd34b9662c2f077d818f82"
-  dependencies:
-    microee "0.0.6"
-
-"minilog@git+https://github.com/cozy/minilog.git#master":
-  version "3.1.0"
-  uid f01f7d9dfe20981177dd34b9662c2f077d818f82
-  resolved "git+https://github.com/cozy/minilog.git#f01f7d9dfe20981177dd34b9662c2f077d818f82"
   dependencies:
     microee "0.0.6"
 

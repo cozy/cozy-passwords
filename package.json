@@ -16,7 +16,7 @@
     "start": "cs start --hot --browser",
     "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozy/cozy-passwords.git}",
     "test": "NODE_ENV=test cs test --verbose",
-    "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN --prepublish downcloud --space default"
+    "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost --space default"
   },
   "repository": {
     "type": "git",
@@ -32,7 +32,6 @@
   "devDependencies": {
     "@testing-library/react": "^9.4.0",
     "babel-preset-cozy-app": "1.7.0",
-    "cozy-app-publish": "0.22.1",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.1",
     "eslint-plugin-prettier": "3.1.1",

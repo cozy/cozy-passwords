@@ -21,6 +21,10 @@ import {
   extensionStatuses
 } from '../helpers/extensionStatus'
 import flag, { FlagSwitcher } from 'cozy-flags'
+import minilog from 'minilog'
+
+window.minilog = minilog
+window.flag = flag
 
 const RedirectIfExtensionInstalledOrConnected = props => {
   const extensionStatus = useExtensionStatus()
@@ -106,7 +110,7 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
                     exact
                     component={ConnectedPage}
                   />
-                  {flag('import-page') ? (
+                  {flag('passwords.import-page') ? (
                     <Route
                       path="/installation/import"
                       exact
@@ -136,8 +140,6 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
 }
 
 const App = withBreakpoints()(DumbApp)
-
-window.flag = flag
 
 /*
   Enable Hot Module Reload using `react-hot-loader` here

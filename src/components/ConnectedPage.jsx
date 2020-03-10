@@ -8,10 +8,20 @@ import { currentBrowser } from '../currentBrowser'
 import chromeIllustration from 'assets/extension-connected-chrome.svg'
 import firefoxIllustration from 'assets/extension-connected-firefox.svg'
 import Help from './Help'
+import { Link } from 'react-router-dom'
 
 const illustrations = {
   chrome: chromeIllustration,
   firefox: firefoxIllustration
+}
+
+const ImportedPageLink = () => {
+  const { t } = useI18n()
+  return (
+    <p>
+      <Link to="/installation/import">{t('Help.import')}</Link>
+    </p>
+  )
 }
 
 const ConnectedPage = () => {
@@ -26,7 +36,10 @@ const ConnectedPage = () => {
             <MainTitle>{t('ConnectedPage.title')}</MainTitle>
             <Text>{t('ConnectedPage.description')}</Text>
           </Stack>
-          <Help />
+          <Stack spacing="l">
+            <ImportedPageLink />
+            <Help />
+          </Stack>
         </Stack>
       </NarrowContent>
     </Wrapper>

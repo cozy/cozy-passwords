@@ -110,13 +110,11 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
                     exact
                     component={ConnectedPage}
                   />
-                  {flag('passwords.import-page') ? (
-                    <Route
-                      path="/installation/import"
-                      exact
-                      component={ImportPage}
-                    />
-                  ) : null}
+                  <Route
+                    path="/installation/import"
+                    exact
+                    component={ImportPage}
+                  />
                   <Redirect from="/" to="/presentation" />
                   <Redirect from="*" to="/presentation" />
                 </Switch>

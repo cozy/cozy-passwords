@@ -56,12 +56,8 @@ const ImportPage = ({ vaultClient }) => {
     }
   }
 
-  const reset = () => {
-    if (fileInput.current) {
-      fileInput.current.value = ''
-    }
-
-    setImportStatus('waiting')
+  const reloadPage = () => {
+    window.location.reload()
   }
 
   return (
@@ -128,7 +124,7 @@ const ImportPage = ({ vaultClient }) => {
               {importStatus === 'imported' || importStatus === 'errored' ? (
                 <Button
                   extension="full"
-                  onClick={reset}
+                  onClick={reloadPage}
                   label={t('ImportPage.modal.close')}
                 />
               ) : null}

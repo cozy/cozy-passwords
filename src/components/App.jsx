@@ -5,7 +5,6 @@ import { Layout, Main, Content } from 'cozy-ui/transpiled/react/Layout'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
-import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 
 import Sidebar from './Sidebar'
 import PresentationPage from './PresentationPage'
@@ -13,7 +12,6 @@ import SecurityPage from './SecurityPage'
 import HintPage from './HintPage'
 import InstallationPage from './InstallationPage'
 import InstalledPage from './InstalledPage'
-import NotAvailablePage from './NotAvailablePage'
 import ConnectedPage from './ConnectedPage'
 import ImportPage from './ImportPage'
 import {
@@ -65,79 +63,70 @@ const RedirectIfExtensionConnected = props => {
   return <Route {...props} />
 }
 
-export const DumbApp = ({ breakpoints: { isDesktop } }) => {
+export const DumbApp = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
       flag('switcher', true)
     }
   }, [])
 
-  if (isDesktop) {
-    return (
-      <MuiCozyTheme>
-        <HashRouter>
-          <Layout>
-            <Sidebar />
-            <Main>
-              <Content>
-                <Switch>
-                  <RedirectIfExtensionInstalledOrConnected
-                    path="/presentation"
-                    component={PresentationPage}
-                  />
-                  <RedirectIfExtensionInstalledOrConnected
-                    path="/security"
-                    exact
-                    component={SecurityPage}
-                  />
-                  <RedirectIfExtensionInstalledOrConnected
-                    path="/security/hint"
-                    exact
-                    component={HintPage}
-                  />
-                  <RedirectIfExtensionInstalledOrConnected
-                    path="/installation"
-                    exact
-                    component={InstallationPage}
-                  />
-                  <RedirectIfExtensionConnected
-                    path="/installation/installed"
-                    exact
-                    component={InstalledPage}
-                  />
-                  <Route
-                    path="/installation/connected"
-                    exact
-                    component={ConnectedPage}
-                  />
-                  <Route
-                    path="/installation/import"
-                    exact
-                    component={ImportPage}
-                  />
-                  <Redirect from="/" to="/presentation" />
-                  <Redirect from="*" to="/presentation" />
-                </Switch>
-              </Content>
-            </Main>
-            <IconSprite />
-            <Alerter />
-            <FlagSwitcher />
-          </Layout>
-        </HashRouter>
-      </MuiCozyTheme>
-    )
-  }
-
   return (
-    <>
-      <NotAvailablePage />
-      <IconSprite />
-    </>
+    <MuiCozyTheme>
+      <HashRouter>
+        <Layout>
+          <Sidebar />
+          <Main>
+            <Content>
+              <Switch>
+                <RedirectIfExtensionInstalledOrConnected
+                  path="/presentation"
+                  component={PresentationPage}
+                />
+                <RedirectIfExtensionInstalledOrConnected
+                  path="/security"
+                  exact
+                  component={SecurityPage}
+                />
+                <RedirectIfExtensionInstalledOrConnected
+                  path="/security/hint"
+                  exact
+                  component={HintPage}
+                />
+                <RedirectIfExtensionInstalledOrConnected
+                  path="/installation"
+                  exact
+                  component={InstallationPage}
+                />
+                <RedirectIfExtensionConnected
+                  path="/installation/installed"
+                  exact
+                  component={InstalledPage}
+                />
+                <Route
+                  path="/installation/connected"
+                  exact
+                  component={ConnectedPage}
+                />
+                <Route
+                  path="/installation/import"
+                  exact
+                  component={ImportPage}
+                />
+                <Redirect from="/" to="/presentation" />
+                <Redirect from="*" to="/presentation" />
+              </Switch>
+            </Content>
+          </Main>
+          <IconSprite />
+          <Alerter />
+          <FlagSwitcher />
+        </Layout>
+      </HashRouter>
+    </MuiCozyTheme>
   )
 }
 
-const App = withBreakpoints()(DumbApp)
+const App = DumbApp
 
 /*
   Enable Hot Module Reload using `react-hot-loader` here

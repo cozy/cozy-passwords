@@ -7,6 +7,7 @@ import CozyClient, { CozyProvider } from 'cozy-client'
 import { VaultProvider } from 'cozy-keys-lib'
 import { render } from 'react-dom'
 import { I18n } from 'cozy-ui/react/I18n'
+import flag from 'cozy-flags'
 
 let appLocale
 const renderApp = function(client) {
@@ -61,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     uri: `${protocol}//${data.cozyDomain}`,
     token: data.cozyToken
   })
+
+  client.registerPlugin(flag.plugin)
 
   // initialize the bar, common of all applications, it allows
   // platform features like apps navigation without doing anything

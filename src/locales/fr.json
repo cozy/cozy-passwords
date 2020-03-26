@@ -55,6 +55,11 @@
     "cta": "Installer l'extension Cozy"
   },
 
+  "InstallationPageMobile": {
+    "title": "Installer l'application Cozy Pass",
+    "description": "Vous permet d'accéder à mots de passe depuis votre mobile, et remplis vos mots de passe automatiquement dans les formulaires. "
+  },
+
   "InstalledPage": {
     "title": "C'est presque fini !",
     "descriptionStart": "Cliquez sur l'icône",

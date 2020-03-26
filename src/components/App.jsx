@@ -20,6 +20,7 @@ import {
 } from '../helpers/extensionStatus'
 import flag, { FlagSwitcher } from 'cozy-flags'
 import minilog from 'minilog'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 window.minilog = minilog
 window.flag = flag
@@ -104,21 +105,23 @@ export const DumbApp = () => {
   }, [])
 
   return (
-    <MuiCozyTheme>
-      <HashRouter>
-        <Layout>
-          <Sidebar />
-          <Main>
-            <Content>
-              <Routes />
-            </Content>
-          </Main>
-          <IconSprite />
-          <Alerter />
-          <FlagSwitcher />
-        </Layout>
-      </HashRouter>
-    </MuiCozyTheme>
+    <BreakpointsProvider>
+      <MuiCozyTheme>
+        <HashRouter>
+          <Layout>
+            <Sidebar />
+            <Main>
+              <Content>
+                <Routes />
+              </Content>
+            </Main>
+            <IconSprite />
+            <Alerter />
+            <FlagSwitcher />
+          </Layout>
+        </HashRouter>
+      </MuiCozyTheme>
+    </BreakpointsProvider>
   )
 }
 

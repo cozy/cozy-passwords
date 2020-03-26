@@ -29,12 +29,13 @@ const appStoreBadges = {
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
+  const color = props.theme === 'primary' ? 'var(--white)' : 'var(--slateGrey)'
   return (
     <ButtonLink
-      {...rest}
-      icon={<Icon icon={icon} size={16} color="var(--slateGrey)" />}
+      icon={<Icon icon={icon} size={16} color={color} />}
       theme="secondary"
       className="u-mb-half"
+      {...rest}
     />
   )
 }
@@ -59,14 +60,9 @@ const PlayStoreButton = props => {
   )
 }
 
-const storeLinksPerOS = {
-  ios: 'https://apps.apple.com/us/app/cozy-pass/id1504487449',
-  android: 'https://play.google.com/store/apps/details?id=io.cozy.pass.mobile'
-}
-
-const AvailablePlatforms = props => {
-  const { t } = useI18n()
+export const InstallNativeAppButton = props => {
   const [isSmartphoneModalOpened, setSmartphoneModalOpened] = useState(false)
+  const mobileOS = isAndroid() ? 'android' : isIOS() ? 'ios' : null
   const handleOpenModal = useCallback(() => {
     setSmartphoneModalOpened(true)
   }, [setSmartphoneModalOpened])
@@ -74,7 +70,34 @@ const AvailablePlatforms = props => {
   const handleDismissModal = useCallback(() => {
     setSmartphoneModalOpened(false)
   }, [setSmartphoneModalOpened])
-  const mobileOS = isAndroid() ? 'android' : isIOS() ? 'ios' : null
+
+  return (
+    <>
+      <PlatformButton
+        icon="phone"
+        href={mobileOS !== null ? storeLinksPerOS[mobileOS] : null}
+        onClick={mobileOS === null ? handleOpenModal : null}
+        {...props}
+      />
+      {isSmartphoneModalOpened ? (
+        <Modal size="small" dismissAction={handleDismissModal}>
+          <ModalContent className="u-ta-center">
+            <AppStoreButton href={storeLinksPerOS.ios} />
+            <PlayStoreButton href={storeLinksPerOS.android} />
+          </ModalContent>
+        </Modal>
+      ) : null}
+    </>
+  )
+}
+
+const storeLinksPerOS = {
+  ios: 'https://apps.apple.com/us/app/cozy-pass/id1504487449',
+  android: 'https://play.google.com/store/apps/details?id=io.cozy.pass.mobile'
+}
+
+const AvailablePlatforms = props => {
+  const { t } = useI18n()
   return (
     <Card {...props}>
       <Stack spacing="m">
@@ -89,11 +112,8 @@ const AvailablePlatforms = props => {
             />
           ))}
           {flag('passwords.app-available') ? (
-            <PlatformButton
-              icon="phone"
+            <InstallNativeAppButton
               label={t('AvailablePlatforms.smartphone')}
-              href={mobileOS !== null ? storeLinksPerOS[mobileOS] : null}
-              onClick={mobileOS === null ? handleOpenModal : null}
             />
           ) : (
             <PlatformButton
@@ -102,15 +122,6 @@ const AvailablePlatforms = props => {
               disabled
             />
           )}
-
-          {isSmartphoneModalOpened ? (
-            <Modal size="small" dismissAction={handleDismissModal}>
-              <ModalContent className="u-ta-center">
-                <AppStoreButton href={storeLinksPerOS.ios} />
-                <PlayStoreButton href={storeLinksPerOS.android} />
-              </ModalContent>
-            </Modal>
-          ) : null}
         </div>
       </Stack>
     </Card>

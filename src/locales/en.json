@@ -55,6 +55,11 @@
     "cta": "Install Cozy extension"
   },
 
+  "InstallationPageMobile": {
+    "title": "Install the Cozy Pass App",
+    "description": "Access your credentials on the go, and automatically fill forms on your mobile."
+  },
+
   "InstalledPage": {
     "title": "It's almost finished!",
     "descriptionStart": "Click on the ",

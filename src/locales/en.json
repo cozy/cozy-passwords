@@ -73,7 +73,8 @@
 
   "AvailablePlatforms": {
     "text": "Find the Cozy extension on the following platforms:",
-    "smartphone": "Smartphone (available soon)"
+    "smartphone": "Smartphone",
+    "smartphone-soon": "Smartphone (available soon)"
   },
 
   "ImportPage": {

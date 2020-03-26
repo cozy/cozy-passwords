@@ -73,7 +73,8 @@
 
   "AvailablePlatforms": {
     "text": "Retrouvez l'extension Cozy sur les plateformes suivantes :",
-    "smartphone": "Smartphone (bientôt disponible)"
+    "smartphone": "Smartphone",
+    "smartphone-soon": "Smartphone (disponible bientôt)"
   },
 
   "ImportPage": {

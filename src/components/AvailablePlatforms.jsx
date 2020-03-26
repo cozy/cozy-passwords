@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import supportedPlatforms from 'supportedPlatforms'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -8,12 +8,7 @@ import { isAndroid, isIOS } from 'cozy-device-helper'
 import Card from 'cozy-ui/transpiled/react/Card'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Text } from 'cozy-ui/transpiled/react/Text'
-import Modal, {
-  ModalTitle,
-  ModalFooter,
-  ModalContent,
-  ModalButtons
-} from 'cozy-ui/transpiled/react/Modal'
+import Modal, { ModalContent } from 'cozy-ui/transpiled/react/Modal'
 
 import playBadgeEn from 'assets/google-play-badge-en.png'
 import playBadgeFr from 'assets/google-play-badge-fr.png'
@@ -72,12 +67,9 @@ const storeLinksPerOS = {
 const AvailablePlatforms = props => {
   const { t } = useI18n()
   const [isSmartphoneModalOpened, setSmartphoneModalOpened] = useState(false)
-  const handleOpenModal = useCallback(
-    ev => {
-      setSmartphoneModalOpened(true)
-    },
-    [setSmartphoneModalOpened]
-  )
+  const handleOpenModal = useCallback(() => {
+    setSmartphoneModalOpened(true)
+  }, [setSmartphoneModalOpened])
 
   const handleDismissModal = useCallback(() => {
     setSmartphoneModalOpened(false)

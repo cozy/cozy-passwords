@@ -63,6 +63,39 @@ const RedirectIfExtensionConnected = props => {
   return <Route {...props} />
 }
 
+const Routes = () => (
+  <Switch>
+    <RedirectIfExtensionInstalledOrConnected
+      path="/presentation"
+      component={PresentationPage}
+    />
+    <RedirectIfExtensionInstalledOrConnected
+      path="/security"
+      exact
+      component={SecurityPage}
+    />
+    <RedirectIfExtensionInstalledOrConnected
+      path="/security/hint"
+      exact
+      component={HintPage}
+    />
+    <RedirectIfExtensionInstalledOrConnected
+      path="/installation"
+      exact
+      component={InstallationPage}
+    />
+    <RedirectIfExtensionConnected
+      path="/installation/installed"
+      exact
+      component={InstalledPage}
+    />
+    <Route path="/installation/connected" exact component={ConnectedPage} />
+    <Route path="/installation/import" exact component={ImportPage} />
+    <Redirect from="/" to="/presentation" />
+    <Redirect from="*" to="/presentation" />
+  </Switch>
+)
+
 export const DumbApp = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
@@ -77,44 +110,7 @@ export const DumbApp = () => {
           <Sidebar />
           <Main>
             <Content>
-              <Switch>
-                <RedirectIfExtensionInstalledOrConnected
-                  path="/presentation"
-                  component={PresentationPage}
-                />
-                <RedirectIfExtensionInstalledOrConnected
-                  path="/security"
-                  exact
-                  component={SecurityPage}
-                />
-                <RedirectIfExtensionInstalledOrConnected
-                  path="/security/hint"
-                  exact
-                  component={HintPage}
-                />
-                <RedirectIfExtensionInstalledOrConnected
-                  path="/installation"
-                  exact
-                  component={InstallationPage}
-                />
-                <RedirectIfExtensionConnected
-                  path="/installation/installed"
-                  exact
-                  component={InstalledPage}
-                />
-                <Route
-                  path="/installation/connected"
-                  exact
-                  component={ConnectedPage}
-                />
-                <Route
-                  path="/installation/import"
-                  exact
-                  component={ImportPage}
-                />
-                <Redirect from="/" to="/presentation" />
-                <Redirect from="*" to="/presentation" />
-              </Switch>
+              <Routes />
             </Content>
           </Main>
           <IconSprite />

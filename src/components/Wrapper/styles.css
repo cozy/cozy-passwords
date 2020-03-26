@@ -8,4 +8,5 @@
   padding-right: 1rem;
   text-align: center;
   align-items: center;
+  box-sizing: border-box;
 }

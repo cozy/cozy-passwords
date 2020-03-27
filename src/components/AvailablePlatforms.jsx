@@ -8,7 +8,11 @@ import { isAndroid, isIOS } from 'cozy-device-helper'
 import Card from 'cozy-ui/transpiled/react/Card'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Text } from 'cozy-ui/transpiled/react/Text'
-import Modal, { ModalContent } from 'cozy-ui/transpiled/react/Modal'
+
+import Dialog from 'cozy-ui/transpiled/react/Labs/ExperimentalDialog'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogCloseButton from 'cozy-ui/transpiled/react/MuiCozyTheme/Dialog/DialogCloseButton'
+
 import { AppStoreButton, PlayStoreButton } from './StoreButtons'
 
 import flag from 'cozy-flags'
@@ -46,12 +50,15 @@ export const InstallNativeAppButton = props => {
         {...props}
       />
       {isSmartphoneModalOpened ? (
-        <Modal size="small" dismissAction={handleDismissModal}>
-          <ModalContent className="u-ta-center">
-            <AppStoreButton href={storeLinksPerOS.ios} />
-            <PlayStoreButton href={storeLinksPerOS.android} />
-          </ModalContent>
-        </Modal>
+        <Dialog open={isSmartphoneModalOpened} onClose={handleDismissModal}>
+          <DialogCloseButton onClick={() => handleDismissModal()} />
+          <DialogContent className="u-flex u-flex-column u-flex-justify-center">
+            <div className="u-ta-center">
+              <AppStoreButton href={storeLinksPerOS.ios} />
+              <PlayStoreButton href={storeLinksPerOS.android} />
+            </div>
+          </DialogContent>
+        </Dialog>
       ) : null}
     </>
   )

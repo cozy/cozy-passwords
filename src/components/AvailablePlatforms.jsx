@@ -9,23 +9,9 @@ import Card from 'cozy-ui/transpiled/react/Card'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Text } from 'cozy-ui/transpiled/react/Text'
 import Modal, { ModalContent } from 'cozy-ui/transpiled/react/Modal'
+import { AppStoreButton, PlayStoreButton } from './StoreButtons'
 
-import playBadgeEn from 'assets/google-play-badge-en.png'
-import playBadgeFr from 'assets/google-play-badge-fr.png'
-
-import appStoreBadgeEn from 'assets/app-store-badge-en.png'
-import appStoreBadgeFr from 'assets/app-store-badge-fr.png'
 import flag from 'cozy-flags'
-
-const playStoreBadges = {
-  en: playBadgeEn,
-  fr: playBadgeFr
-}
-
-const appStoreBadges = {
-  en: appStoreBadgeEn,
-  fr: appStoreBadgeFr
-}
 
 const PlatformButton = props => {
   const { icon, ...rest } = props
@@ -37,26 +23,6 @@ const PlatformButton = props => {
       className="u-mb-half"
       {...rest}
     />
-  )
-}
-
-const AppStoreButton = props => {
-  const { lang } = useI18n()
-  const badge = appStoreBadges[lang] || appStoreBadges.en
-  return (
-    <a {...props}>
-      <img src={badge} style={{ height: '3rem', marginRight: '0.5rem' }} />
-    </a>
-  )
-}
-
-const PlayStoreButton = props => {
-  const { lang } = useI18n()
-  const badge = playStoreBadges[lang] || playStoreBadges.en
-  return (
-    <a {...props}>
-      <img src={badge} style={{ height: '3rem' }} />
-    </a>
   )
 }
 

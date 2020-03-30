@@ -16,9 +16,41 @@ import supportedPlatforms from 'supportedPlatforms'
 import cx from 'classnames'
 import { isSupportedBrowser, browserName } from 'currentBrowser'
 import VerticallyCentered from './VerticallyCentered'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+
+const Section1 = () => {
+  const { t } = useI18n()
+  return (
+    <Stack spacing="s">
+      <CircleIcon icon="lock" size={32} color="var(--slateGrey)" />
+      <Text tag="p">{t('PresentationPage.item1')}</Text>
+    </Stack>
+  )
+}
+
+const Section2 = () => {
+  const { t } = useI18n()
+  return (
+    <Stack spacing="s">
+      <CircleIcon icon="password" size={32} color="var(--slateGrey)" />
+      <Text tag="p">{t('PresentationPage.item2')}</Text>
+    </Stack>
+  )
+}
+
+const Section3 = () => {
+  const { t } = useI18n()
+  return (
+    <Stack spacing="s">
+      <CircleIcon icon="to-the-cloud" size={32} color="var(--slateGrey)" />
+      <Text tag="p">{t('PresentationPage.item3')}</Text>
+    </Stack>
+  )
+}
 
 const PresentationPage = () => {
   const { t } = useI18n()
+  const { isMobile } = useBreakpoints()
 
   return (
     <VerticallyCentered>
@@ -31,36 +63,25 @@ const PresentationPage = () => {
             <Stack spacing="m">
               <Card>
                 <Grid container spacing={24}>
-                  <Grid item xs={4}>
-                    <Stack spacing="s">
-                      <CircleIcon
-                        icon="lock"
-                        size={32}
-                        color="var(--slateGrey)"
-                      />
-                      <Text tag="p">{t('PresentationPage.item1')}</Text>
-                    </Stack>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <Stack spacing="s">
-                      <CircleIcon
-                        icon="password"
-                        size={32}
-                        color="var(--slateGrey)"
-                      />
-                      <Text tag="p">{t('PresentationPage.item2')}</Text>
-                    </Stack>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <Stack spacing="s">
-                      <CircleIcon
-                        icon="to-the-cloud"
-                        size={32}
-                        color="var(--slateGrey)"
-                      />
-                      <Text tag="p">{t('PresentationPage.item3')}</Text>
-                    </Stack>
-                  </Grid>
+                  {isMobile ? (
+                    <>
+                      <Section1 />
+                      <Section2 />
+                      <Section3 />
+                    </>
+                  ) : (
+                    <>
+                      <Grid item xs={4}>
+                        <Section1 />
+                      </Grid>
+                      <Grid item xs={4}>
+                        <Section2 />
+                      </Grid>
+                      <Grid item xs={4}>
+                        <Section3 />
+                      </Grid>
+                    </>
+                  )}
                 </Grid>
               </Card>
               {!isSupportedBrowser ? (

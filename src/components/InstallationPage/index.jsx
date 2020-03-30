@@ -14,6 +14,8 @@ import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
 import supportedPlatforms from 'supportedPlatforms'
 import VerticallyCentered from '../VerticallyCentered'
+import { InstallNativeAppButton } from '../AvailablePlatforms'
+import { isMobile } from 'cozy-device-helper'
 
 const browser = detectBrowser()
 
@@ -22,67 +24,79 @@ const DumbInstallationPage = props => {
   const { t } = useI18n()
   const cozyURL = new URL(client.getStackClient().uri)
 
+  const isNativeMobile = isMobile()
   return (
     <VerticallyCentered>
       <Wrapper>
         <NarrowContent>
-          <Stack spacing="xxl">
+          {isNativeMobile ? (
             <Stack spacing="m">
-              <img src={browserExtensionIcon} alt="" />
-              <MainTitle>{t('InstallationPage.title')}</MainTitle>
-              <Text>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: snarkdown(
-                      t('InstallationPage.descriptionStart', {
-                        address: cozyURL.host
-                      })
-                    )
-                  }}
-                />{' '}
-                <WithCozyIcon>
-                  {t('InstallationPage.cozyExtension')}
-                </WithCozyIcon>{' '}
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: snarkdown(
-                      t('InstallationPage.descriptionEnd', {
-                        address: cozyURL.host
-                      })
-                    )
-                  }}
-                />
-              </Text>
+              <MainTitle>{t('InstallationPageMobile.title')}</MainTitle>
+              <Text>{t('InstallationPageMobile.description')}</Text>
+              <InstallNativeAppButton
+                label={'Install the app'}
+                theme="primary"
+              />
             </Stack>
-            <Card className="u-ta-left">
-              <OrderedList className="u-mv-0">
-                <ListItem>
-                  {t(`InstallationPage.step1.${browser.name}`)}
-                </ListItem>
-                <ListItem
-                  dangerouslySetInnerHTML={{
-                    __html: snarkdown(
-                      t(`InstallationPage.step2.${browser.name}`)
-                    )
-                  }}
-                />
-                <ListItem
-                  dangerouslySetInnerHTML={{
-                    __html: snarkdown(
-                      t('InstallationPage.step3', { address: cozyURL.host })
-                    )
-                  }}
-                />
-              </OrderedList>
-            </Card>
-            <ButtonLink
-              href={supportedPlatforms[browser.name].storeUrl}
-              target="_blank"
-              label={t('InstallationPage.cta')}
-              extension="full"
-              className="u-mt-2-half"
-            />
-          </Stack>
+          ) : (
+            <Stack spacing="xxl">
+              <Stack spacing="m">
+                <img src={browserExtensionIcon} alt="" />
+                <MainTitle>{t('InstallationPage.title')}</MainTitle>
+                <Text>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: snarkdown(
+                        t('InstallationPage.descriptionStart', {
+                          address: cozyURL.host
+                        })
+                      )
+                    }}
+                  />{' '}
+                  <WithCozyIcon>
+                    {t('InstallationPage.cozyExtension')}
+                  </WithCozyIcon>{' '}
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: snarkdown(
+                        t('InstallationPage.descriptionEnd', {
+                          address: cozyURL.host
+                        })
+                      )
+                    }}
+                  />
+                </Text>
+              </Stack>
+              <Card className="u-ta-left">
+                <OrderedList className="u-mv-0">
+                  <ListItem>
+                    {t(`InstallationPage.step1.${browser.name}`)}
+                  </ListItem>
+                  <ListItem
+                    dangerouslySetInnerHTML={{
+                      __html: snarkdown(
+                        t(`InstallationPage.step2.${browser.name}`)
+                      )
+                    }}
+                  />
+                  <ListItem
+                    dangerouslySetInnerHTML={{
+                      __html: snarkdown(
+                        t('InstallationPage.step3', { address: cozyURL.host })
+                      )
+                    }}
+                  />
+                </OrderedList>
+              </Card>
+              <ButtonLink
+                href={supportedPlatforms[browser.name].storeUrl}
+                target="_blank"
+                label={t('InstallationPage.cta')}
+                extension="full"
+                className="u-mt-2-half"
+              />
+            </Stack>
+          )}
         </NarrowContent>
       </Wrapper>
     </VerticallyCentered>

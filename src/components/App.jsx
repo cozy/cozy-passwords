@@ -5,7 +5,6 @@ import { Layout, Main, Content } from 'cozy-ui/transpiled/react/Layout'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
-import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 
 import Sidebar from './Sidebar'
 import PresentationPage from './PresentationPage'
@@ -13,7 +12,6 @@ import SecurityPage from './SecurityPage'
 import HintPage from './HintPage'
 import InstallationPage from './InstallationPage'
 import InstalledPage from './InstalledPage'
-import NotAvailablePage from './NotAvailablePage'
 import ConnectedPage from './ConnectedPage'
 import ImportPage from './ImportPage'
 import {
@@ -22,6 +20,7 @@ import {
 } from '../helpers/extensionStatus'
 import flag, { FlagSwitcher } from 'cozy-flags'
 import minilog from 'minilog'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 window.minilog = minilog
 window.flag = flag
@@ -65,59 +64,55 @@ const RedirectIfExtensionConnected = props => {
   return <Route {...props} />
 }
 
-export const DumbApp = ({ breakpoints: { isDesktop } }) => {
+const Routes = () => (
+  <Switch>
+    <RedirectIfExtensionInstalledOrConnected
+      path="/presentation"
+      component={PresentationPage}
+    />
+    <RedirectIfExtensionInstalledOrConnected
+      path="/security"
+      exact
+      component={SecurityPage}
+    />
+    <RedirectIfExtensionInstalledOrConnected
+      path="/security/hint"
+      exact
+      component={HintPage}
+    />
+    <RedirectIfExtensionInstalledOrConnected
+      path="/installation"
+      exact
+      component={InstallationPage}
+    />
+    <RedirectIfExtensionConnected
+      path="/installation/installed"
+      exact
+      component={InstalledPage}
+    />
+    <Route path="/installation/connected" exact component={ConnectedPage} />
+    <Route path="/installation/import" exact component={ImportPage} />
+    <Redirect from="/" to="/presentation" />
+    <Redirect from="*" to="/presentation" />
+  </Switch>
+)
+
+export const DumbApp = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
       flag('switcher', true)
     }
   }, [])
 
-  if (isDesktop) {
-    return (
+  return (
+    <BreakpointsProvider>
       <MuiCozyTheme>
         <HashRouter>
           <Layout>
             <Sidebar />
             <Main>
               <Content>
-                <Switch>
-                  <RedirectIfExtensionInstalledOrConnected
-                    path="/presentation"
-                    component={PresentationPage}
-                  />
-                  <RedirectIfExtensionInstalledOrConnected
-                    path="/security"
-                    exact
-                    component={SecurityPage}
-                  />
-                  <RedirectIfExtensionInstalledOrConnected
-                    path="/security/hint"
-                    exact
-                    component={HintPage}
-                  />
-                  <RedirectIfExtensionInstalledOrConnected
-                    path="/installation"
-                    exact
-                    component={InstallationPage}
-                  />
-                  <RedirectIfExtensionConnected
-                    path="/installation/installed"
-                    exact
-                    component={InstalledPage}
-                  />
-                  <Route
-                    path="/installation/connected"
-                    exact
-                    component={ConnectedPage}
-                  />
-                  <Route
-                    path="/installation/import"
-                    exact
-                    component={ImportPage}
-                  />
-                  <Redirect from="/" to="/presentation" />
-                  <Redirect from="*" to="/presentation" />
-                </Switch>
+                <Routes />
               </Content>
             </Main>
             <IconSprite />
@@ -126,18 +121,11 @@ export const DumbApp = ({ breakpoints: { isDesktop } }) => {
           </Layout>
         </HashRouter>
       </MuiCozyTheme>
-    )
-  }
-
-  return (
-    <>
-      <NotAvailablePage />
-      <IconSprite />
-    </>
+    </BreakpointsProvider>
   )
 }
 
-const App = withBreakpoints()(DumbApp)
+const App = DumbApp
 
 /*
   Enable Hot Module Reload using `react-hot-loader` here

@@ -1,10 +1,8 @@
 import React from 'react'
-import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import Button from 'cozy-ui/transpiled/react/Button'
 import Stack from 'cozy-ui/transpiled/react/Stack'
-import { MainTitle, Text, SubTitle } from 'cozy-ui/transpiled/react/Text'
+import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Card from 'cozy-ui/transpiled/react/Card'
-import Infos from 'cozy-ui/transpiled/react/Infos'
-import Icon from 'cozy-ui/transpiled/react/Icon'
 import Grid from 'cozy-ui/transpiled/react/MuiCozyTheme/Grid'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -12,9 +10,6 @@ import { Link } from 'react-router-dom'
 import importPasswordsIcon from 'assets/import-passwords.svg'
 import CircleIcon from 'components/CircleIcon'
 import Wrapper from 'components/Wrapper'
-import supportedPlatforms from 'supportedPlatforms'
-import cx from 'classnames'
-import { isSupportedBrowser, browserName } from 'currentBrowser'
 import VerticallyCentered from './VerticallyCentered'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
@@ -84,57 +79,15 @@ const PresentationPage = () => {
                   )}
                 </Grid>
               </Card>
-              {!isSupportedBrowser ? (
-                <Infos
-                  className="u-ta-left"
-                  theme="danger"
-                  description={
-                    <>
-                      <SubTitle className="u-pomegranate">
-                        {t('PresentationPage.notSupportedInfos.title', {
-                          browser: browserName
-                        })}
-                      </SubTitle>
-                      <Text>
-                        {t('PresentationPage.notSupportedInfos.description', {
-                          browser: browserName
-                        })}
-                      </Text>
-                    </>
-                  }
-                  action={Object.entries(supportedPlatforms).map(
-                    ([platform, infos], index) => (
-                      <ButtonLink
-                        key={platform}
-                        href={infos.storeUrl}
-                        icon={
-                          <Icon
-                            icon={`browser-${platform}`}
-                            size={16}
-                            color="var(--slateGrey)"
-                          />
-                        }
-                        theme="secondary"
-                        label={infos.label}
-                        className={cx({
-                          'u-ml-0': index === 0
-                        })}
-                      />
-                    )
-                  )}
-                />
-              ) : null}
             </Stack>
-            {isSupportedBrowser ? (
-              <NarrowContent className="u-mh-auto">
-                <Button
-                  to="/security"
-                  label={t('PresentationPage.cta')}
-                  tag={Link}
-                  extension="full"
-                />
-              </NarrowContent>
-            ) : null}
+            <NarrowContent className="u-mh-auto">
+              <Button
+                to="/security"
+                label={t('PresentationPage.cta')}
+                tag={Link}
+                extension="full"
+              />
+            </NarrowContent>
           </Stack>
         </Stack>
       </Wrapper>

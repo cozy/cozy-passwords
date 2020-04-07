@@ -15,8 +15,6 @@ import DialogCloseButton from 'cozy-ui/transpiled/react/MuiCozyTheme/Dialog/Dial
 
 import { AppStoreButton, PlayStoreButton } from './StoreButtons'
 
-import flag from 'cozy-flags'
-
 const PlatformButton = props => {
   const { icon, ...rest } = props
   const color = props.theme === 'primary' ? 'var(--white)' : 'var(--slateGrey)'
@@ -84,17 +82,7 @@ const AvailablePlatforms = props => {
               label={infos.label}
             />
           ))}
-          {flag('passwords.app-available') ? (
-            <InstallNativeAppButton
-              label={t('AvailablePlatforms.smartphone')}
-            />
-          ) : (
-            <PlatformButton
-              icon="phone"
-              label={t('AvailablePlatforms.smartphone-soon')}
-              disabled
-            />
-          )}
+          <InstallNativeAppButton label={t('AvailablePlatforms.smartphone')} />
         </div>
       </Stack>
     </Card>

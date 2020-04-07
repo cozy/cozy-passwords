@@ -57,7 +57,8 @@
 
   "InstallationPageMobile": {
     "title": "Install the Cozy Pass App",
-    "description": "Access your credentials on the go, and automatically fill forms on your mobile."
+    "description": "Access your credentials on the go, and automatically fill forms on your mobile.",
+    "installApp": "Install the app"
   },
 
   "InstalledPage": {

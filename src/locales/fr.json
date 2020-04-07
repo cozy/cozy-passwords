@@ -57,7 +57,8 @@
 
   "InstallationPageMobile": {
     "title": "Installer l'application Cozy Pass",
-    "description": "Vous permet d'accéder à mots de passe depuis votre mobile, et remplis vos mots de passe automatiquement dans les formulaires. "
+    "description": "Vous permet d'accéder à mots de passe depuis votre mobile, et remplis vos mots de passe automatiquement dans les formulaires.",
+    "installApp": "Installer l'application"
   },
 
   "InstalledPage": {

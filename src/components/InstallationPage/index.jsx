@@ -34,7 +34,7 @@ const DumbInstallationPage = props => {
               <MainTitle>{t('InstallationPageMobile.title')}</MainTitle>
               <Text>{t('InstallationPageMobile.description')}</Text>
               <InstallNativeAppButton
-                label={'Install the app'}
+                label={t('InstallationPageMobile.installApp')}
                 theme="primary"
               />
             </Stack>

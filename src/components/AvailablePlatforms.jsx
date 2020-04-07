@@ -63,7 +63,7 @@ export const InstallNativeAppButton = props => {
 }
 
 const storeLinksPerOS = {
-  ios: 'https://apps.apple.com/us/app/cozy-pass/id1504487449',
+  ios: 'https://apps.apple.com/fr/app/cozy-pass/id1502262449',
   android: 'https://play.google.com/store/apps/details?id=io.cozy.pass'
 }
 

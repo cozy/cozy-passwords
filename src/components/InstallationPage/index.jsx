@@ -24,6 +24,8 @@ const DumbInstallationPage = props => {
   const { t } = useI18n()
   const cozyURL = new URL(client.getStackClient().uri)
 
+  const platform = supportedPlatforms[browser.name] || {}
+  const storeURL = platform.storeUrl
   const isNativeMobile = isMobile()
   return (
     <VerticallyCentered>
@@ -89,7 +91,7 @@ const DumbInstallationPage = props => {
                 </OrderedList>
               </Card>
               <ButtonLink
-                href={supportedPlatforms[browser.name].storeUrl}
+                href={storeURL}
                 target="_blank"
                 label={t('InstallationPage.cta')}
                 extension="full"

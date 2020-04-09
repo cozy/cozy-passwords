@@ -71,9 +71,13 @@ const DumbInstallationPage = props => {
               </Stack>
               <Card className="u-ta-left">
                 <OrderedList className="u-mv-0">
-                  <ListItem>
-                    {t(`InstallationPage.step1.${browser.name}`)}
-                  </ListItem>
+                  <ListItem
+                    dangerouslySetInnerHTML={{
+                      __html: snarkdown(
+                        t(`InstallationPage.step1.${browser.name}`)
+                      )
+                    }}
+                  />
                   <ListItem
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(

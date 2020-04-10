@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
-import supportedPlatforms from 'supportedPlatforms'
+import getSupportedPlatforms from 'supportedPlatforms'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { isAndroid, isIOS } from 'cozy-device-helper'
@@ -69,6 +69,7 @@ const storeLinksPerOS = {
 
 const AvailablePlatforms = props => {
   const { t } = useI18n()
+  const supportedPlatforms = getSupportedPlatforms()
   return (
     <Card {...props}>
       <Stack spacing="m">

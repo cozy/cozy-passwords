@@ -12,7 +12,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { withClient } from 'cozy-client'
 import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
-import supportedPlatforms from 'supportedPlatforms'
+import getSupportedPlatforms from 'supportedPlatforms'
 import VerticallyCentered from '../VerticallyCentered'
 import { InstallNativeAppButton } from '../AvailablePlatforms'
 import { isMobile } from 'cozy-device-helper'
@@ -24,6 +24,9 @@ const DumbInstallationPage = props => {
   const { t } = useI18n()
   const cozyURL = new URL(client.getStackClient().uri)
 
+  const supportedPlatforms = getSupportedPlatforms()
+  const platform = supportedPlatforms[browser.name] || {}
+  const storeURL = platform.storeUrl
   const isNativeMobile = isMobile()
   return (
     <VerticallyCentered>
@@ -69,9 +72,13 @@ const DumbInstallationPage = props => {
               </Stack>
               <Card className="u-ta-left">
                 <OrderedList className="u-mv-0">
-                  <ListItem>
-                    {t(`InstallationPage.step1.${browser.name}`)}
-                  </ListItem>
+                  <ListItem
+                    dangerouslySetInnerHTML={{
+                      __html: snarkdown(
+                        t(`InstallationPage.step1.${browser.name}`)
+                      )
+                    }}
+                  />
                   <ListItem
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(
@@ -89,7 +96,7 @@ const DumbInstallationPage = props => {
                 </OrderedList>
               </Card>
               <ButtonLink
-                href={supportedPlatforms[browser.name].storeUrl}
+                href={storeURL}
                 target="_blank"
                 label={t('InstallationPage.cta')}
                 extension="full"

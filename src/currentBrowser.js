@@ -3,7 +3,7 @@ import capitalize from 'lodash/capitalize'
 import { isSupportedPlatform } from 'supportedPlatforms'
 
 export const currentBrowser = detectBrowser()
-export const isSupportedBrowser = isSupportedPlatform(currentBrowser.name)
+export const isSupportedBrowser = () => isSupportedPlatform(currentBrowser.name)
 
 const normalizedBrowserNames = {
   ios: 'iOS'

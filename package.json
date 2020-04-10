@@ -1,6 +1,6 @@
 {
   "name": "cozy-passwords",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "scripts": {
     "tx": "tx pull --all || true",
     "lint": "yarn lint:js && yarn lint:styles",
@@ -14,7 +14,7 @@
     "watch:browser": "cs watch --browser",
     "watch:mobile": "cs watch --mobile",
     "start": "cs start --hot --browser",
-    "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozy/cozy-passwords.git}",
+    "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-origin}",
     "test": "NODE_ENV=test cs test --verbose",
     "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost --space default"
   },

@@ -15,7 +15,7 @@ import VerticallyCentered from './VerticallyCentered'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import Infos from 'cozy-ui/transpiled/react/Infos'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import supportedPlatforms from 'supportedPlatforms'
+import getSupportedPlatforms from 'supportedPlatforms'
 import { isSupportedBrowser, browserName } from 'currentBrowser'
 
 const Section1 = () => {
@@ -50,6 +50,7 @@ const Section3 = () => {
 
 const UnsupportedBrowser = () => {
   const { t } = useI18n()
+  const supportedPlatforms = getSupportedPlatforms()
   return (
     <Infos
       className="u-ta-left"
@@ -95,7 +96,6 @@ const UnsupportedBrowser = () => {
 const PresentationPage = () => {
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
-
   return (
     <VerticallyCentered>
       <Wrapper>
@@ -128,9 +128,9 @@ const PresentationPage = () => {
                   )}
                 </Grid>
               </Card>
-              {!isSupportedBrowser ? <UnsupportedBrowser /> : null}
+              {!isSupportedBrowser() ? <UnsupportedBrowser /> : null}
             </Stack>
-            {isSupportedBrowser ? (
+            {isSupportedBrowser() ? (
               <NarrowContent className="u-mh-auto">
                 <Button
                   to="/security"

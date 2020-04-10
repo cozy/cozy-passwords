@@ -12,7 +12,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { withClient } from 'cozy-client'
 import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
-import supportedPlatforms from 'supportedPlatforms'
+import getSupportedPlatforms from 'supportedPlatforms'
 import VerticallyCentered from '../VerticallyCentered'
 import { InstallNativeAppButton } from '../AvailablePlatforms'
 import { isMobile } from 'cozy-device-helper'
@@ -24,6 +24,7 @@ const DumbInstallationPage = props => {
   const { t } = useI18n()
   const cozyURL = new URL(client.getStackClient().uri)
 
+  const supportedPlatforms = getSupportedPlatforms()
   const platform = supportedPlatforms[browser.name] || {}
   const storeURL = platform.storeUrl
   const isNativeMobile = isMobile()

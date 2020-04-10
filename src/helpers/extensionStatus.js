@@ -14,7 +14,7 @@ export const extensionStatuses = {
  */
 export const useExtensionStatus = () => {
   const [status, setStatus] = useState(extensionStatuses.notInstalled)
-  const extensionCheckDisabled = useFlag('extension-check-disabled')
+  const extensionCheckDisabled = useFlag('passwords.extension-check-disabled')
 
   useEffect(() => {
     if (extensionCheckDisabled) {

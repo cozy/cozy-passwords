@@ -9,6 +9,7 @@ import chromeIllustration from 'assets/extension-connected-chrome.svg'
 import firefoxIllustration from 'assets/extension-connected-firefox.svg'
 import Help from './Help'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import BarTitle from 'BarTitle'
 
 const illustrations = {
   chrome: chromeIllustration,
@@ -31,6 +32,7 @@ const ConnectedPage = () => {
 
   return (
     <Wrapper>
+      <BarTitle>{t('Nav.installation')}</BarTitle>
       <NarrowContent>
         <Stack spacing="xxl">
           <img src={illustrations[currentBrowser.name]} alt="" />

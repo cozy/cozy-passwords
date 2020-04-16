@@ -16,6 +16,7 @@ import getSupportedPlatforms from 'supportedPlatforms'
 import VerticallyCentered from '../VerticallyCentered'
 import { InstallNativeAppButton } from '../AvailablePlatforms'
 import { isMobile } from 'cozy-device-helper'
+import BarTitle from 'BarTitle'
 
 const browser = detectBrowser()
 
@@ -30,6 +31,7 @@ const DumbInstallationPage = props => {
   const isNativeMobile = isMobile()
   return (
     <VerticallyCentered>
+      <BarTitle>{t('Nav.installation')}</BarTitle>
       <Wrapper>
         <NarrowContent>
           {isNativeMobile ? (

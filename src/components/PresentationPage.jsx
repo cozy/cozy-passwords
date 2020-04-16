@@ -17,6 +17,7 @@ import Infos from 'cozy-ui/transpiled/react/Infos'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import getSupportedPlatforms from 'supportedPlatforms'
 import { isSupportedBrowser, browserName } from 'currentBrowser'
+import BarTitle from 'BarTitle'
 
 const Section1 = () => {
   const { t } = useI18n()
@@ -98,6 +99,7 @@ const PresentationPage = () => {
   const { isMobile } = useBreakpoints()
   return (
     <VerticallyCentered>
+      <BarTitle>{t('Nav.presentation')}</BarTitle>
       <Wrapper>
         <Stack>
           <img src={importPasswordsIcon} alt="" />

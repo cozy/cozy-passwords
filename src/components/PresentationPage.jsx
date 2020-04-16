@@ -69,8 +69,9 @@ const UnsupportedBrowser = () => {
           </Text>
         </>
       }
-      action={Object.entries(supportedPlatforms).map(
-        ([platform, infos], index) => (
+      action={Object.entries(supportedPlatforms)
+        .filter(([, infos]) => infos.type === 'browser')
+        .map(([platform, infos], index) => (
           <ButtonLink
             key={platform}
             href={infos.storeUrl}
@@ -87,8 +88,7 @@ const UnsupportedBrowser = () => {
               'u-ml-0': index === 0
             })}
           />
-        )
-      )}
+        ))}
     />
   )
 }

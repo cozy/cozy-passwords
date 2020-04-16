@@ -4,7 +4,7 @@
   "slug": "passwords",
   "icon": "icon.svg",
   "categories": ["cozy"],
-  "version": "0.3.7",
+  "version": "0.3.8",
   "licence": "AGPL-3.0",
   "editor": "cozy",
   "source": "registry://passwords/stable",

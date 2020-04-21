@@ -19,26 +19,6 @@ jest.mock('detect-browser')
 jest.mock('cozy-ui/transpiled/react/helpers/withBreakpoints')
 jest.mock('../helpers/extensionStatus')
 
-// See https://testing-library.com/docs/example-react-router
-function renderWithRouter(
-  ui,
-  {
-    route = '/',
-    history = createMemoryHistory({ initialEntries: [route] })
-  } = {}
-) {
-  const Wrapper = ({ children }) => (
-    <Router history={history}>{children}</Router>
-  )
-  return {
-    ...render(ui, { wrapper: Wrapper }),
-    // adding `history` to the returned utilities to allow us
-    // to reference it in our tests (just try to avoid using
-    // this to test implementation details).
-    history
-  }
-}
-
 describe('App', () => {
   afterEach(() => {
     useExtensionStatus.mockReset()
@@ -58,32 +38,7 @@ describe('App', () => {
 
       expect(getByText('Stop losing your passwords')).toBeDefined()
       expect(getByText(/let's go/i)).toBeDefined()
-    })
-  })
 
-  describe('when extension is installed', () => {
-    beforeEach(() => {
-      useExtensionStatus.mockReturnValue(extensionStatuses.installed)
-    })
-
-    // Disabled this test since it should pass, but it doesn't and I can't find
-    // why for now
-    xit('should redirect to /installation/installed', async () => {
-      const { history } = renderWithRouter(<App />)
-      expect(history.location.pathname).toBe('/installation/installed')
-    })
-  })
-
-  describe('when extension is connected', () => {
-    beforeEach(() => {
-      useExtensionStatus.mockReturnValue(extensionStatuses.connected)
-    })
-
-    // Disabled this test since it should pass, but it doesn't and I can't find
-    // why for now
-    xit('should redirect to /installation/connected', async () => {
-      const { history } = renderWithRouter(<App />)
-      expect(history.location.pathname).toBe('/installation/connected')
     })
   })
 })

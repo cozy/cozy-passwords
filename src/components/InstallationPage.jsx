@@ -1,18 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { BitwardenSettingsContext } from '../bitwarden-settings'
-import {
-  useExtensionStatus,
-  extensionStatuses
-} from '../helpers/extensionStatus'
+
 import { useClient } from 'cozy-client'
 import { useParams } from 'react-router'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import PresentationStep from './PresentationStep'
 import SecurityStep from './SecurityStep'
 import HintStep from './HintStep'
-import InstallationStep from './InstallationStep'
-import InstalledStep from './InstalledStep'
-import ConnectedStep from './ConnectedStep'
+import ConfigureExtensionStep from './ConfigureExtensionStep'
+
 import BarTitle from 'BarTitle'
 import { fetchHint } from '../hint'
 import Stepper from '@material-ui/core/Stepper'
@@ -37,17 +33,6 @@ const STEPS = {
   security: 1,
   hint: 2,
   configureExtension: 3
-}
-
-const ConfigureExtensionStep = ({ onConnected }) => {
-  const extensionStatus = useExtensionStatus()
-  if (extensionStatus == extensionStatuses.installed) {
-    return <InstalledStep onConnected={onConnected} />
-  } else if (extensionStatus === extensionStatuses.connected) {
-    return <ConnectedStep />
-  } else {
-    return <InstallationStep />
-  }
 }
 
 function getStepContent(step, setActiveStep, { hasHint }) {

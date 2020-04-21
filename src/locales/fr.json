@@ -2,7 +2,8 @@
   "Nav": {
     "presentation": "Présentation",
     "security": "Sécurité",
-    "installation": "Installation"
+    "installation": "Installation",
+    "import": "Import"
   },
 
   "PresentationPage": {

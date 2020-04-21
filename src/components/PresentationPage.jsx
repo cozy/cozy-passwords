@@ -17,6 +17,7 @@ import Infos from 'cozy-ui/transpiled/react/Infos'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import getSupportedPlatforms from 'supportedPlatforms'
 import { isSupportedBrowser, browserName } from 'currentBrowser'
+import BarTitle from 'BarTitle'
 
 const Section1 = () => {
   const { t } = useI18n()
@@ -69,8 +70,9 @@ const UnsupportedBrowser = () => {
           </Text>
         </>
       }
-      action={Object.entries(supportedPlatforms).map(
-        ([platform, infos], index) => (
+      action={Object.entries(supportedPlatforms)
+        .filter(([, infos]) => infos.type === 'browser')
+        .map(([platform, infos], index) => (
           <ButtonLink
             key={platform}
             href={infos.storeUrl}
@@ -87,8 +89,7 @@ const UnsupportedBrowser = () => {
               'u-ml-0': index === 0
             })}
           />
-        )
-      )}
+        ))}
     />
   )
 }
@@ -98,6 +99,7 @@ const PresentationPage = () => {
   const { isMobile } = useBreakpoints()
   return (
     <VerticallyCentered>
+      <BarTitle>{t('Nav.presentation')}</BarTitle>
       <Wrapper>
         <Stack>
           <img src={importPasswordsIcon} alt="" />

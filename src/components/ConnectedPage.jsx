@@ -8,7 +8,8 @@ import { currentBrowser } from '../currentBrowser'
 import chromeIllustration from 'assets/extension-connected-chrome.svg'
 import firefoxIllustration from 'assets/extension-connected-firefox.svg'
 import Help from './Help'
-import { Link } from 'react-router-dom'
+import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import BarTitle from 'BarTitle'
 
 const illustrations = {
   chrome: chromeIllustration,
@@ -19,7 +20,9 @@ const ImportedPageLink = () => {
   const { t } = useI18n()
   return (
     <p>
-      <Link to="/installation/import">{t('Help.import')}</Link>
+      <ButtonLink theme="secondary" href="#/installation/import">
+        {t('Help.import')}
+      </ButtonLink>
     </p>
   )
 }
@@ -29,6 +32,7 @@ const ConnectedPage = () => {
 
   return (
     <Wrapper>
+      <BarTitle>{t('Nav.installation')}</BarTitle>
       <NarrowContent>
         <Stack spacing="xxl">
           <img src={illustrations[currentBrowser.name]} alt="" />

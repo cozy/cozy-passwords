@@ -15,6 +15,7 @@ import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import snarkdown from 'snarkdown'
 import generateWebAppLink from 'helpers/generateWebAppLink'
 import VerticallyCentered from './VerticallyCentered'
+import BarTitle from 'BarTitle'
 
 const DumbLinkToSettings = withClient(props => {
   const { client, ...rest } = props
@@ -57,6 +58,7 @@ const SecurityPage = () => {
 
   return (
     <VerticallyCentered>
+      <BarTitle>{t('Nav.security')}</BarTitle>
       <Wrapper>
         <NarrowContent>
           <Stack>

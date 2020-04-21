@@ -66,20 +66,9 @@ const RedirectIfExtensionConnected = props => {
 
 const Routes = () => (
   <Switch>
-    <RedirectIfExtensionInstalledOrConnected
-      path="/presentation"
-      component={PresentationPage}
-    />
-    <RedirectIfExtensionInstalledOrConnected
-      path="/security"
-      exact
-      component={SecurityPage}
-    />
-    <RedirectIfExtensionInstalledOrConnected
-      path="/security/hint"
-      exact
-      component={HintPage}
-    />
+    <Route path="/presentation" component={PresentationPage} />
+    <Route path="/security" exact component={SecurityPage} />
+    <Route path="/security/hint" exact component={HintPage} />
     <RedirectIfExtensionInstalledOrConnected
       path="/installation"
       exact

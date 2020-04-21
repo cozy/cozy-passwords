@@ -11,6 +11,7 @@ import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import VerticallyCentered from './VerticallyCentered'
+import BarTitle from 'BarTitle'
 
 const DumbHintPage = props => {
   const { client, history } = props
@@ -67,6 +68,7 @@ const DumbHintPage = props => {
 
   return (
     <VerticallyCentered>
+      <BarTitle>{t('Nav.installation')}</BarTitle>
       <Wrapper>
         <NarrowContent>
           <Stack spacing="xxl" tag="form" onSubmit={handleSubmit}>

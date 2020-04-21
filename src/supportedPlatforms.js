@@ -1,26 +1,39 @@
-import flag from 'cozy-flags'
+export const platforms = {
+  chrome: {
+    id: 'chrome',
+    type: 'browser',
+    label: 'Google Chrome',
+    storeUrl:
+      'https://chrome.google.com/webstore/detail/cozy-personal-cloud/jplochopoaajoochpoccajmgelpfbbic'
+  },
+  firefox: {
+    id: 'firefox',
+    type: 'browser',
+    label: 'Mozilla Firefox',
+    storeUrl:
+      'https://addons.mozilla.org/en-US/firefox/addon/cozy-personal-cloud'
+  },
+  safari: {
+    id: 'safari',
+    type: 'browser',
+    label: 'Safari',
+    storeUrl: 'macappstore://itunes.apple.com/app/id1504487449?mt=12'
+  },
+  ios: {
+    id: 'ios',
+    type: 'os',
+    os: 'ios',
+    storeUrl: 'https://apps.apple.com/fr/app/cozy-pass/id1502262449'
+  },
+  android: {
+    id: 'android',
+    type: 'os',
+    os: 'android',
+    storeUrl: 'https://play.google.com/store/apps/details?id=io.cozy.pass'
+  }
+}
 
 const getSupportedPlatforms = () => {
-  const platforms = {
-    chrome: {
-      label: 'Google Chrome',
-      storeUrl:
-        'https://chrome.google.com/webstore/detail/cozy-personal-cloud/jplochopoaajoochpoccajmgelpfbbic'
-    },
-    firefox: {
-      label: 'Mozilla Firefox',
-      storeUrl:
-        'https://addons.mozilla.org/en-US/firefox/addon/cozy-personal-cloud'
-    }
-  }
-
-  if (flag('passwords.safari-supported')) {
-    platforms.safari = {
-      label: 'Safari',
-      storeUrl: 'macappstore://itunes.apple.com/app/id1504487449?mt=12'
-    }
-  }
-
   return platforms
 }
 

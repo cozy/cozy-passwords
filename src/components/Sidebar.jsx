@@ -17,8 +17,9 @@ const isInstallationLinkMatching = (match, location) => {
 export const Sidebar = () => {
   const { t } = useI18n()
   const bitwardenSettings = useContext(BitwardenSettingsContext)
-
-  return bitwardenSettings ? (
+  const isVaultConfigured =
+    bitwardenSettings && bitwardenSettings.extension_installed
+  return isVaultConfigured ? (
     <aside className="o-sidebar">
       <nav>
         <ul className="c-nav">
@@ -32,17 +33,15 @@ export const Sidebar = () => {
               {t('Nav.installation')}
             </NavLink>
           </li>
-          {bitwardenSettings ? (
-            <li className="c-nav-item">
-              <NavLink
-                to="/installation/import"
-                className="c-nav-link"
-                activeClassName="is-active"
-              >
-                {t('Nav.import')}
-              </NavLink>
-            </li>
-          ) : null}
+          <li className="c-nav-item">
+            <NavLink
+              to="/installation/import"
+              className="c-nav-link"
+              activeClassName="is-active"
+            >
+              {t('Nav.import')}
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </aside>

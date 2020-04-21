@@ -4,7 +4,6 @@ import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { Text, SubTitle } from 'cozy-ui/transpiled/react/Text'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { Link } from 'react-router-dom'
 import importPasswordsIcon from 'assets/import-passwords.svg'
 import CircleIcon from 'components/CircleIcon'
 import Wrapper from 'components/Wrapper'
@@ -119,7 +118,6 @@ const PresentationStep = ({ onLetsGo }) => {
                 <Button
                   onClick={onLetsGo}
                   label={t('PresentationStep.cta')}
-                  tag={Link}
                   extension="full"
                 />
               </CTA>

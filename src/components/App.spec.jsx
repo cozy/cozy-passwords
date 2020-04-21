@@ -5,9 +5,13 @@ import {
   useExtensionStatus,
   extensionStatuses
 } from '../helpers/extensionStatus.js'
-import { Router } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
+import { act } from 'react-dom/test-utils'
 import AppLike from '../../test/lib/AppLike'
+import { fetchHint } from '../hint'
+
+jest.mock('../hint')
+
+fetchHint.mockResolvedValue({ hint: 'My favorite movie' })
 
 // This should not be required since cozy-ui v29.9.1
 // (see https://github.com/cozy/cozy-ui/releases/tag/v29.9.1)
@@ -29,16 +33,18 @@ describe('App', () => {
       useExtensionStatus.mockReturnValue(extensionStatuses.notInstalled)
     })
 
-    it('should render PresentationStep by default', () => {
-      const { getByText } = render(
-        <AppLike>
-          <App />
-        </AppLike>
-      )
+    it('should render PresentationStep by default', async () => {
+      let rendered
+      await act(async () => {
+        rendered = render(
+          <AppLike>
+            <App />
+          </AppLike>
+        )
+      })
 
-      expect(getByText('Stop losing your passwords')).toBeDefined()
-      expect(getByText(/let's go/i)).toBeDefined()
-
+      expect(rendered.getByText('Stop losing your passwords')).toBeDefined()
+      expect(rendered.getByText(/let's go/i)).toBeDefined()
     })
   })
 })

@@ -15,7 +15,6 @@ import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import snarkdown from 'snarkdown'
 import generateWebAppLink from 'helpers/generateWebAppLink'
 import VerticallyCentered from './VerticallyCentered'
-import BarTitle from 'BarTitle'
 
 const DumbLinkToSettings = withClient(props => {
   const { client, ...rest } = props
@@ -24,8 +23,9 @@ const DumbLinkToSettings = withClient(props => {
   const rawSettingsAppHref = generateWebAppLink(settingsAppSlug, client)
   const passwordsUrl = generateWebAppLink('passwords', client)
 
-  const successUrl = new URL('#/installation', passwordsUrl).href
-  const cancelUrl = new URL('#/security/hint', passwordsUrl).href
+  const successUrl = new URL('#/installation/configureExtension', passwordsUrl)
+    .href
+  const cancelUrl = new URL('#/installation/hint', passwordsUrl).href
 
   const settingsPath = '#/profile/password'
   const settingsQuery = `?redirect_success=${encodeURIComponent(
@@ -43,7 +43,7 @@ const DumbLinkToSettings = withClient(props => {
         <ButtonLink
           href={href}
           onClick={onClick}
-          label={t('SecurityPage.enhance-password')}
+          label={t('SecurityStep.enhance-password')}
           {...rest}
         />
       )}
@@ -53,37 +53,36 @@ const DumbLinkToSettings = withClient(props => {
 
 const LinkToSettings = withClient(DumbLinkToSettings)
 
-const SecurityPage = () => {
+const SecurityStep = ({ onSkip }) => {
   const { t } = useI18n()
 
   return (
     <VerticallyCentered>
-      <BarTitle>{t('Nav.security')}</BarTitle>
       <Wrapper>
         <NarrowContent>
           <Stack>
             <img src={strongPasswordIcon} alt="" width="204" />
-            <MainTitle>{t('SecurityPage.title')}</MainTitle>
+            <MainTitle>{t('SecurityStep.title')}</MainTitle>
             <Stack spacing="xxl">
-              <Text>{t('SecurityPage.description')}</Text>
+              <Text>{t('SecurityStep.description')}</Text>
               <Card>
                 <UnorderedList className="u-ta-left u-mv-0">
                   <ListItem
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(
-                        t('SecurityPage.advices.strong_passphrase')
+                        t('SecurityStep.advices.strong_passphrase')
                       )
                     }}
                   />
                   <ListItem
                     dangerouslySetInnerHTML={{
-                      __html: snarkdown(t('SecurityPage.advices.memorize'))
+                      __html: snarkdown(t('SecurityStep.advices.memorize'))
                     }}
                   />
                   <ListItem>
                     <span
                       dangerouslySetInnerHTML={{
-                        __html: snarkdown(t('SecurityPage.advices.our_tip'))
+                        __html: snarkdown(t('SecurityStep.advices.our_tip'))
                       }}
                     />
                     <PasswordExample password="Cl4ude€st1Nu@ge" />
@@ -94,8 +93,8 @@ const SecurityPage = () => {
                 <LinkToSettings extension="full" />
                 <Button
                   tag={Link}
-                  to="/security/hint"
-                  label={t('SecurityPage.keep-password')}
+                  onClick={onSkip}
+                  label={t('SecurityStep.keep-password')}
                   theme="secondary"
                   className="u-mt-half"
                   extension="full"
@@ -109,4 +108,4 @@ const SecurityPage = () => {
   )
 }
 
-export default SecurityPage
+export default SecurityStep

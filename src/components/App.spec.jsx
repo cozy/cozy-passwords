@@ -49,7 +49,7 @@ describe('App', () => {
       useExtensionStatus.mockReturnValue(extensionStatuses.notInstalled)
     })
 
-    it('should render PresentationPage by default', () => {
+    it('should render PresentationStep by default', () => {
       const { getByText } = render(
         <AppLike>
           <App />

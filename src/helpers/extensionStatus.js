@@ -8,6 +8,13 @@ export const extensionStatuses = {
   connected: 'connected'
 }
 
+export const isExtensionInstalled = extensionStatus => {
+  return (
+    extensionStatus == extensionStatuses.installed ||
+    extensionStatus === extensionStatuses.connected
+  )
+}
+
 /*
  * See https://github.com/cozy/cozy-keys-browser/blob/master/docs/extension-status.md
  * to learn more about how the extension can give us its current status

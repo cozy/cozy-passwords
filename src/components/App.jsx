@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader'
+import {
+  BitwardenSettingsContext,
+  useBitwardenSettingsQuery
+} from '../bitwarden-settings'
 import { Route, Switch, Redirect, HashRouter } from 'react-router-dom'
 import { Layout, Main, Content } from 'cozy-ui/transpiled/react/Layout'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
@@ -7,17 +11,10 @@ import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 
 import Sidebar from './Sidebar'
-import PresentationPage from './PresentationPage'
-import SecurityPage from './SecurityPage'
-import HintPage from './HintPage'
-import InstallationPage from './InstallationPage'
-import InstalledPage from './InstalledPage'
-import ConnectedPage from './ConnectedPage'
+
 import ImportPage from './ImportPage'
-import {
-  useExtensionStatus,
-  extensionStatuses
-} from '../helpers/extensionStatus'
+import InstallationPage from './InstallationPage'
+
 import flag, { FlagSwitcher } from 'cozy-flags'
 import minilog from 'minilog'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
@@ -25,64 +22,14 @@ import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoin
 window.minilog = minilog
 window.flag = flag
 
-const RedirectIfExtensionInstalledOrConnected = props => {
-  const extensionStatus = useExtensionStatus()
-
-  if (extensionStatus === extensionStatuses.checking) {
-    return null
-  }
-
-  if (extensionStatus === extensionStatuses.installed) {
-    return <Redirect to="/installation/installed" />
-  }
-
-  if (extensionStatus === extensionStatuses.connected) {
-    return <Redirect to="/installation/connected" />
-  }
-
-  return <Route {...props} />
-}
-
-/*
- * This is not very DRY to have RedirectIfExtensionInstalledOrConnected and
- * RedirectIfExtensionConnected, but the problem is that on
- * /installation/installed route we can't listen for the installed status or we
- * will have an infinite redirection loop. So in this case we just want to
- * listen for connection.
- */
-const RedirectIfExtensionConnected = props => {
-  const extensionStatus = useExtensionStatus()
-
-  if (extensionStatus === extensionStatuses.checking) {
-    return null
-  }
-
-  if (extensionStatus === extensionStatuses.connected) {
-    return <Redirect to="/installation/connected" />
-  }
-
-  return <Route {...props} />
-}
-
 const Routes = () => (
   <Switch>
-    <Route path="/presentation" component={PresentationPage} />
-    <Route path="/security" exact component={SecurityPage} />
-    <Route path="/security/hint" exact component={HintPage} />
-    <RedirectIfExtensionInstalledOrConnected
-      path="/installation"
-      exact
-      component={InstallationPage}
-    />
-    <RedirectIfExtensionConnected
-      path="/installation/installed"
-      exact
-      component={InstalledPage}
-    />
-    <Route path="/installation/connected" exact component={ConnectedPage} />
     <Route path="/installation/import" exact component={ImportPage} />
-    <Redirect from="/" to="/presentation" />
-    <Redirect from="*" to="/presentation" />
+    <Route path="/installation/:step" component={InstallationPage} />
+    <Route path="/installation" component={InstallationPage} />
+    <Route path="/import" exact component={ImportPage} />
+    <Redirect from="/" to="/installation" />
+    <Redirect from="*" to="/installation" />
   </Switch>
 )
 
@@ -93,24 +40,32 @@ export const DumbApp = () => {
     }
   }, [])
 
+  const queryResult = useBitwardenSettingsQuery()
+
+  if (queryResult.fetchStatus === 'loading') {
+    return null
+  }
+
   return (
-    <BreakpointsProvider>
-      <MuiCozyTheme>
-        <HashRouter>
-          <Layout>
-            <Sidebar />
-            <Main>
-              <Content>
-                <Routes />
-              </Content>
-            </Main>
-            <IconSprite />
-            <Alerter />
-            <FlagSwitcher />
-          </Layout>
-        </HashRouter>
-      </MuiCozyTheme>
-    </BreakpointsProvider>
+    <BitwardenSettingsContext.Provider value={queryResult.data}>
+      <BreakpointsProvider>
+        <MuiCozyTheme>
+          <HashRouter>
+            <Layout>
+              <Sidebar />
+              <Main>
+                <Content>
+                  <Routes />
+                </Content>
+              </Main>
+              <IconSprite />
+              <Alerter />
+              <FlagSwitcher />
+            </Layout>
+          </HashRouter>
+        </MuiCozyTheme>
+      </BreakpointsProvider>
+    </BitwardenSettingsContext.Provider>
   )
 }
 

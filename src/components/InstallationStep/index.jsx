@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { detect as detectBrowser } from 'detect-browser'
 import Wrapper from 'components/Wrapper'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
@@ -17,10 +17,14 @@ import VerticallyCentered from '../VerticallyCentered'
 import { InstallNativeAppButton } from '../AvailablePlatforms'
 import { isMobile } from 'cozy-device-helper'
 import BarTitle from 'BarTitle'
+import {
+  useExtensionStatus,
+  extensionStatuses
+} from '../../helpers/extensionStatus'
 
 const browser = detectBrowser()
 
-const DumbInstallationPage = props => {
+const DumbInstallationStep = props => {
   const { client } = props
   const { t } = useI18n()
   const cozyURL = new URL(client.getStackClient().uri)
@@ -29,6 +33,14 @@ const DumbInstallationPage = props => {
   const platform = supportedPlatforms[browser.name] || {}
   const storeURL = platform.storeUrl
   const isNativeMobile = isMobile()
+
+  const extensionStatus = useExtensionStatus()
+  useEffect(() => {
+    if (extensionStatus == extensionStatuses.installed) {
+      props.onExtensionInstalled && props.onExtensionInstalled()
+    }
+  }, [extensionStatus])
+
   return (
     <VerticallyCentered>
       <BarTitle>{t('Nav.installation')}</BarTitle>
@@ -36,10 +48,10 @@ const DumbInstallationPage = props => {
         <NarrowContent>
           {isNativeMobile ? (
             <Stack spacing="m">
-              <MainTitle>{t('InstallationPageMobile.title')}</MainTitle>
-              <Text>{t('InstallationPageMobile.description')}</Text>
+              <MainTitle>{t('InstallationStepMobile.title')}</MainTitle>
+              <Text>{t('InstallationStepMobile.description')}</Text>
               <InstallNativeAppButton
-                label={t('InstallationPageMobile.installApp')}
+                label={t('InstallationStepMobile.installApp')}
                 theme="primary"
               />
             </Stack>
@@ -47,24 +59,24 @@ const DumbInstallationPage = props => {
             <Stack spacing="xxl">
               <Stack spacing="m">
                 <img src={browserExtensionIcon} alt="" />
-                <MainTitle>{t('InstallationPage.title')}</MainTitle>
+                <MainTitle>{t('InstallationStep.title')}</MainTitle>
                 <Text>
                   <span
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(
-                        t('InstallationPage.descriptionStart', {
+                        t('InstallationStep.descriptionStart', {
                           address: cozyURL.host
                         })
                       )
                     }}
                   />{' '}
                   <WithCozyIcon>
-                    {t('InstallationPage.cozyExtension')}
+                    {t('InstallationStep.cozyExtension')}
                   </WithCozyIcon>{' '}
                   <span
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(
-                        t('InstallationPage.descriptionEnd', {
+                        t('InstallationStep.descriptionEnd', {
                           address: cozyURL.host
                         })
                       )
@@ -77,21 +89,21 @@ const DumbInstallationPage = props => {
                   <ListItem
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(
-                        t(`InstallationPage.step1.${browser.name}`)
+                        t(`InstallationStep.step1.${browser.name}`)
                       )
                     }}
                   />
                   <ListItem
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(
-                        t(`InstallationPage.step2.${browser.name}`)
+                        t(`InstallationStep.step2.${browser.name}`)
                       )
                     }}
                   />
                   <ListItem
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(
-                        t('InstallationPage.step3', { address: cozyURL.host })
+                        t('InstallationStep.step3', { address: cozyURL.host })
                       )
                     }}
                   />
@@ -100,7 +112,7 @@ const DumbInstallationPage = props => {
               <ButtonLink
                 href={storeURL}
                 target="_blank"
-                label={t('InstallationPage.cta')}
+                label={t('InstallationStep.cta')}
                 extension="full"
                 className="u-mt-2-half"
               />
@@ -112,6 +124,6 @@ const DumbInstallationPage = props => {
   )
 }
 
-const InstallationPage = withClient(DumbInstallationPage)
+const InstallationStep = withClient(DumbInstallationStep)
 
-export default InstallationPage
+export default InstallationStep

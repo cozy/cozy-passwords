@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Input from 'cozy-ui/transpiled/react/Input'
@@ -13,14 +13,13 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import VerticallyCentered from './VerticallyCentered'
 import BarTitle from 'BarTitle'
 
-const DumbHintPage = props => {
-  const { client, history } = props
+const DumbHintStep = props => {
+  const { client } = props
   const { t } = useI18n()
   const [hint, setHint] = useState('')
   const [saving, setSaving] = useState(false)
-  const [loading, setLoading] = useState(true)
 
-  const goToNextStep = () => history.push('/installation')
+  const goToNextStep = () => props.goToNextStep()
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -34,36 +33,13 @@ const DumbHintPage = props => {
 
       goToNextStep()
     } catch (err) {
-      Alerter.error(t('HintPage.error'))
+      Alerter.error(t('HintStep.error'))
 
       // eslint-disable-next-line no-console
       console.error(err)
     } finally {
       setSaving(false)
     }
-  }
-
-  useEffect(() => {
-    const checkExistingHint = async () => {
-      try {
-        await client
-          .getStackClient()
-          .collection('io.cozy.settings')
-          .get('hint')
-
-        // If the user has already defined a hint, bypass this step
-        goToNextStep()
-      } catch (err) {
-        // In case of any error, the user should enter a hint
-        setLoading(false)
-      }
-    }
-
-    checkExistingHint()
-  }, [])
-
-  if (loading) {
-    return <Spinner size="xxlarge" middle={true} />
   }
 
   return (
@@ -74,23 +50,42 @@ const DumbHintPage = props => {
           <Stack spacing="xxl" tag="form" onSubmit={handleSubmit}>
             <Stack spacing="m">
               <img src={passwordClueIcon} alt="" />
-              <MainTitle>{t('HintPage.title')}</MainTitle>
+              <MainTitle className="u-mt-1">{t('HintStep.title')}</MainTitle>
+              <Text>
+                {props.hasHint === null ? (
+                  <Spinner size="small" />
+                ) : props.hasHint === false ? (
+                  t('HintStep.please-configure-hint')
+                ) : (
+                  t('HintStep.hint-configured')
+                )}
+              </Text>
             </Stack>
             <Stack spacing="m">
               <Input
-                placeholder={t('HintPage.placeholder')}
+                placeholder={t('HintStep.placeholder')}
                 value={hint}
                 onChange={e => setHint(e.target.value)}
               />
-              <Text>{t('HintPage.description')}</Text>
+              <Text>{t('HintStep.description')}</Text>
             </Stack>
             <Button
-              label={t('HintPage.submit')}
+              label={t('HintStep.submit')}
               disabled={saving || hint === ''}
               busy={saving}
               extension="full"
               className="u-mt-2"
             />
+            {props.hasHint ? (
+              <Button
+                label={t('HintStep.skip')}
+                disabled={saving}
+                extension="full"
+                onClick={props.onSkip}
+                theme="secondary"
+                className="u-mt-half"
+              />
+            ) : null}
           </Stack>
         </NarrowContent>
       </Wrapper>
@@ -98,6 +93,6 @@ const DumbHintPage = props => {
   )
 }
 
-const HintPage = withClient(DumbHintPage)
+const HintStep = withClient(DumbHintStep)
 
-export default HintPage
+export default HintStep

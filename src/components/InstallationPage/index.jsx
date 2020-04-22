@@ -4,6 +4,13 @@ import { BitwardenSettingsContext } from '../../bitwarden-settings'
 import { useClient } from 'cozy-client'
 import { useParams } from 'react-router'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import {
+  Stepper,
+  Step,
+  StepButton,
+  StepLabel
+} from 'cozy-ui/transpiled/react/Stepper'
+
 import PresentationStep from '../PresentationStep'
 import SecurityStep from '../SecurityStep'
 import HintStep from '../HintStep'
@@ -11,10 +18,6 @@ import ConfigureExtensionStep from '../ConfigureExtensionStep'
 
 import BarTitle from 'BarTitle'
 import { fetchHintExists } from '../../hint'
-import Stepper from '@material-ui/core/Stepper'
-import Step from '@material-ui/core/Step'
-import StepButton from '@material-ui/core/StepButton'
-import StepLabel from '@material-ui/core/StepLabel'
 import { isMobile } from 'cozy-device-helper'
 import './styles.css'
 

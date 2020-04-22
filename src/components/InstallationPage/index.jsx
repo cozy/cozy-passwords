@@ -1,21 +1,22 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { BitwardenSettingsContext } from '../bitwarden-settings'
+import { BitwardenSettingsContext } from '../../bitwarden-settings'
 
 import { useClient } from 'cozy-client'
 import { useParams } from 'react-router'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import PresentationStep from './PresentationStep'
-import SecurityStep from './SecurityStep'
-import HintStep from './HintStep'
-import ConfigureExtensionStep from './ConfigureExtensionStep'
+import PresentationStep from '../PresentationStep'
+import SecurityStep from '../SecurityStep'
+import HintStep from '../HintStep'
+import ConfigureExtensionStep from '../ConfigureExtensionStep'
 
 import BarTitle from 'BarTitle'
-import { fetchHint } from '../hint'
+import { fetchHint } from '../../hint'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepButton from '@material-ui/core/StepButton'
 import StepLabel from '@material-ui/core/StepLabel'
 import { isMobile } from 'cozy-device-helper'
+import './styles.css'
 
 function getSteps(t) {
   return [
@@ -82,7 +83,7 @@ const InstallationPage = function() {
   }, [activeStep])
 
   return (
-    <div style={{ maxWidth: 800, margin: '0 auto', width: '100%' }}>
+    <div className="InstallationPage">
       <BarTitle>{t('Nav.installation')}</BarTitle>
       <Stepper alternativeLabel nonLinear activeStep={activeStep}>
         {steps.map((label, index) => {

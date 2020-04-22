@@ -39,7 +39,7 @@
     "skip": "Passer",
     "error": "Erreur lors de la mise à jour de l'indice",
     "please-configure-hint": "Merci de configurer un indice",
-    "hint-configured": "Indice définir ✅ Vous pouvez toujours le changer ici."
+    "hint-configured": "Indice défini ✅ Vous pouvez toujours le changer ici."
   },
 
   "InstallationStep": {

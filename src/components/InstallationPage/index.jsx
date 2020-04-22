@@ -63,11 +63,13 @@ const InstallationPage = function() {
   const { t } = useI18n()
 
   const bitwardenSettings = useContext(BitwardenSettingsContext)
+  const isVaultConfigured =
+    bitwardenSettings && bitwardenSettings.extension_installed
 
   const [activeStep, setActiveStep] = useState(
     params.step
       ? STEPS[params.step]
-      : bitwardenSettings && bitwardenSettings.extension_installed
+      : isVaultConfigured
       ? STEPS.configureExtension
       : STEPS.presentation
   )
@@ -97,7 +99,7 @@ const InstallationPage = function() {
           }
           const labelProps = {
             error:
-              index === STEPS.hint && bitwardenSettings && hasHint === false
+              index === STEPS.hint && isVaultConfigured && hasHint === false
           }
           return (
             <Step key={label} {...stepProps}>

@@ -7,11 +7,11 @@ import {
 } from '../helpers/extensionStatus.js'
 import { act } from 'react-dom/test-utils'
 import AppLike from '../../test/lib/AppLike'
-import { fetchHint } from '../hint'
+import { fetchHintExists } from '../hint'
 
 jest.mock('../hint')
 
-fetchHint.mockResolvedValue({ hint: 'My favorite movie' })
+fetchHintExists.mockResolvedValue({ hint: 'My favorite movie' })
 
 // This should not be required since cozy-ui v29.9.1
 // (see https://github.com/cozy/cozy-ui/releases/tag/v29.9.1)

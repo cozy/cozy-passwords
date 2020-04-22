@@ -1,18 +1,18 @@
 import flag from 'cozy-flags'
 
-const fetchHint = async client => {
+const fetchHintExists = async client => {
   if (flag('passwords.force-no-hint')) {
     return false
   }
   try {
-    const hint = await client
+    await client
       .getStackClient()
       .collection('io.cozy.settings')
       .get('hint')
-    return hint
+    return true
   } catch (e) {
-    return null
+    return false
   }
 }
 
-export { fetchHint }
+export { fetchHintExists }

@@ -14,12 +14,10 @@ import VerticallyCentered from './VerticallyCentered'
 import BarTitle from 'BarTitle'
 
 const DumbHintStep = props => {
-  const { client } = props
+  const { client, goToNextStep } = props
   const { t } = useI18n()
   const [hint, setHint] = useState('')
   const [saving, setSaving] = useState(false)
-
-  const goToNextStep = () => props.goToNextStep()
 
   const handleSubmit = async e => {
     e.preventDefault()

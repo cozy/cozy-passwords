@@ -13,7 +13,7 @@ import VerticallyCentered from '../VerticallyCentered'
 import Help from '../Help'
 import './styles.css'
 
-const DumbInstalledPage = props => {
+const DumbInstalledStep = props => {
   const { client } = props
   const { t } = useI18n()
 
@@ -24,7 +24,7 @@ const DumbInstalledPage = props => {
       <Wrapper>
         <NarrowContent>
           <Stack spacing="xxl">
-            <div className="InstalledPage__illustration">
+            <div className="InstalledStep__illustration">
               <img
                 src={setupTutorialIllustration}
                 alt=""
@@ -34,14 +34,14 @@ const DumbInstalledPage = props => {
               <Icon icon="drawing-arrow-up" width={96} height={86} />
             </div>
             <Stack spacing="m">
-              <MainTitle className="InstalledPage__title">
-                {t('InstalledPage.title')}
+              <MainTitle className="InstalledStep__title">
+                {t('InstalledStep.title')}
               </MainTitle>
-              <Text className="InstalledPage__description">
+              <Text className="InstalledStep__description">
                 <span
                   dangerouslySetInnerHTML={{
                     __html: snarkdown(
-                      t('InstalledPage.descriptionStart', {
+                      t('InstalledStep.descriptionStart', {
                         address: cozyURL.host
                       })
                     )
@@ -51,7 +51,7 @@ const DumbInstalledPage = props => {
                 <span
                   dangerouslySetInnerHTML={{
                     __html: snarkdown(
-                      t('InstalledPage.descriptionEnd', {
+                      t('InstalledStep.descriptionEnd', {
                         address: cozyURL.host
                       })
                     )
@@ -67,6 +67,6 @@ const DumbInstalledPage = props => {
   )
 }
 
-const InstalledPage = withClient(DumbInstalledPage)
+const InstalledStep = withClient(DumbInstalledStep)
 
-export default InstalledPage
+export default InstalledStep

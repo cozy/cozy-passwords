@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { NavLink } from 'react-router-dom'
+import { BitwardenSettingsContext } from '../bitwarden-settings'
+import flag from 'cozy-flags'
 
 const isInstallationLinkMatching = (match, location) => {
   if (!match) {
@@ -14,31 +16,13 @@ const isInstallationLinkMatching = (match, location) => {
 
 export const Sidebar = () => {
   const { t } = useI18n()
-
-  return (
+  const bitwardenSettings = useContext(BitwardenSettingsContext)
+  const isVaultConfigured =
+    bitwardenSettings && bitwardenSettings.extension_installed
+  return isVaultConfigured ? (
     <aside className="o-sidebar">
       <nav>
         <ul className="c-nav">
-          <li className="c-nav-item">
-            <NavLink
-              to="/presentation"
-              className="c-nav-link"
-              activeClassName="is-active"
-            >
-              <span className="c-nav-number">1.</span>
-              {t('Nav.presentation')}
-            </NavLink>
-          </li>
-          <li className="c-nav-item">
-            <NavLink
-              to="/security"
-              className="c-nav-link"
-              activeClassName="is-active"
-            >
-              <span className="c-nav-number">2.</span>
-              {t('Nav.security')}
-            </NavLink>
-          </li>
           <li className="c-nav-item">
             <NavLink
               to="/installation"
@@ -46,7 +30,6 @@ export const Sidebar = () => {
               isActive={isInstallationLinkMatching}
               activeClassName="is-active"
             >
-              <span className="c-nav-number">3.</span>
               {t('Nav.installation')}
             </NavLink>
           </li>
@@ -56,14 +39,13 @@ export const Sidebar = () => {
               className="c-nav-link"
               activeClassName="is-active"
             >
-              <span className="c-nav-number">4.</span>
               {t('Nav.import')}
             </NavLink>
           </li>
         </ul>
       </nav>
     </aside>
-  )
+  ) : null
 }
 
-export default Sidebar
+export default flag.connect(Sidebar)

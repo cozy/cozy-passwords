@@ -27,7 +27,7 @@ const ImportedPageLink = () => {
   )
 }
 
-const ConnectedPage = () => {
+const ConnectedStep = () => {
   const { t } = useI18n()
 
   return (
@@ -37,8 +37,8 @@ const ConnectedPage = () => {
         <Stack spacing="xxl">
           <img src={illustrations[currentBrowser.name]} alt="" />
           <Stack spacing="m">
-            <MainTitle>{t('ConnectedPage.title')}</MainTitle>
-            <Text>{t('ConnectedPage.description')}</Text>
+            <MainTitle>{t('ConnectedStep.title')}</MainTitle>
+            <Text>{t('ConnectedStep.description')}</Text>
           </Stack>
           <Stack spacing="l">
             <ImportedPageLink />
@@ -50,4 +50,4 @@ const ConnectedPage = () => {
   )
 }
 
-export default ConnectedPage
+export default ConnectedStep

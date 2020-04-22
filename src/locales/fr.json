@@ -6,7 +6,7 @@
     "import": "Import"
   },
 
-  "PresentationPage": {
+  "PresentationStep": {
     "title": "Ne perdez plus vos mots de passe",
     "description": "Conservez vos mots de passe en sécurité dans votre Cozy",
     "item1": "Vos mots de passe seront enregistrés une bonne fois pour toute dans votre coffre 100% personnel et sécurisé.",
@@ -19,7 +19,7 @@
     }
   },
 
-  "SecurityPage": {
+  "SecurityStep": {
     "title": "Améliorer votre mot de passe Cozy",
     "description": "Le mot de passe de votre Cozy devient l'unique clé pour décoder vos mots de passe sauvegardés de manière sécurisée",
     "advices": {
@@ -31,15 +31,18 @@
     "keep-password": "Garder mon mot de passe actuel"
   },
 
-  "HintPage": {
-    "title": "Laisser un indice de mot de passe",
+  "HintStep": {
+    "title": "Définir un indice de mot de passe",
     "description": "L'indice vous sera envoyé par email en cas d'oubli de votre mot de passe, choisissez un indice que vous-seul pouvez comprendre",
     "placeholder": "Indice (obligatoire)",
     "submit": "Enregistrer l'indice",
-    "error": "Erreur lors de la mise à jour de l'indice"
+    "skip": "Passer",
+    "error": "Erreur lors de la mise à jour de l'indice",
+    "please-configure-hint": "Merci de configurer un indice",
+    "hint-configured": "Indice définir ✅ Vous pouvez toujours le changer ici."
   },
 
-  "InstallationPage": {
+  "InstallationStep": {
     "title": "Installer l'extension Cozy",
     "descriptionStart": "Ajoutez",
     "descriptionEnd": "à votre navigateur. Cette installation est nécessaire pour vous permettre de remplir et enregistrer automatiquement vos mots de passe lors de votre navigation.",
@@ -54,23 +57,29 @@
       "firefox": "Cliquez ensuite sur **Ajouter à Firefox**",
       "safari": "Ouvrez ensuite les préférences Safari pour activer l'extension (Préférences > Extensions)"
     },
+    "steps": {
+      "improve-password": "Renforcer le mot de passe de votre Cozy",
+      "leave-hint": "Définir un indice",
+      "install-extension": "Installer l'extension",
+      "install-app": "Installer l'app"
+    },
     "step3": "Connectez-vous avec votre adresse **%{address}** et votre mot de passe !",
     "cta": "Installer l'extension Cozy"
   },
 
-  "InstallationPageMobile": {
+  "InstallationStepMobile": {
     "title": "Installer l'application Cozy Pass",
     "description": "Vous permet d'accéder à mots de passe depuis votre mobile, et remplis vos mots de passe automatiquement dans les formulaires.",
     "installApp": "Installer l'application"
   },
 
-  "InstalledPage": {
+  "InstalledStep": {
     "title": "C'est presque fini !",
     "descriptionStart": "Cliquez sur l'icône",
     "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy."
   },
 
-  "ConnectedPage": {
+  "ConnectedStep": {
     "title": "Votre gestionnaire de mots de passe est configuré !",
     "description": "Rendez vous sur votre extension navigateur Cozy pour gérer vos mots de passe"
   },

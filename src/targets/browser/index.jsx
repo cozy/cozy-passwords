@@ -6,7 +6,7 @@ import React from 'react'
 import CozyClient, { CozyProvider } from 'cozy-client'
 import { VaultProvider } from 'cozy-keys-lib'
 import { render } from 'react-dom'
-import { I18n } from 'cozy-ui/react/I18n'
+import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import flag from 'cozy-flags'
 
 let appLocale

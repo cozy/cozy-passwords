@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader'
 import {
@@ -14,10 +16,11 @@ import Sidebar from './Sidebar'
 
 import ImportPage from './ImportPage'
 import InstallationPage from './InstallationPage'
-
+import VaultPage from './VaultPage'
 import flag, { FlagSwitcher } from 'cozy-flags'
 import minilog from 'minilog'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 window.minilog = minilog
 window.flag = flag
@@ -28,6 +31,7 @@ const Routes = () => (
     <Route path="/installation/:step" component={InstallationPage} />
     <Route path="/installation" component={InstallationPage} />
     <Route path="/import" exact component={ImportPage} />
+    <Route path="/vault" exact component={VaultPage} />
     <Redirect from="/" to="/installation" />
     <Redirect from="*" to="/installation" />
   </Switch>
@@ -45,7 +49,6 @@ export const DumbApp = () => {
   if (queryResult.fetchStatus === 'loading') {
     return null
   }
-
   return (
     <BitwardenSettingsContext.Provider value={queryResult.data}>
       <BreakpointsProvider>

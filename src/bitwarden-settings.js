@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createContext, useState, useEffect } from 'react'
 import { useClient } from 'cozy-client'
 import flag from 'cozy-flags'

@@ -42,6 +42,15 @@ export const Sidebar = () => {
               {t('Nav.import')}
             </NavLink>
           </li>
+          <li className="c-nav-item">
+            <NavLink
+              to="/vault"
+              className="c-nav-link"
+              activeClassName="is-active"
+            >
+              {'Trousseau'}
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </aside>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Input from 'cozy-ui/transpiled/react/Input'
-import { withClient } from 'cozy-client'
+import { withClient, useClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Wrapper from 'components/Wrapper'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
@@ -14,7 +14,8 @@ import VerticallyCentered from './VerticallyCentered'
 import BarTitle from 'BarTitle'
 
 const DumbHintStep = props => {
-  const { client, goToNextStep } = props
+  const client = useClient()
+  const { goToNextStep } = props
   const { t } = useI18n()
   const [hint, setHint] = useState('')
   const [saving, setSaving] = useState(false)

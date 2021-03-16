@@ -9,7 +9,7 @@ import Card from 'cozy-ui/transpiled/react/Card'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import { OrderedList, ListItem } from 'cozy-ui/transpiled/react/OrderedList'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { withClient } from 'cozy-client'
+import { useClient } from 'cozy-client'
 import snarkdown from 'snarkdown'
 import WithCozyIcon from 'components/WithCozyIcon'
 import getSupportedPlatforms from 'supportedPlatforms'
@@ -24,8 +24,8 @@ import {
 
 const browser = detectBrowser()
 
-const DumbInstallationStep = props => {
-  const { client } = props
+const InstallationStep = ({ onExtensionInstalled }) => {
+  const client = useClient()
   const { t } = useI18n()
   const cozyURL = new URL(client.getStackClient().uri)
 
@@ -37,7 +37,7 @@ const DumbInstallationStep = props => {
   const extensionStatus = useExtensionStatus()
   useEffect(() => {
     if (extensionStatus == extensionStatuses.installed) {
-      props.onExtensionInstalled && props.onExtensionInstalled()
+      onExtensionInstalled && onExtensionInstalled()
     }
   }, [extensionStatus])
 
@@ -123,7 +123,5 @@ const DumbInstallationStep = props => {
     </VerticallyCentered>
   )
 }
-
-const InstallationStep = withClient(DumbInstallationStep)
 
 export default InstallationStep

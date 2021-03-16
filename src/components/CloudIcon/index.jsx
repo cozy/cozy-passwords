@@ -2,10 +2,12 @@ import React from 'react'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import './styles.css'
 
-const CloudIcon = props => {
+import CloudIcon from 'cozy-ui/transpiled/react/Icons/Cloud'
+
+const PasswordsCloudIcon = props => {
   return (
     <Icon
-      icon="cloud"
+      icon={CloudIcon}
       size={16}
       color="var(--charcoalGrey)"
       className="CloudIcon"
@@ -14,4 +16,4 @@ const CloudIcon = props => {
   )
 }
 
-export default CloudIcon
+export default PasswordsCloudIcon

@@ -29,16 +29,10 @@ const findStepButtonFromLabelNode = node => {
   return node.parentNode.parentNode.parentNode
 }
 
-const haveSameClassList = (node1, node2) => {
-  const cs1 = node1.classList.toString()
-  const cs2 = node2.classList.toString()
-  return cs1 === cs2
-}
-
 const isWarningStep = stepLabelNode => {
   const stepButtonNode = findStepButtonFromLabelNode(stepLabelNode)
   const icon = stepButtonNode.querySelector('svg')
-  return haveSameClassList(warningSvg, icon)
+  return icon.innerHTML == warningSvg.innerHTML
 }
 
 beforeEach(() => {

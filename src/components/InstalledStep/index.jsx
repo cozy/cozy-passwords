@@ -13,6 +13,8 @@ import VerticallyCentered from '../VerticallyCentered'
 import Help from '../Help'
 import './styles.css'
 
+import DrawingArrowUpIcon from 'cozy-ui/transpiled/react/Icons/DrawingArrowUp'
+
 const InstalledStep = () => {
   const client = useClient()
   const { t } = useI18n()
@@ -31,7 +33,7 @@ const InstalledStep = () => {
                 width="512"
                 height="220"
               />
-              <Icon icon="drawing-arrow-up" width={96} height={86} />
+              <Icon icon={DrawingArrowUpIcon} width={96} height={86} />
             </div>
             <Stack spacing="m">
               <MainTitle className="InstalledStep__title">

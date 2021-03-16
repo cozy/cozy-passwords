@@ -1,8 +1,10 @@
 import React from 'react'
-import AppLike from '../../../test/lib/AppLike'
-import InstallationPage from '.'
 import { render, act } from '@testing-library/react'
+
+import AppLike from '../../../test/lib/AppLike'
 import { BitwardenSettingsContext } from '../../bitwarden-settings'
+
+import InstallationPage from '.'
 import { isWarningStep } from './step-test-utils'
 
 describe('installation page', () => {

@@ -29,18 +29,25 @@ const useFetchJSON = (method, route, dependencies) => {
   return { fetchStatus, error, data }
 }
 
-export const useBitwardenSettingsQuery = () => {
-  if (flag('passwords.force-vault-unconfigured')) {
-    return {
-      fetchStatus: 'loaded',
-      data: {
-        extension_installed: false
-      }
+const useBitwardenSettingsQueryForceVaultUnconfigured = () => {
+  return {
+    fetchStatus: 'loaded',
+    data: {
+      extension_installed: false
     }
   }
+}
+
+const useBitwardenSettingsQueryDefault = () => {
   return useFetchJSON(
     'GET',
     '/data/io.cozy.settings/io.cozy.settings.bitwarden',
     []
   )
 }
+
+export const useBitwardenSettingsQuery = flag(
+  'passwords.force-vault-unconfigured'
+)
+  ? useBitwardenSettingsQueryForceVaultUnconfigured
+  : useBitwardenSettingsQueryDefault

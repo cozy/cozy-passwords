@@ -24,7 +24,7 @@ const useFetchJSON = (method, route, dependencies) => {
       }
     }
     fetch()
-  }, dependencies)
+  }, dependencies) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { fetchStatus, error, data }
 }

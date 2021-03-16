@@ -39,7 +39,7 @@ const InstallationStep = ({ onExtensionInstalled }) => {
     if (extensionStatus == extensionStatuses.installed) {
       onExtensionInstalled && onExtensionInstalled()
     }
-  }, [extensionStatus])
+  }, [extensionStatus, onExtensionInstalled])
 
   return (
     <VerticallyCentered>

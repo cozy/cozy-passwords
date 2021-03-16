@@ -85,7 +85,7 @@ const InstallationPage = function() {
       setHasHint(hint)
     }
     fetch()
-  }, [activeStep])
+  }, [activeStep, client])
 
   return (
     <div className="InstallationPage">

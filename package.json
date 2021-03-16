@@ -15,7 +15,7 @@
     "watch:mobile": "cs watch --mobile",
     "start": "cs start --hot --browser",
     "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-origin}",
-    "test": "NODE_ENV=test cs test --verbose",
+    "test": "NODE_ENV=test cs test",
     "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost --space default"
   },
   "repository": {

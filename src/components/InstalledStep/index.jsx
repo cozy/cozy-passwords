@@ -4,7 +4,7 @@ import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
-import { withClient } from 'cozy-client'
+import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import snarkdown from 'snarkdown'
 import CloudIcon from 'components/CloudIcon'
@@ -13,8 +13,10 @@ import VerticallyCentered from '../VerticallyCentered'
 import Help from '../Help'
 import './styles.css'
 
-const DumbInstalledStep = props => {
-  const { client } = props
+import DrawingArrowUpIcon from 'cozy-ui/transpiled/react/Icons/DrawingArrowUp'
+
+const InstalledStep = () => {
+  const client = useClient()
   const { t } = useI18n()
 
   const cozyURL = new URL(client.getStackClient().uri)
@@ -31,7 +33,7 @@ const DumbInstalledStep = props => {
                 width="512"
                 height="220"
               />
-              <Icon icon="drawing-arrow-up" width={96} height={86} />
+              <Icon icon={DrawingArrowUpIcon} width={96} height={86} />
             </div>
             <Stack spacing="m">
               <MainTitle className="InstalledStep__title">
@@ -66,7 +68,5 @@ const DumbInstalledStep = props => {
     </VerticallyCentered>
   )
 }
-
-const InstalledStep = withClient(DumbInstalledStep)
 
 export default InstalledStep

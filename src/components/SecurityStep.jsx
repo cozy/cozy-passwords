@@ -2,7 +2,7 @@ import React from 'react'
 import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { withClient } from 'cozy-client'
+import { useClient } from 'cozy-client'
 import { Link } from 'react-router-dom'
 import Wrapper from 'components/Wrapper'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
@@ -16,8 +16,8 @@ import snarkdown from 'snarkdown'
 import generateWebAppLink from 'helpers/generateWebAppLink'
 import VerticallyCentered from './VerticallyCentered'
 
-const DumbLinkToSettings = withClient(props => {
-  const { client, ...rest } = props
+const LinkToSettings = props => {
+  const client = useClient()
   const { t } = useI18n()
   const settingsAppSlug = 'settings'
   const rawSettingsAppHref = generateWebAppLink(settingsAppSlug, client)
@@ -44,14 +44,12 @@ const DumbLinkToSettings = withClient(props => {
           href={href}
           onClick={onClick}
           label={t('SecurityStep.enhance-password')}
-          {...rest}
+          {...props}
         />
       )}
     </AppLinker>
   )
-})
-
-const LinkToSettings = withClient(DumbLinkToSettings)
+}
 
 const SecurityStep = ({ onSkip }) => {
   const { t } = useI18n()

@@ -72,7 +72,7 @@ export const useExtensionStatus = () => {
     }
 
     return cleanup
-  }, [])
+  }, [extensionCheckDisabled])
 
   return status
 }

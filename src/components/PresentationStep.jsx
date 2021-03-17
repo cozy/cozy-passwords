@@ -1,17 +1,13 @@
 import React from 'react'
 import cx from 'classnames'
+
 import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { Text, SubTitle } from 'cozy-ui/transpiled/react/Text'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import importPasswordsIcon from 'assets/import-passwords.svg'
-import CircleIcon from 'components/CircleIcon'
-import Wrapper from 'components/Wrapper'
-import VerticallyCentered from './VerticallyCentered'
+
 import Infos from 'cozy-ui/transpiled/react/Infos'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import getSupportedPlatforms from 'supportedPlatforms'
-import { isSupportedBrowser, browserName } from 'currentBrowser'
 import BarTitle from 'BarTitle'
 import Hero, {
   Title,
@@ -19,12 +15,23 @@ import Hero, {
   Sections,
   CTA
 } from 'cozy-ui/transpiled/react/Hero'
+import PasswordIcon from 'cozy-ui/transpiled/react/Icons/Password'
+import LockIcon from 'cozy-ui/transpiled/react/Icons/Lock'
+import ToTheCloudIcon from 'cozy-ui/transpiled/react/Icons/ToTheCloud'
+
+import importPasswordsIcon from 'assets/import-passwords.svg'
+import CircleIcon from 'components/CircleIcon'
+import Wrapper from 'components/Wrapper'
+import getSupportedPlatforms from 'supportedPlatforms'
+import { isSupportedBrowser, browserName } from 'currentBrowser'
+import browserIcons from './browserIcons'
+import VerticallyCentered from './VerticallyCentered'
 
 const Section1 = () => {
   const { t } = useI18n()
   return (
     <Section>
-      <CircleIcon icon="lock" size={32} color="var(--slateGrey)" />
+      <CircleIcon icon={LockIcon} size={32} color="var(--slateGrey)" />
       <Text tag="p">{t('PresentationStep.item1')}</Text>
     </Section>
   )
@@ -34,7 +41,7 @@ const Section2 = () => {
   const { t } = useI18n()
   return (
     <Section>
-      <CircleIcon icon="password" size={32} color="var(--slateGrey)" />
+      <CircleIcon icon={PasswordIcon} size={32} color="var(--slateGrey)" />
       <Text tag="p">{t('PresentationStep.item2')}</Text>
     </Section>
   )
@@ -44,7 +51,7 @@ const Section3 = () => {
   const { t } = useI18n()
   return (
     <Section>
-      <CircleIcon icon="to-the-cloud" size={32} color="var(--slateGrey)" />
+      <CircleIcon icon={ToTheCloudIcon} size={32} color="var(--slateGrey)" />
       <Text tag="p">{t('PresentationStep.item3')}</Text>
     </Section>
   )
@@ -79,7 +86,7 @@ const UnsupportedBrowser = () => {
             href={infos.storeUrl}
             icon={
               <Icon
-                icon={`browser-${platform}`}
+                icon={browserIcons[platform]}
                 size={16}
                 color="var(--slateGrey)"
               />

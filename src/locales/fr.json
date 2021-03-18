@@ -31,6 +31,19 @@
     "keep-password": "Garder mon mot de passe actuel"
   },
 
+
+  "SecurityStepOIDC": {
+    "title": "Choisissez votre mot de passe Cozy Pass",
+    "title-configured": "Votre mot de passe Cozy Pass est configuré",
+    "description": "Votre mot de passe Cozy Pass devient la clé unique pour décoder vos mots de passe sauvegardés de manière sécurisée.",
+    "description-configured": "Vous avez configuré votre mot de passe Cozy Pass, vous pouvez maintenant stocker vos mot de passe.",
+    "passphrase": {
+      "placeholder": "Mot de passe Cozy Pass",
+      "confirmationPlaceholder": "Confirmez le mot de passe"
+    },
+    "next-step": "Suivant"
+  },
+
   "HintStep": {
     "title": "Définir un indice de mot de passe",
     "description": "L'indice vous sera envoyé par email en cas d'oubli de votre mot de passe, choisissez un indice que vous-seul pouvez comprendre",
@@ -58,6 +71,8 @@
       "safari": "Ouvrez ensuite les préférences Safari pour activer l'extension (Préférences > Extensions)"
     },
     "steps": {
+      "choose-pass-password": "Choisir votre mot de passe Cozy Pass",
+      "pass-password-chosen": "Mot de passe Cozy Pass  configuré ✅",
       "improve-password": "Renforcer le mot de passe de votre Cozy",
       "leave-hint": "Définir un indice",
       "install-extension": "Installer l'extension",
@@ -120,6 +135,8 @@
       "close": "OK"
     }
   },
+
+  "UpdateCozyPassPassword": "Modifier le mot de passe Cozy Pass",
 
   "manifest": {
     "short_description": "Ne perdez plus vos mots de passe",

@@ -15,9 +15,12 @@ import { useClient } from 'cozy-client'
 import Wrapper from 'components/Wrapper'
 import VerticallyCentered from 'components/VerticallyCentered'
 import strongPasswordIcon from 'assets/strong-password.svg'
+import { canAuthWithOIDC } from 'helpers/oidc'
+import { useStepsContext } from 'components/InstallationPage/stepsContext'
 import ChangePasswordLink from 'components/ChangePasswordLink'
+import SetVaultPasswordForm from 'components/SetVaultPasswordForm'
 
-const SecurityStep = ({ onSkip }) => {
+const DefaultSecurityStep = ({ onSkip }) => {
   const { t } = useI18n()
 
   return (
@@ -75,6 +78,84 @@ const SecurityStep = ({ onSkip }) => {
       </Wrapper>
     </VerticallyCentered>
   )
+}
+
+const OIDCSecurityStep = ({ onNext }) => {
+  const { t } = useI18n()
+
+  const { isVaultConfigured } = useStepsContext()
+
+  return (
+    <VerticallyCentered>
+      <Wrapper>
+        <NarrowContent>
+          <Stack>
+            <img src={strongPasswordIcon} alt="" width={204} height={137} />
+            <MainTitle>
+              {isVaultConfigured
+                ? t('SecurityStepOIDC.title-configured')
+                : t('SecurityStepOIDC.title')}
+            </MainTitle>
+            <Stack spacing="xl">
+              <Text>
+                {isVaultConfigured
+                  ? t('SecurityStepOIDC.description-configured')
+                  : t('SecurityStepOIDC.description')}
+              </Text>
+              {isVaultConfigured ? (
+                <div>
+                  <ChangePasswordLink
+                    extension="full"
+                    theme="secondary"
+                    label={t('UpdateCozyPassPassword')}
+                    successRoute="#/installation/configureExtension"
+                    cancelRoute="#/installation/configureExtension"
+                  />
+                </div>
+              ) : (
+                <>
+                  <SetVaultPasswordForm onSuccess={onNext} />
+                  <Card>
+                    <UnorderedList className="u-ta-left u-mv-0">
+                      <ListItem
+                        dangerouslySetInnerHTML={{
+                          __html: snarkdown(
+                            t('SecurityStep.advices.strong_passphrase')
+                          )
+                        }}
+                      />
+                      <ListItem
+                        dangerouslySetInnerHTML={{
+                          __html: snarkdown(t('SecurityStep.advices.memorize'))
+                        }}
+                      />
+                      <ListItem>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: snarkdown(t('SecurityStep.advices.our_tip'))
+                          }}
+                        />
+                        <PasswordExample password="Cl4ude€st1Nu@ge" />
+                      </ListItem>
+                    </UnorderedList>
+                  </Card>
+                </>
+              )}
+            </Stack>
+          </Stack>
+        </NarrowContent>
+      </Wrapper>
+    </VerticallyCentered>
+  )
+}
+
+const SecurityStep = props => {
+  const client = useClient()
+
+  if (canAuthWithOIDC(client)) {
+    return <OIDCSecurityStep {...props} />
+  }
+  return <DefaultSecurityStep {...props} />
 }
 
 export default SecurityStep

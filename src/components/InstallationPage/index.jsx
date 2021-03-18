@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useMemo } from 'react'
 import { BitwardenSettingsContext } from '../../bitwarden-settings'
 
 import { useClient } from 'cozy-client'
@@ -15,16 +15,22 @@ import PresentationStep from '../PresentationStep'
 import SecurityStep from '../SecurityStep'
 import HintStep from '../HintStep'
 import ConfigureExtensionStep from '../ConfigureExtensionStep'
+import { canAuthWithOIDC as canAuthWithOIDCFn } from 'helpers/oidc'
+import StepsContext from './stepsContext'
 
 import BarTitle from 'BarTitle'
 import { fetchHintExists } from '../../hint'
 import { isMobile } from 'cozy-device-helper'
 import './styles.css'
 
-function getSteps(t) {
+function getSteps(t, canAuthWithOIDC, isVaultConfigured) {
   return [
     t('Nav.presentation'),
-    t('InstallationStep.steps.improve-password'),
+    canAuthWithOIDC
+      ? isVaultConfigured
+        ? t('InstallationStep.steps.pass-password-chosen')
+        : t('InstallationStep.steps.choose-pass-password')
+      : t('InstallationStep.steps.improve-password'),
     t('InstallationStep.steps.leave-hint'),
     isMobile()
       ? t('InstallationStep.steps.install-app')
@@ -44,7 +50,12 @@ function getStepContent(step, setActiveStep, { hasHint }) {
     case STEPS.presentation:
       return <PresentationStep onLetsGo={() => setActiveStep(STEPS.security)} />
     case STEPS.security:
-      return <SecurityStep onSkip={() => setActiveStep(STEPS.hint)} />
+      return (
+        <SecurityStep
+          onNext={() => setActiveStep(STEPS.hint)}
+          onSkip={() => setActiveStep(STEPS.hint)}
+        />
+      )
     case STEPS.hint:
       return (
         <HintStep
@@ -74,9 +85,11 @@ const InstallationPage = function() {
       : STEPS.presentation
   )
 
-  const steps = getSteps(t)
-
   const client = useClient()
+
+  const canAuthWithOIDC = canAuthWithOIDCFn(client)
+  const steps = getSteps(t, canAuthWithOIDC, isVaultConfigured)
+
   const [hasHint, setHasHint] = useState(null)
 
   useEffect(() => {
@@ -87,31 +100,41 @@ const InstallationPage = function() {
     fetch()
   }, [activeStep, client])
 
+  const contextValue = useMemo(() => {
+    return { hasHint, isVaultConfigured, canAuthWithOIDC }
+  }, [hasHint, isVaultConfigured, canAuthWithOIDC])
+
+  const canNavigateStepper = !canAuthWithOIDC || isVaultConfigured
   return (
-    <div className="InstallationPage">
-      <BarTitle>{t('Nav.installation')}</BarTitle>
-      <Stepper alternativeLabel nonLinear activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {
-            onClick: () => {
-              setActiveStep(index)
+    <StepsContext.Provider value={contextValue}>
+      <div className="InstallationPage">
+        <BarTitle>{t('Nav.installation')}</BarTitle>
+        <Stepper
+          alternativeLabel
+          nonLinear={canNavigateStepper}
+          activeStep={activeStep}
+        >
+          {steps.map((label, index) => {
+            const labelProps = {
+              error:
+                index === STEPS.hint && isVaultConfigured && hasHint === false
             }
-          }
-          const labelProps = {
-            error:
-              index === STEPS.hint && isVaultConfigured && hasHint === false
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepButton>
-                <StepLabel {...labelProps}>{label}</StepLabel>
-              </StepButton>
-            </Step>
-          )
-        })}
-      </Stepper>
-      {getStepContent(activeStep, setActiveStep, { hasHint })}
-    </div>
+            return (
+              <Step
+                disabled
+                key={label}
+                onClick={canNavigateStepper ? () => setActiveStep(index) : null}
+              >
+                <StepButton>
+                  <StepLabel {...labelProps}>{label}</StepLabel>
+                </StepButton>
+              </Step>
+            )
+          })}
+        </Stepper>
+        {getStepContent(activeStep, setActiveStep, { hasHint })}
+      </div>
+    </StepsContext.Provider>
   )
 }
 

@@ -1,21 +1,20 @@
 import React from 'react'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { useClient } from 'cozy-client'
 import { Link } from 'react-router-dom'
-import Wrapper from 'components/Wrapper'
+import snarkdown from 'snarkdown'
 
 import Button from 'cozy-ui/transpiled/react/Button'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
-import strongPasswordIcon from 'assets/strong-password.svg'
 import Stack from 'cozy-ui/transpiled/react/Stack'
-import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Card from 'cozy-ui/transpiled/react/Card'
+import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
-import snarkdown from 'snarkdown'
-import VerticallyCentered from './VerticallyCentered'
+import { useClient } from 'cozy-client'
 
-
+import Wrapper from 'components/Wrapper'
+import VerticallyCentered from 'components/VerticallyCentered'
+import strongPasswordIcon from 'assets/strong-password.svg'
 import ChangePasswordLink from 'components/ChangePasswordLink'
 
 const SecurityStep = ({ onSkip }) => {

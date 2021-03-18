@@ -58,7 +58,12 @@ const InstallationStep = ({ onExtensionInstalled }) => {
           ) : (
             <Stack spacing="xxl">
               <Stack spacing="m">
-                <img src={browserExtensionIcon} alt="" />
+                <img
+                  src={browserExtensionIcon}
+                  alt=""
+                  width={230}
+                  height={115}
+                />
                 <MainTitle>{t('InstallationStep.title')}</MainTitle>
                 <Text>
                   <span

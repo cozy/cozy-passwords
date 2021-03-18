@@ -35,7 +35,12 @@ const ConnectedStep = () => {
       <BarTitle>{t('Nav.installation')}</BarTitle>
       <NarrowContent>
         <Stack spacing="xxl">
-          <img src={illustrations[currentBrowser.name]} alt="" />
+          <img
+            height={230}
+            width={512}
+            src={illustrations[currentBrowser.name]}
+            alt=""
+          />
           <Stack spacing="m">
             <MainTitle>{t('ConnectedStep.title')}</MainTitle>
             <Text>{t('ConnectedStep.description')}</Text>

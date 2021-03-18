@@ -109,7 +109,7 @@ const PresentationStep = ({ onLetsGo }) => {
       <BarTitle>{t('Nav.presentation')}</BarTitle>
       <Wrapper>
         <Stack>
-          <img src={importPasswordsIcon} alt="" />
+          <img src={importPasswordsIcon} alt="" height={191} />
           <Hero>
             <Title className="u-mb-0">{t('PresentationStep.title')}</Title>
             <Text className="u-mb-3" tag="p">

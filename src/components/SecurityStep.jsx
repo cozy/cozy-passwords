@@ -26,7 +26,7 @@ const SecurityStep = ({ onSkip }) => {
       <Wrapper>
         <NarrowContent>
           <Stack>
-            <img src={strongPasswordIcon} alt="" width="204" />
+            <img src={strongPasswordIcon} alt="" width={204} height={137} />
             <MainTitle>{t('SecurityStep.title')}</MainTitle>
             <Stack spacing="xxl">
               <Text>{t('SecurityStep.description')}</Text>

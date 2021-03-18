@@ -48,7 +48,7 @@ const DumbHintStep = props => {
         <NarrowContent>
           <Stack spacing="xxl" tag="form" onSubmit={handleSubmit}>
             <Stack spacing="m">
-              <img src={passwordClueIcon} alt="" />
+              <img src={passwordClueIcon} alt="" height={137} />
               <MainTitle className="u-mt-1">{t('HintStep.title')}</MainTitle>
               <Text>
                 {props.hasHint === null ? (

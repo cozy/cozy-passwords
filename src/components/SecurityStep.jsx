@@ -1,10 +1,10 @@
 import React from 'react'
-import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
-import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { useClient } from 'cozy-client'
 import { Link } from 'react-router-dom'
 import Wrapper from 'components/Wrapper'
+
+import Button from 'cozy-ui/transpiled/react/Button'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
 import strongPasswordIcon from 'assets/strong-password.svg'
@@ -13,43 +13,10 @@ import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Card from 'cozy-ui/transpiled/react/Card'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import snarkdown from 'snarkdown'
-import generateWebAppLink from 'helpers/generateWebAppLink'
 import VerticallyCentered from './VerticallyCentered'
 
-const LinkToSettings = props => {
-  const client = useClient()
-  const { t } = useI18n()
-  const settingsAppSlug = 'settings'
-  const rawSettingsAppHref = generateWebAppLink(settingsAppSlug, client)
-  const passwordsUrl = generateWebAppLink('passwords', client)
 
-  const successUrl = new URL('#/installation/configureExtension', passwordsUrl)
-    .href
-  const cancelUrl = new URL('#/installation/hint', passwordsUrl).href
-
-  const settingsPath = '#/profile/password'
-  const settingsQuery = `?redirect_success=${encodeURIComponent(
-    successUrl
-  )}&redirect_cancel=${encodeURIComponent(cancelUrl)}`
-
-  const settingsAppHref = new URL(
-    settingsPath + settingsQuery,
-    rawSettingsAppHref
-  ).href
-
-  return (
-    <AppLinker slug={settingsAppSlug} href={settingsAppHref}>
-      {({ onClick, href }) => (
-        <ButtonLink
-          href={href}
-          onClick={onClick}
-          label={t('SecurityStep.enhance-password')}
-          {...props}
-        />
-      )}
-    </AppLinker>
-  )
-}
+import ChangePasswordLink from 'components/ChangePasswordLink'
 
 const SecurityStep = ({ onSkip }) => {
   const { t } = useI18n()
@@ -88,7 +55,12 @@ const SecurityStep = ({ onSkip }) => {
                 </UnorderedList>
               </Card>
               <Stack spacing="xs">
-                <LinkToSettings extension="full" />
+                <ChangePasswordLink
+                  label={t('SecurityStep.enhance-password')}
+                  successRoute="#/installation/configureExtension"
+                  cancelRoute="#/installation/hint"
+                  extension="full"
+                />
                 <Button
                   tag={Link}
                   onClick={onSkip}

@@ -81,7 +81,7 @@ const SetVaultPasswordForm = ({ onSuccess }) => {
         theme="primary"
         extension="full"
         label={t('SecurityStepOIDC.next-step')}
-        disabled={!passphraseMatch}
+        disabled={!passphraseMatch || values.passphrase === ''}
         onClick={handleSetPassphrase}
         busy={settingPassphrase}
       />

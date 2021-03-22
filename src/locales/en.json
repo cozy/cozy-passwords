@@ -79,6 +79,7 @@
       "safari": "Then open Safari preferences to activate the extension (Preferences > Extensions)"
     },
     "step3": "Log in with your address **%{address}** and your password!",
+    "step3-oidc": "Log in with your address **%{address}** and your Cozy Pass password!",
     "cta": "Install Cozy extension"
   },
 
@@ -91,7 +92,8 @@
   "InstalledStep": {
     "title": "It's almost finished!",
     "descriptionStart": "Click on the ",
-    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password."
+    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password.",
+    "descriptionEnd-oidc": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy Pass password."
   },
 
   "ConnectedStep": {

@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import generateWebAppLink from 'helpers/generateWebAppLink'
 import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
@@ -10,9 +9,13 @@ import { useClient } from 'cozy-client'
 const SETTINGS_APP_SLUG = 'settings'
 const PASSWORD_APP_SLUG = 'passwords'
 
-const ChangePasswordLink = ({ successRoute, cancelRoute, ...props }) => {
+const ChangePasswordLink = ({
+  successRoute,
+  cancelRoute,
+  Component,
+  ...props
+}) => {
   const client = useClient()
-  const { t } = useI18n()
   const rawSettingsAppHref = generateWebAppLink(SETTINGS_APP_SLUG, client)
   const passwordsUrl = generateWebAppLink(PASSWORD_APP_SLUG, client)
 
@@ -32,10 +35,14 @@ const ChangePasswordLink = ({ successRoute, cancelRoute, ...props }) => {
   return (
     <AppLinker slug={SETTINGS_APP_SLUG} href={settingsAppHref}>
       {({ onClick, href }) => (
-        <ButtonLink href={href} onClick={onClick} {...props} />
+        <Component href={href} onClick={onClick} {...props} />
       )}
     </AppLinker>
   )
+}
+
+ChangePasswordLink.defaultProps = {
+  Component: ButtonLink
 }
 
 export default ChangePasswordLink

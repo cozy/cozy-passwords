@@ -79,6 +79,7 @@
       "install-app": "Installer l'app"
     },
     "step3": "Connectez-vous avec votre adresse **%{address}** et votre mot de passe !",
+    "step3-oidc": "Connectez-vous avec votre adresse **%{address}** et votre mot de passe Cozy Pass !",
     "cta": "Installer l'extension Cozy"
   },
 
@@ -91,7 +92,8 @@
   "InstalledStep": {
     "title": "C'est presque fini !",
     "descriptionStart": "Cliquez sur l'icône",
-    "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy."
+    "descriptionEnd": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy.",
+    "descriptionEnd-oidc": "en haut à droite de votre écran pour vous connecter à l'aide de votre addresse **%{address}** et de votre mot de passe Cozy Pass."
   },
 
   "ConnectedStep": {

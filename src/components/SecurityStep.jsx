@@ -11,6 +11,7 @@ import Card from 'cozy-ui/transpiled/react/Card'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import { useClient } from 'cozy-client'
+import flag from 'cozy-flags'
 
 import Wrapper from 'components/Wrapper'
 import VerticallyCentered from 'components/VerticallyCentered'
@@ -83,7 +84,12 @@ const DefaultSecurityStep = ({ onSkip }) => {
 const OIDCSecurityStep = ({ onNext }) => {
   const { t } = useI18n()
 
-  const { isVaultConfigured } = useStepsContext()
+  const { isVaultConfigured: rawIsVaultConfigured } = useStepsContext()
+
+  const isVaultConfigured =
+    typeof flag('passwords.force-vault-configured') === undefined
+      ? rawIsVaultConfigured
+      : flag('passwords.force-vault-configured')
 
   return (
     <VerticallyCentered>

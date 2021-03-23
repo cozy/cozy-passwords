@@ -31,6 +31,19 @@
     "keep-password": "Keep my current password"
   },
 
+  "SecurityStepOIDC": {
+    "title": "Choose your Cozy Pass password",
+    "title-configured": "Cozy Pass password configured",
+    "description": "Your Cozy Pass password becomes the unique key to decrypt your securely stored passwords",
+    "description-configured": "You configured your Cozy Pass password earlier, your passwords vault is ready.",
+    "next-step": "Next",
+    "passphrase": {
+      "placeholder": "Cozy Pass Password",
+      "confirmationPlaceholder": "Confirm the password",
+      "error-setting-passphrase": "Could not set passphrase, please retry later"
+    }
+  },
+
   "HintStep": {
     "title": "Leave a password hint",
     "description": "The hint will be sent to you by email in case you forgot your password, choose a hint that only you can understand",
@@ -48,6 +61,8 @@
     "descriptionEnd": "to your browser. This installation is necessary to allow you to automatically fill in and save your passwords while browsing.",
     "cozyExtension": "Cozy extension",
     "steps": {
+      "choose-pass-password": "Choose Cozy Pass password",
+      "pass-password-chosen": "Cozy Pass password configured ✅",
       "improve-password": "Improve password",
       "leave-hint": "Leave hint",
       "install-extension": "Install extension",
@@ -64,6 +79,7 @@
       "safari": "Then open Safari preferences to activate the extension (Preferences > Extensions)"
     },
     "step3": "Log in with your address **%{address}** and your password!",
+    "step3-oidc": "Log in with your address **%{address}** and your Cozy Pass password!",
     "cta": "Install Cozy extension"
   },
 
@@ -76,7 +92,8 @@
   "InstalledStep": {
     "title": "It's almost finished!",
     "descriptionStart": "Click on the ",
-    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password."
+    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password.",
+    "descriptionEnd-oidc": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy Pass password."
   },
 
   "ConnectedStep": {
@@ -120,6 +137,8 @@
       "close": "OK"
     }
   },
+
+  "UpdateCozyPassPassword": "Update Cozy Pass password",
 
   "manifest": {
     "short_description": "Stop losing your passwords",

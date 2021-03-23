@@ -1,26 +1,31 @@
 import React, { useEffect } from 'react'
+import snarkdown from 'snarkdown'
+
 import { detect as detectBrowser } from 'detect-browser'
-import Wrapper from 'components/Wrapper'
+
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
-import browserExtensionIcon from 'assets/browser-extension.svg'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Card from 'cozy-ui/transpiled/react/Card'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import { OrderedList, ListItem } from 'cozy-ui/transpiled/react/OrderedList'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+
 import { useClient } from 'cozy-client'
-import snarkdown from 'snarkdown'
-import WithCozyIcon from 'components/WithCozyIcon'
-import getSupportedPlatforms from 'supportedPlatforms'
-import VerticallyCentered from '../VerticallyCentered'
-import { InstallNativeAppButton } from '../AvailablePlatforms'
 import { isMobile } from 'cozy-device-helper'
+
+import browserExtensionIcon from 'assets/browser-extension.svg'
+
+import Wrapper from 'components/Wrapper'
+import WithCozyIcon from 'components/WithCozyIcon'
+import VerticallyCentered from 'components/VerticallyCentered'
+import { InstallNativeAppButton } from 'components/AvailablePlatforms'
+
+import { useExtensionStatus, extensionStatuses } from 'helpers/extensionStatus'
+import { canAuthWithOIDC } from 'helpers/oidc'
+
+import getSupportedPlatforms from 'supportedPlatforms'
 import BarTitle from 'BarTitle'
-import {
-  useExtensionStatus,
-  extensionStatuses
-} from '../../helpers/extensionStatus'
 
 const browser = detectBrowser()
 
@@ -58,7 +63,12 @@ const InstallationStep = ({ onExtensionInstalled }) => {
           ) : (
             <Stack spacing="xxl">
               <Stack spacing="m">
-                <img src={browserExtensionIcon} alt="" />
+                <img
+                  src={browserExtensionIcon}
+                  alt=""
+                  width={230}
+                  height={115}
+                />
                 <MainTitle>{t('InstallationStep.title')}</MainTitle>
                 <Text>
                   <span
@@ -103,7 +113,13 @@ const InstallationStep = ({ onExtensionInstalled }) => {
                   <ListItem
                     dangerouslySetInnerHTML={{
                       __html: snarkdown(
-                        t('InstallationStep.step3', { address: cozyURL.host })
+                        canAuthWithOIDC(client)
+                          ? t('InstallationStep.step3-oidc', {
+                              address: cozyURL.host
+                            })
+                          : t('InstallationStep.step3', {
+                              address: cozyURL.host
+                            })
                       )
                     }}
                   />

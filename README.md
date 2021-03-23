@@ -116,6 +116,17 @@ As a _translator_, you can login to [Transifex][tx-signin] (using your Github ac
 As a _developer_, you must [configure the transifex client][tx-client], and claim an access as _maintainer_ to the [app repository][tx-app]. Then please **only update** the source locale file (usually `en.json` in client and/or server parts), and push it to Transifex repository using the `tx push -s` command.
 
 
+### Flags
+
+Flags can be set to facilitate development (open console then type `flag("myflag", true))`).
+
+- `passwords.force-no-hint`: Consider that no password hint has been configured
+- `passwords.force-unsupported-platform`: Consider that the current platform is unsupported
+- `passwords.oidc-auth`: Consider that the Cozy is and OIDC cozy
+- `passwords.force-vault-configured`: Consider that the vault has not been configured/used yet
+- `passwords.debug`: Display debug information during password import
+
+
 ### Maintainer
 
 The lead maintainer for Passwords is [cozy](https://github.com/cozy), send him/her a :beers: to say hello!

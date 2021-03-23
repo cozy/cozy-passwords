@@ -1,57 +1,27 @@
 import React from 'react'
-import Button, { ButtonLink } from 'cozy-ui/transpiled/react/Button'
-import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { useClient } from 'cozy-client'
 import { Link } from 'react-router-dom'
-import Wrapper from 'components/Wrapper'
+import snarkdown from 'snarkdown'
+
+import Button from 'cozy-ui/transpiled/react/Button'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import NarrowContent from 'cozy-ui/transpiled/react/NarrowContent'
 import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
-import strongPasswordIcon from 'assets/strong-password.svg'
 import Stack from 'cozy-ui/transpiled/react/Stack'
-import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import Card from 'cozy-ui/transpiled/react/Card'
+import { MainTitle, Text } from 'cozy-ui/transpiled/react/Text'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
-import snarkdown from 'snarkdown'
-import generateWebAppLink from 'helpers/generateWebAppLink'
-import VerticallyCentered from './VerticallyCentered'
+import { useClient } from 'cozy-client'
+import flag from 'cozy-flags'
 
-const LinkToSettings = props => {
-  const client = useClient()
-  const { t } = useI18n()
-  const settingsAppSlug = 'settings'
-  const rawSettingsAppHref = generateWebAppLink(settingsAppSlug, client)
-  const passwordsUrl = generateWebAppLink('passwords', client)
+import Wrapper from 'components/Wrapper'
+import VerticallyCentered from 'components/VerticallyCentered'
+import strongPasswordIcon from 'assets/strong-password.svg'
+import { canAuthWithOIDC } from 'helpers/oidc'
+import { useStepsContext } from 'components/InstallationPage/stepsContext'
+import ChangePasswordLink from 'components/ChangePasswordLink'
+import SetVaultPasswordForm from 'components/SetVaultPasswordForm'
 
-  const successUrl = new URL('#/installation/configureExtension', passwordsUrl)
-    .href
-  const cancelUrl = new URL('#/installation/hint', passwordsUrl).href
-
-  const settingsPath = '#/profile/password'
-  const settingsQuery = `?redirect_success=${encodeURIComponent(
-    successUrl
-  )}&redirect_cancel=${encodeURIComponent(cancelUrl)}`
-
-  const settingsAppHref = new URL(
-    settingsPath + settingsQuery,
-    rawSettingsAppHref
-  ).href
-
-  return (
-    <AppLinker slug={settingsAppSlug} href={settingsAppHref}>
-      {({ onClick, href }) => (
-        <ButtonLink
-          href={href}
-          onClick={onClick}
-          label={t('SecurityStep.enhance-password')}
-          {...props}
-        />
-      )}
-    </AppLinker>
-  )
-}
-
-const SecurityStep = ({ onSkip }) => {
+const DefaultSecurityStep = ({ onSkip }) => {
   const { t } = useI18n()
 
   return (
@@ -59,7 +29,7 @@ const SecurityStep = ({ onSkip }) => {
       <Wrapper>
         <NarrowContent>
           <Stack>
-            <img src={strongPasswordIcon} alt="" width="204" />
+            <img src={strongPasswordIcon} alt="" width={204} height={137} />
             <MainTitle>{t('SecurityStep.title')}</MainTitle>
             <Stack spacing="xxl">
               <Text>{t('SecurityStep.description')}</Text>
@@ -88,7 +58,12 @@ const SecurityStep = ({ onSkip }) => {
                 </UnorderedList>
               </Card>
               <Stack spacing="xs">
-                <LinkToSettings extension="full" />
+                <ChangePasswordLink
+                  label={t('SecurityStep.enhance-password')}
+                  successRoute="#/installation/configureExtension"
+                  cancelRoute="#/installation/hint"
+                  extension="full"
+                />
                 <Button
                   tag={Link}
                   onClick={onSkip}
@@ -104,6 +79,89 @@ const SecurityStep = ({ onSkip }) => {
       </Wrapper>
     </VerticallyCentered>
   )
+}
+
+const OIDCSecurityStep = ({ onNext }) => {
+  const { t } = useI18n()
+
+  const { isVaultConfigured: rawIsVaultConfigured } = useStepsContext()
+
+  const isVaultConfigured =
+    typeof flag('passwords.force-vault-configured') === undefined
+      ? rawIsVaultConfigured
+      : flag('passwords.force-vault-configured')
+
+  return (
+    <VerticallyCentered>
+      <Wrapper>
+        <NarrowContent>
+          <Stack>
+            <img src={strongPasswordIcon} alt="" width={204} height={137} />
+            <MainTitle>
+              {isVaultConfigured
+                ? t('SecurityStepOIDC.title-configured')
+                : t('SecurityStepOIDC.title')}
+            </MainTitle>
+            <Stack spacing="xl">
+              <Text>
+                {isVaultConfigured
+                  ? t('SecurityStepOIDC.description-configured')
+                  : t('SecurityStepOIDC.description')}
+              </Text>
+              {isVaultConfigured ? (
+                <div>
+                  <ChangePasswordLink
+                    extension="full"
+                    theme="secondary"
+                    label={t('UpdateCozyPassPassword')}
+                    successRoute="#/installation/configureExtension"
+                    cancelRoute="#/installation/configureExtension"
+                  />
+                </div>
+              ) : (
+                <>
+                  <SetVaultPasswordForm onSuccess={onNext} />
+                  <Card>
+                    <UnorderedList className="u-ta-left u-mv-0">
+                      <ListItem
+                        dangerouslySetInnerHTML={{
+                          __html: snarkdown(
+                            t('SecurityStep.advices.strong_passphrase')
+                          )
+                        }}
+                      />
+                      <ListItem
+                        dangerouslySetInnerHTML={{
+                          __html: snarkdown(t('SecurityStep.advices.memorize'))
+                        }}
+                      />
+                      <ListItem>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: snarkdown(t('SecurityStep.advices.our_tip'))
+                          }}
+                        />
+                        <PasswordExample password="Cl4ude€st1Nu@ge" />
+                      </ListItem>
+                    </UnorderedList>
+                  </Card>
+                </>
+              )}
+            </Stack>
+          </Stack>
+        </NarrowContent>
+      </Wrapper>
+    </VerticallyCentered>
+  )
+}
+
+const SecurityStep = props => {
+  const client = useClient()
+
+  if (canAuthWithOIDC(client)) {
+    return <OIDCSecurityStep {...props} />
+  }
+  return <DefaultSecurityStep {...props} />
 }
 
 export default SecurityStep

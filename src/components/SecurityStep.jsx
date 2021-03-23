@@ -53,7 +53,9 @@ const DefaultSecurityStep = ({ onSkip }) => {
                         __html: snarkdown(t('SecurityStep.advices.our_tip'))
                       }}
                     />
-                    <PasswordExample password="Cl4ude€st1Nu@ge" />
+                    <PasswordExample
+                      password={t('SecurityStep.password-example')}
+                    />
                   </ListItem>
                 </UnorderedList>
               </Card>
@@ -141,7 +143,9 @@ const OIDCSecurityStep = ({ onNext }) => {
                             __html: snarkdown(t('SecurityStep.advices.our_tip'))
                           }}
                         />
-                        <PasswordExample password="Cl4ude€st1Nu@ge" />
+                        <PasswordExample
+                          password={t('SecurityStep.password-example')}
+                        />
                       </ListItem>
                     </UnorderedList>
                   </Card>

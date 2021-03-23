@@ -54,6 +54,7 @@ const DefaultSecurityStep = ({ onSkip }) => {
                       }}
                     />
                     <PasswordExample
+                      color={false}
                       password={t('SecurityStep.password-example')}
                     />
                   </ListItem>
@@ -144,6 +145,7 @@ const OIDCSecurityStep = ({ onNext }) => {
                           }}
                         />
                         <PasswordExample
+                          color={false}
                           password={t('SecurityStep.password-example')}
                         />
                       </ListItem>

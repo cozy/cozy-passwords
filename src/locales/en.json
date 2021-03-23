@@ -92,8 +92,8 @@
   "InstalledStep": {
     "title": "It's almost finished!",
     "descriptionStart": "Click on the ",
-    "descriptionEnd": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password.",
-    "descriptionEnd-oidc": " icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy Pass password."
+    "descriptionEnd": "icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy password.",
+    "descriptionEnd-oidc": "icon on the top right corner of your screen to log in with your address **%{address}** and your Cozy Pass password."
   },
 
   "ConnectedStep": {

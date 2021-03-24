@@ -28,7 +28,8 @@
       "our_tip": "**Our tip:** Find a short phrase that suits you, for example: "
     },
     "enhance-password": "Improve my password",
-    "keep-password": "Keep my current password"
+    "keep-password": "Keep my current password",
+    "password-example": "Claude est le meilleur nuage français !"
   },
 
   "SecurityStepOIDC": {

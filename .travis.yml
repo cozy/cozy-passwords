@@ -26,7 +26,7 @@ script:
   - yarn test
   - yarn build
 before_install:
-  - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then openssl aes-256-cbc -K $encrypted_7f483868d5a5_key -iv $encrypted_7f483868d5a5_iv -in id_rsa_downcloud_passwords.enc -out id_rsa_downcloud_passwords -d; fi
+  - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then openssl aes-256-cbc -K $encrypted_13a879e9a65a_key -iv $encrypted_13a879e9a65a_iv -in id_rsa_downcloud_passwords.enc -out id_rsa_downcloud_passwords -d; fi
   - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then eval "$(ssh-agent -s)"; fi
   - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then chmod 600 id_rsa_downcloud_passwords; fi
   - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then ssh-add id_rsa_downcloud_passwords; fi

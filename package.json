@@ -47,7 +47,7 @@
     "@material-ui/core": "4",
     "@testing-library/react-hooks": "^3.2.1",
     "cozy-bar": "7.12.2",
-    "cozy-client": "^13.4.2",
+    "cozy-client": "21.0.1",
     "cozy-doctypes": "1.72.2",
     "cozy-flags": "2.2.4",
     "cozy-keys-lib": "3.7.1",

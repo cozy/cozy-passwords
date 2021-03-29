@@ -90,7 +90,7 @@ const OIDCSecurityStep = ({ onNext }) => {
   const { isVaultConfigured: rawIsVaultConfigured } = useStepsContext()
 
   const isVaultConfigured =
-    typeof flag('passwords.force-vault-configured') === undefined
+    flag('passwords.force-vault-configured') === null
       ? rawIsVaultConfigured
       : flag('passwords.force-vault-configured')
 

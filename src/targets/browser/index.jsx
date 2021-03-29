@@ -73,13 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   appLocale = getDataOrDefault(data.cozyLocale, 'en')
 
-  const protocol = window.location ? window.location.protocol : 'https:'
-
   // initialize the client to interact with the cozy stack
-  const client = new CozyClient({
-    uri: `${protocol}//${data.cozyDomain}`,
-    token: data.cozyToken
-  })
+  const client = CozyClient.fromDOM()
+  window.cozyClient = client
 
   client.registerPlugin(flag.plugin)
 

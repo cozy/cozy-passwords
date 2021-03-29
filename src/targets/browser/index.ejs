@@ -37,6 +37,7 @@
   data-cozy-subdomain-type="{{.SubDomain}}"
   data-cozy-icon-path="{{.IconPath}}"
   data-cozy-flags="{{.Flags}}"
+  data-cozy="{{.CozyData}}"
 >
 <% _.forEach(htmlWebpackPlugin.files.js, function(file) { %>
     <script src="<%- file %>"></script>

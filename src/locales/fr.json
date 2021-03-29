@@ -73,7 +73,6 @@
     },
     "steps": {
       "choose-pass-password": "Choisir votre mot de passe Cozy Pass",
-      "pass-password-chosen": "Mot de passe Cozy Pass  configuré ✅",
       "improve-password": "Renforcer le mot de passe de votre Cozy",
       "leave-hint": "Définir un indice",
       "install-extension": "Installer l'extension",

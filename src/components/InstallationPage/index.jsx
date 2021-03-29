@@ -23,13 +23,11 @@ import { fetchHintExists } from '../../hint'
 import { isMobile } from 'cozy-device-helper'
 import './styles.css'
 
-function getSteps(t, canAuthWithOIDC, isVaultConfigured) {
+function getSteps(t, canAuthWithOIDC) {
   return [
     t('Nav.presentation'),
     canAuthWithOIDC
-      ? isVaultConfigured
-        ? t('InstallationStep.steps.pass-password-chosen')
-        : t('InstallationStep.steps.choose-pass-password')
+      ? t('InstallationStep.steps.choose-pass-password')
       : t('InstallationStep.steps.improve-password'),
     t('InstallationStep.steps.leave-hint'),
     isMobile()

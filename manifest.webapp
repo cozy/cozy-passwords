@@ -6,7 +6,7 @@
   "categories": [
     "cozy"
   ],
-  "version": "0.3.6",
+  "version": "1.0.1",
   "licence": "AGPL-3.0",
   "editor": "cozy",
   "source": "registry://passwords/stable",

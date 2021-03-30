@@ -5,7 +5,8 @@ import CozyClient, { CozyProvider } from 'cozy-client'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 const AppLike = props => {
-  const client = new CozyClient({ uri: 'https://test.mycozy.cloud' })
+  const client =
+    props.client || new CozyClient({ uri: 'https://test.mycozy.cloud' })
   return (
     <BreakpointsProvider>
       <CozyProvider client={client}>

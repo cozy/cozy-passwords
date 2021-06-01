@@ -69,7 +69,7 @@
     },
     "step2": {
       "chrome": "Cliquez ensuite sur **Ajouter à Chrome**",
-      "edge-chromium": "Cliquez ensuite sur **Ajouter à Chrome**",
+      "edge-chromium": "Cliquez ensuite sur **Ajouter à Chrome**. Si nécessaire, cliquez sur le bouton **Autoriser les extensions provenant d'autres magasins** au préalable.",
       "firefox": "Cliquez ensuite sur **Ajouter à Firefox**",
       "safari": "Ouvrez ensuite les préférences Safari pour activer l'extension (Préférences > Extensions)"
     },

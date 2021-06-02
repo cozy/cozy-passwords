@@ -71,11 +71,13 @@
     },
     "step1": {
       "chrome": "Click below to open the Chrome Web Store",
+      "edge-chromium": "Click below to open the Chrome Web Store",
       "firefox": "Click below to open Firefox Add-ons",
       "safari": "Click below to open the Mac App Store then click on **Get**"
     },
     "step2": {
       "chrome": "Then click on **Add to Chrome**",
+      "edge-chromium": "Then click on **Add to Chrome**. You may have to click on the **Allow extensions from other stores** button first.",
       "firefox": "Then click on **Add to Firefox**",
       "safari": "Then open Safari preferences to activate the extension (Preferences > Extensions)"
     },

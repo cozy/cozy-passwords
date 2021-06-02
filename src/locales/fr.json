@@ -63,11 +63,13 @@
     "cozyExtension": "l'extension Cozy",
     "step1": {
       "chrome": "Cliquez ci-dessous pour ouvrir le Chrome Web Store",
+      "edge-chromium": "Cliquez ci-dessous pour ouvrir le Chrome Web Store",
       "firefox": "Cliquez ci-dessous pour ouvrir Firefox Add-ons",
       "safari": "Cliquez ci-dessous pour ouvrir le Mac App Store puis cliquez sur **Obtenir**"
     },
     "step2": {
       "chrome": "Cliquez ensuite sur **Ajouter à Chrome**",
+      "edge-chromium": "Cliquez ensuite sur **Ajouter à Chrome**. Si nécessaire, cliquez sur le bouton **Autoriser les extensions provenant d'autres magasins** au préalable.",
       "firefox": "Cliquez ensuite sur **Ajouter à Firefox**",
       "safari": "Ouvrez ensuite les préférences Safari pour activer l'extension (Préférences > Extensions)"
     },

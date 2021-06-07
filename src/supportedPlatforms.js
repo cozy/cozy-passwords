@@ -6,6 +6,13 @@ export const platforms = {
     storeUrl:
       'https://chrome.google.com/webstore/detail/cozy-personal-cloud/jplochopoaajoochpoccajmgelpfbbic'
   },
+  'edge-chromium': {
+    id: 'edge-chromium',
+    type: 'browser',
+    label: 'Edge',
+    storeUrl:
+      'https://chrome.google.com/webstore/detail/cozy-personal-cloud/jplochopoaajoochpoccajmgelpfbbic'
+  },
   firefox: {
     id: 'firefox',
     type: 'browser',
